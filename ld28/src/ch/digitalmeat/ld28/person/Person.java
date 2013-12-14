@@ -1,6 +1,5 @@
 package ch.digitalmeat.ld28.person;
 
-import ch.digitalmeat.ld28.PersonConfig;
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;

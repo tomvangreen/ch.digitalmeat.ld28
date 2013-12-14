@@ -1,4 +1,4 @@
-package ch.digitalmeat.ld28;
+package ch.digitalmeat.ld28.person;
 
 import com.badlogic.gdx.graphics.Color;
 

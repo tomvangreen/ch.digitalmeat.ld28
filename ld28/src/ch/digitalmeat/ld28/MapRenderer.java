@@ -3,9 +3,12 @@ package ch.digitalmeat.ld28;
 import java.util.ArrayList;
 import java.util.List;
 
-import ch.digitalmeat.ld28.PersonConfig.PersonType;
 import ch.digitalmeat.ld28.person.Person;
+import ch.digitalmeat.ld28.person.PersonConfig;
+import ch.digitalmeat.ld28.person.PersonManager;
 import ch.digitalmeat.ld28.person.PersonSheet;
+import ch.digitalmeat.ld28.person.Person.PersonState;
+import ch.digitalmeat.ld28.person.PersonConfig.PersonType;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -37,6 +40,7 @@ public class MapRenderer {
 	private int tilePixelHeight;
 	private int mapPixelWidth;
 	private int mapPixelHeight;
+	private int focusIndex;
 
 	public Person focusedPerson = null;
 	private List<Person> playerPersons;
@@ -62,10 +66,20 @@ public class MapRenderer {
 		
 	}
 	
+	public void nextPlayer(){
+		if(playerPersons.size() == 0){
+			return;
+		}
+		focusedPerson.setState(PersonState.Idle);
+		focusIndex = (focusIndex + 1) % playerPersons.size();
+		focusedPerson = playerPersons.get(focusIndex);
+	}
+	
 	public void loadMap(String file)
 	{
 		this.mapRenderer = null;
 		focusedPerson = null;
+		focusIndex = 0;
 		playerPersons.clear();
 		guardPersons.clear();
 		guestPersons.clear();

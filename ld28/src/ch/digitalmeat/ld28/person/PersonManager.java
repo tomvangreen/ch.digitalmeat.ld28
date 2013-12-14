@@ -1,6 +1,6 @@
-package ch.digitalmeat.ld28;
+package ch.digitalmeat.ld28.person;
 
-import ch.digitalmeat.ld28.person.Person;
+
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
 
@@ -37,11 +37,9 @@ public class PersonManager {
 				int pnx = tp(newX + offset);
 
 				if(pnx != px){
-					System.out.println("Moving out from X: " + px + " ; Y: " + py );
 					tl = (TiledMapTileLayer) layer;
 					Cell cell = tl.getCell(px, py);
 					if(cell != null){
-						System.out.println("Found cell");
 						String collision = cell.getTile().getProperties().get("collision", String.class);
 						if(collision != null){
 							if(p.getDirection() == LookingDirection.Left && "left".equals(collision)){

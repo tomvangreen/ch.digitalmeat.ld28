@@ -36,6 +36,9 @@ public class InGameScreen implements Screen{
 		PlayerController c = cs.controller;
 		c.clear();
 		c.update();
+		if(c.switchPlayer.isDown){
+			mapRenderer.nextPlayer();
+		}
 		Person focus = mapRenderer.focusedPerson;		
 		if(focus != null){
 			if(c.left && !c.right){
