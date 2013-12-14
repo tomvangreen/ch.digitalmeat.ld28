@@ -16,12 +16,13 @@ public class TextManager extends Actor{
 	}	
 	
 	public void spawnText(String text, Color color, float x, float y){
+		//TODO: Change to skin instead of color
 		Label label = new Label(text, skin);
 		label.setPosition(x - label.getWidth() / 2, y - label.getHeight() / 2);
 		label.addAction(
 			Actions.sequence(
 				Actions.moveBy(0f, 20f, 2f)
-				, Actions.parallel(Actions.moveBy(0f, 10f, 1f), Actions.alpha(0))
+				, Actions.parallel(Actions.moveBy(0f, 10f, 2f), Actions.alpha(0f))
 				, Actions.removeActor()
 			)
 		);
