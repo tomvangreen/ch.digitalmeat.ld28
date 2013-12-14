@@ -20,7 +20,7 @@
   <image source="foreground.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="97" name="Backgrounds" tilewidth="32" tileheight="32">
-  <image source="D:/Sabby/Projekte/Dhy/LudumDare/Backgrounds.png" width="128" height="128"/>
+  <image source="Backgrounds.png" width="128" height="128"/>
  </tileset>
  <layer name="Background 1" width="32" height="8">
   <properties>
@@ -35,7 +35,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjADtIBOIkIE4G4pQBdssooA0AAMmXLAcABAAA
+   H4sIAAAAAAAAC2NgGAWjADtIBOIkIE6G4pSBdc4ooAEAAMe3glQABAAA
   </data>
  </layer>
  <objectgroup name="Entities" width="32" height="8">
