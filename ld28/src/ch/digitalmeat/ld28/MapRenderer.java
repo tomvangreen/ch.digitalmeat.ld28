@@ -2,13 +2,14 @@ package ch.digitalmeat.ld28;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import ch.digitalmeat.ld28.person.Person;
+import ch.digitalmeat.ld28.person.Person.PersonState;
 import ch.digitalmeat.ld28.person.PersonConfig;
+import ch.digitalmeat.ld28.person.PersonConfig.PersonType;
 import ch.digitalmeat.ld28.person.PersonManager;
 import ch.digitalmeat.ld28.person.PersonSheet;
-import ch.digitalmeat.ld28.person.Person.PersonState;
-import ch.digitalmeat.ld28.person.PersonConfig.PersonType;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -159,7 +160,7 @@ public class MapRenderer {
 		System.out.println("Spawning " + config.type);
 		PersonSheet[] sheets = ConcertSmugglers.instance.assets.sheets;
 		Person person = new Person();
-		person.init(sheets[0], config);
+		person.init(getRandomPerson(sheets), config);
 		person.setSize(16f, 16f);
 		float y = eObj.getEllipse().y;
 		y -= y % 32 + -2;
@@ -169,6 +170,29 @@ public class MapRenderer {
 			person.addAction(Actions.moveBy(50, 500, 10));
 		}
 		return person;
+	}
+
+	private PersonSheet getRandomPerson(PersonSheet[] sheets) {
+		PersonSheet sheet = new PersonSheet();
+		Random r = ConcertSmugglers.instance.random;
+		PersonSheet legs = sheets[r.nextInt(sheets.length)];
+		PersonSheet torso = sheets[r.nextInt(sheets.length)];
+		PersonSheet face = sheets[r.nextInt(sheets.length)];
+		PersonSheet hair = sheets[r.nextInt(sheets.length)];
+
+		assign(sheet, hair, PersonSheet.SHEET_HAIR);
+		assign(sheet, face, PersonSheet.SHEET_HEAD);
+		assign(sheet, torso, PersonSheet.SHEET_TORSO);
+		assign(sheet, legs, PersonSheet.SHEET_LEGS);
+		
+		
+		return sheet;
+	}
+
+	private void assign(PersonSheet sheet, PersonSheet hair, int sheetNr) {
+		sheet.front[sheetNr] = hair.front[sheetNr];
+		sheet.side_walk[sheetNr] = hair.side_walk[sheetNr];
+		sheet.side_idle[sheetNr] = hair.side_idle[sheetNr];
 	}
 
 	private int[] getLayers(MapLayers layers, String name){
