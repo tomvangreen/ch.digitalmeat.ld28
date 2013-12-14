@@ -1,6 +1,7 @@
 package ch.digitalmeat.ld28.person;
 
 import ch.digitalmeat.ld28.PersonConfig;
+import ch.digitalmeat.ld28.person.Person.LookingDirection;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -95,5 +96,13 @@ public class Person extends Actor {
 			}
 		}
 		return sheet.front;
+	}
+
+	public PersonState getState() {
+		return state;
+	}
+
+	public LookingDirection getDirection() {
+		return dir;
 	}
 }

@@ -7,6 +7,7 @@ import ch.digitalmeat.ld28.PersonConfig.PersonType;
 import ch.digitalmeat.ld28.person.Person;
 import ch.digitalmeat.ld28.person.PersonSheet;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapLayers;
@@ -40,7 +41,9 @@ public class MapRenderer {
 	public Person focusedPerson = null;
 	private List<Person> playerPersons;
 	private List<Person> guardPersons;
-	private List<Person> guestPersons; 
+	private List<Person> guestPersons;
+	private PersonManager personManager;
+	private MapLayer collisionLayer; 
 	
 	public MapRenderer()
 	{
@@ -48,6 +51,7 @@ public class MapRenderer {
 		playerPersons = new ArrayList<Person>();
 		guardPersons = new ArrayList<Person>();
 		guestPersons = new ArrayList<Person>();
+		personManager = new PersonManager();
 	}
 	
 	public void create(OrthographicCamera camera){
@@ -80,6 +84,11 @@ public class MapRenderer {
 		backgroundLayers = getLayers(layers, "bg");
 		foregroundLayers = getLayers(layers, "fg");
 		entityLayers = getLayers(layers, "entity");
+		int[] collision = getLayers(layers, "collision");
+		
+		if(collision != null && collision.length > 0){
+			this.collisionLayer = layers.get(collision[0]);
+		}
 		//TODO: Load properties
 		int w = ConcertSmugglers.instance.config.xResolution;
 		int h = ConcertSmugglers.instance.config.yResolution;
@@ -185,6 +194,7 @@ public class MapRenderer {
 	}
 	
 	public void update(){
+		personManager.handleMovement(Gdx.graphics.getDeltaTime(), stage.getActors(), collisionLayer);
 		stage.act();
 	}
 	
