@@ -1,6 +1,8 @@
 package ch.digitalmeat.ld28;
 
 import ch.digitalmeat.ld28.person.Person;
+import ch.digitalmeat.ld28.person.Person.LookingDirection;
+import ch.digitalmeat.ld28.person.Person.PersonState;
 import ch.digitalmeat.ld28.person.PersonSheet;
 
 import com.badlogic.gdx.Gdx;
@@ -13,15 +15,17 @@ public class InGameScreen implements Screen{
 	private MapRenderer mapRenderer;
 	private OrthographicCamera camera;
 	private BackgroundRenderer backgroundRenderer;
+	private ConcertSmugglers cs;
 	
 	public InGameScreen(){
-		int w = ConcertSmugglers.instance.config.xResolution;
-		int h = ConcertSmugglers.instance.config.yResolution;
+		this.cs = ConcertSmugglers.instance;
+		int w = cs.config.xResolution;
+		int h = cs.config.yResolution;
 		this.camera = new OrthographicCamera(w, h);
 		mapRenderer = new MapRenderer();
 		mapRenderer.create(camera);
 		camera.update();
-		Assets assets = ConcertSmugglers.instance.assets;
+		Assets assets = cs.assets;
 		this.backgroundRenderer = new BackgroundRenderer(assets.ground, assets.sky, camera);
 	}
 	
@@ -29,8 +33,29 @@ public class InGameScreen implements Screen{
 	public void render(float delta) {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-
-		Person focus = mapRenderer.focusedPerson;
+		PlayerController c = cs.controller;
+		c.clear();
+		c.update();
+		Person focus = mapRenderer.focusedPerson;		
+		if(focus != null){
+			if(c.left && !c.right){
+				focus.setDirection(LookingDirection.Left);
+				focus.setState(PersonState.Walking);
+			}
+			else if(!c.left && c.right){
+				focus.setDirection(LookingDirection.Right);
+				focus.setState(PersonState.Walking);
+			}
+			else if(c.left && c.right){
+				focus.setDirection(LookingDirection.None);
+				focus.setState(PersonState.Idle);
+			}
+			else{
+				focus.setState(PersonState.Idle);
+			}
+		}
+		
+		c.clear();
 		if(focus != null){
 			camera.position.set(focus.getX(), focus.getY(), 0);
 		}

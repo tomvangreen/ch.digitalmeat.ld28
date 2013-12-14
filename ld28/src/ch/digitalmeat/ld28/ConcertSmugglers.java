@@ -2,7 +2,6 @@ package ch.digitalmeat.ld28;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL10;
 
 public class ConcertSmugglers extends Game {
 	public static ConcertSmugglers instance;
@@ -10,6 +9,8 @@ public class ConcertSmugglers extends Game {
 	public final Config config;
 	public final Assets assets;
 
+	public final PlayerController controller;
+	
 	private InGameScreen inGameScreen;
 	
 	public ConcertSmugglers(Config config){
@@ -17,6 +18,7 @@ public class ConcertSmugglers extends Game {
 		
 		this.config = config;
 		this.assets = new Assets();
+		this.controller = new PlayerController();
 	}
 	
 	@Override
