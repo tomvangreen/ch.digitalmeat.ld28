@@ -74,21 +74,32 @@ public class Person extends Actor {
 
 	@Override
 	public void draw(SpriteBatch batch, float parentAlpha) {
-		TextureRegion[] regions = getRelevantRegions();
-		TextureRegion region = regions[animationIndex % regions.length];
+		TextureRegion[][] parts = getRelevantParts();
 		if (effect != null) {
 			effect.draw(batch);
 		}
-		batch.setColor(config.mainColor);
-		if (dir == LookingDirection.Right || dir == LookingDirection.None) {
-			batch.draw(region, getX(), getY(), getWidth(), getHeight());
-		} else {
-			batch.draw(region, getX() + getWidth(), getY(), -getWidth(),
-					getHeight());
+		float x = getX();
+		float w = getWidth();
+		if (dir == LookingDirection.Left) {
+			x += w;
+			w *= -1;
 		}
+		batch.setColor(config.secondaryColor);
+		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_LEGS), x, getY(), w, getHeight());
+		batch.setColor(config.mainColor);
+		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_TORSO), x, getY(), w, getHeight());
+		batch.setColor(config.faceColor);
+		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_HEAD), x, getY(), w, getHeight());
+		batch.setColor(config.hairColor);
+		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_HAIR), x, getY(), w, getHeight());
 	}
 
-	private TextureRegion[] getRelevantRegions() {
+	private TextureRegion getRelevantTextureRegion(TextureRegion[][] parts,
+			int partIndex) {
+		return parts[partIndex][animationIndex % parts[partIndex].length];
+	}
+
+	private TextureRegion[][] getRelevantParts() {
 		if (state == PersonState.Walking) {
 			return sheet.side_walk;
 		} else if (state == PersonState.Idle) {
