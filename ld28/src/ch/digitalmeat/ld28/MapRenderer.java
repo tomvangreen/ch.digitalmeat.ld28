@@ -70,16 +70,20 @@ public class MapRenderer {
 		if(playerPersons.size() == 0){
 			return;
 		}
+		if(focusedPerson != null){
+			focusedPerson.setEffect(null);
+		}
 		focusedPerson.setState(PersonState.Idle);
 		focusIndex = (focusIndex + 1) % playerPersons.size();
 		focusedPerson = playerPersons.get(focusIndex);
+		focusedPerson.setEffect(ConcertSmugglers.instance.assets.playerEffect);
 	}
 	
 	public void loadMap(String file)
 	{
 		this.mapRenderer = null;
 		focusedPerson = null;
-		focusIndex = 0;
+		focusIndex = -1;
 		playerPersons.clear();
 		guardPersons.clear();
 		guestPersons.clear();
@@ -144,6 +148,7 @@ public class MapRenderer {
 		camera.position.y = +mapPixelHeight / 2;
 		mapRenderer = new OrthogonalTiledMapRenderer(map);
 		mapRenderer.setView(camera.combined, 0, 0, w, h);
+		nextPlayer();
 	}
 	
 	private Person spawnPerson(PersonConfig config, MapObject obj) {

@@ -2,9 +2,11 @@ package ch.digitalmeat.ld28;
 
 import ch.digitalmeat.ld28.person.PersonSheet;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -17,6 +19,7 @@ public class Assets {
 	public PersonSheet[] sheets;
 	public Texture ground;
 	public Texture sky;
+	public ParticleEffect playerEffect;
 	
 	public Assets()
 	{
@@ -32,9 +35,11 @@ public class Assets {
 		
 		ground = manager.get("data/ground.png");
 		sky = manager.get("data/sky.png");
+		
 		sheets = new PersonSheet[PERSON_SPRITES];
 		
-		
+		playerEffect = new ParticleEffect();
+		playerEffect.load(Gdx.files.internal("data/player.p"), Gdx.files.internal("data"));		
 		Texture personsTexture = manager.get("data/Persons.png");
 		for(int index = 0; index < 8; index++){
 			PersonSheet sheet = new PersonSheet();
