@@ -157,7 +157,7 @@ public class MapRenderer {
 		person.init(sheets[0], config);
 		person.setSize(16f, 16f);
 		float y = eObj.getEllipse().y;
-		y -= y % 32;
+		y -= y % 32 + -2;
 		person.setPosition(eObj.getEllipse().x, y);
 		stage.addActor(person);
 		if(config.type == PersonType.Player){
@@ -171,7 +171,9 @@ public class MapRenderer {
 		int count = layers.getCount();
 		for(int index = 0; index < count; index ++){
 			MapLayer layer = layers.get(index);
-			if(name.equals(layer.getProperties().get("type"))){
+			String type = layer.getProperties().get("type", String.class);
+			System.out.println(type);
+			if(name.equals(type)){
 				layerList.add(index);
 			}
 		}
