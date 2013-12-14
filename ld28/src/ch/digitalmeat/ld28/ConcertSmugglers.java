@@ -2,6 +2,8 @@ package ch.digitalmeat.ld28;
 
 import java.util.Random;
 
+import ch.digitalmeat.ld28.person.ai.PersonAi;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 
@@ -32,7 +34,9 @@ public class ConcertSmugglers extends Game {
 		float h = Gdx.graphics.getHeight();
 		this.inGameScreen = new InGameScreen();
 		this.introScreen = new IntroScreen();
+		PersonAi.buildAi();
 		setScreen(inGameScreen);
+		
 	}
 
 	@Override

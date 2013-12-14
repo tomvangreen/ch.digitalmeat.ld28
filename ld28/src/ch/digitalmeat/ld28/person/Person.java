@@ -1,6 +1,7 @@
 package ch.digitalmeat.ld28.person;
 
-import ch.digitalmeat.ld28.person.Person.LookingDirection;
+import ch.digitalmeat.ld28.person.ai.GuardData;
+import ch.digitalmeat.ld28.person.ai.Node;
 
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -24,22 +25,30 @@ public class Person extends Actor {
 	private float animationTimer = 0f;
 	private int animationIndex;
 	private static float animationStepLength = 0.2f;
+	public float aiUpdateTimer;
+	public float aiUpdateTime = 0.1f;
 	public boolean running;
-
+	private Node node;
+	public float actionTimer;
+	public float actionTime;
+	public boolean actionRunning = false;
+	public GuardData guardData = new GuardData();
 	public Person() {
 		state = PersonState.Idle;
 		dir = LookingDirection.Left;
 		animationIndex = 0;
 	}
 
-	public void init(PersonSheet sheet, PersonConfig config) {
+	public void init(PersonSheet sheet, PersonConfig config, Node node) {
 		this.sheet = sheet;
 		this.config = config;
+		this.node = node;
 	}
 
 	private void clearAnimation() {
 		animationIndex = 0;
 		animationTimer = 0f;
+		
 	}
 
 	public void setDirection(LookingDirection dir) {
@@ -65,6 +74,9 @@ public class Person extends Actor {
 			effect.update(delta); 
 			effect.start();
 		}
+		aiUpdateTimer += delta;
+		actionTimer += delta;
+		node.execute(this);
 		animationTimer += delta;
 		while (animationTimer > animationStepLength) {
 			animationTimer -= animationStepLength;
@@ -127,4 +139,6 @@ public class Person extends Actor {
 	public void setEffect(ParticleEffect effect) {
 		this.effect = effect;
 	}
+	
+	
 }

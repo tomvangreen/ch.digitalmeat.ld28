@@ -5,11 +5,14 @@ import java.util.List;
 import java.util.Random;
 
 import ch.digitalmeat.ld28.person.Person;
+import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
 import ch.digitalmeat.ld28.person.PersonConfig;
 import ch.digitalmeat.ld28.person.PersonConfig.PersonType;
 import ch.digitalmeat.ld28.person.PersonManager;
 import ch.digitalmeat.ld28.person.PersonSheet;
+import ch.digitalmeat.ld28.person.ai.Node;
+import ch.digitalmeat.ld28.person.ai.PersonAi;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -138,9 +141,15 @@ public class MapRenderer {
 					list = guestPersons;
 				}
 				if(config != null){
-					list.add(spawnPerson(config, obj));
+					list.add(spawnPerson(config, obj, list == guestPersons));
 				}
 			}
+		}
+		for(Person p : guardPersons){
+			stage.addActor(p);
+		}
+		for(Person p : playerPersons){
+			stage.addActor(p);
 		}
 		if(playerPersons.size() > 0){
 			focusedPerson = playerPersons.get(0);
@@ -152,7 +161,7 @@ public class MapRenderer {
 		nextPlayer();
 	}
 	
-	private Person spawnPerson(PersonConfig config, MapObject obj) {
+	private Person spawnPerson(PersonConfig config, MapObject obj, boolean addToStage) {
 		if(!(obj instanceof EllipseMapObject)){
 			return null;
 		}
@@ -160,10 +169,31 @@ public class MapRenderer {
 		System.out.println("Spawning " + config.type);
 		PersonSheet[] sheets = ConcertSmugglers.instance.assets.sheets;
 		Person person = new Person();
-		person.init(getRandomPerson(sheets), config);
+		Node ai = null;
+		if(config.type == PersonType.Player){
+			ai = new Node();
+		}
+		else if(config.type == PersonType.Guard){
+			ai = PersonAi.guestAi;
+		}
+		else{
+			ai = PersonAi.guestAi;
+		}
+		person.init(getRandomPerson(sheets), config, ai);
 		person.setSize(16f, 16f);
 		float y = eObj.getEllipse().y;
 		y -= y % 32 + -2;
+		int dir = ConcertSmugglers.instance.random.nextInt(3);
+		if(dir == 1){
+			person.setDirection(LookingDirection.Left);
+		}
+		else if(dir == 2){
+			person.setDirection(LookingDirection.Right);
+		}
+		else{
+			person.setDirection(LookingDirection.None);
+		}
+
 		person.setPosition(eObj.getEllipse().x, y);
 		stage.addActor(person);
 		if(config.type == PersonType.Player){
