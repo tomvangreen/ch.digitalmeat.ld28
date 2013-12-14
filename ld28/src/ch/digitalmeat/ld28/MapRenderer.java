@@ -131,10 +131,13 @@ public class MapRenderer {
 		System.out.println("Spawning " + config.type);
 		PersonSheet[] sheets = ConcertSmugglers.instance.assets.sheets;
 		Person person = new Person();
-		person.init(sheets[0]);
+		person.init(sheets[0], config);
 		person.setSize(16f, 16f);
 		person.setPosition(eObj.getEllipse().x, eObj.getEllipse().y );
 		stage.addActor(person);
+		if(config.type == PersonType.Player){
+			person.addAction(Actions.moveBy(50, 50, 10));
+		}
 		return person;
 	}
 

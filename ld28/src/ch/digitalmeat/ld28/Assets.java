@@ -15,6 +15,8 @@ public class Assets {
 	public static final int PERSON_WIDTH = 16;
 	private final AssetManager manager;
 	public PersonSheet[] sheets;
+	public Texture ground;
+	public Texture sky;
 	
 	public Assets()
 	{
@@ -24,9 +26,15 @@ public class Assets {
 	public void create(){
 		manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));		
 		manager.load("data/Persons.png", Texture.class);
+		manager.load("data/ground.png", Texture.class);
+		manager.load("data/sky.png", Texture.class);
 		manager.finishLoading();
+		
+		ground = manager.get("data/ground.png");
+		sky = manager.get("data/sky.png");
 		sheets = new PersonSheet[PERSON_SPRITES];
-
+		
+		
 		Texture personsTexture = manager.get("data/Persons.png");
 		for(int index = 0; index < 8; index++){
 			PersonSheet sheet = new PersonSheet();

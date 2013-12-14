@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 public class InGameScreen implements Screen{
 	private MapRenderer mapRenderer;
 	private OrthographicCamera camera;
+	private BackgroundRenderer backgroundRenderer;
 	
 	public InGameScreen(){
 		int w = ConcertSmugglers.instance.config.xResolution;
@@ -20,6 +21,8 @@ public class InGameScreen implements Screen{
 		mapRenderer = new MapRenderer();
 		mapRenderer.create(camera);
 		camera.update();
+		Assets assets = ConcertSmugglers.instance.assets;
+		this.backgroundRenderer = new BackgroundRenderer(assets.ground, assets.sky, camera);
 	}
 	
 	@Override
@@ -34,6 +37,7 @@ public class InGameScreen implements Screen{
 		camera.update();
 		mapRenderer.update();
 		
+		backgroundRenderer.render();
 		mapRenderer.renderBackground();
 		mapRenderer.renderEntities();
 		mapRenderer.renderForeground();
