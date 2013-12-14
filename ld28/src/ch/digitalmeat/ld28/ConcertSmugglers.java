@@ -14,6 +14,8 @@ public class ConcertSmugglers extends Game {
 	public final PlayerController controller;
 	
 	private InGameScreen inGameScreen;
+
+	private IntroScreen introScreen;
 	
 	public ConcertSmugglers(Config config){
 		instance = this;
@@ -29,7 +31,8 @@ public class ConcertSmugglers extends Game {
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		this.inGameScreen = new InGameScreen();
-		setScreen(inGameScreen);
+		this.introScreen = new IntroScreen();
+		setScreen(introScreen);
 	}
 
 	@Override

@@ -3,13 +3,11 @@ package ch.digitalmeat.ld28;
 import ch.digitalmeat.ld28.person.Person;
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
-import ch.digitalmeat.ld28.person.PersonSheet;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class InGameScreen implements Screen{
 	private MapRenderer mapRenderer;

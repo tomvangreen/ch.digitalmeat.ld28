@@ -6,10 +6,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
 public class Assets {
 	public static final int PERSON_SPRITES = 8;
@@ -20,6 +22,9 @@ public class Assets {
 	public Texture ground;
 	public Texture sky;
 	public ParticleEffect playerEffect;
+	public BitmapFont font_visitor_10;
+	public Skin skin;
+
 	
 	public Assets()
 	{
@@ -32,11 +37,13 @@ public class Assets {
 		manager.load("data/PeopleParts.png", Texture.class);
 		manager.load("data/ground.png", Texture.class);
 		manager.load("data/sky.png", Texture.class);
+		manager.load("data/visitor_10.fnt", BitmapFont.class);
+		manager.load("data/uiskin.json", Skin.class);
 		manager.finishLoading();
-		
+		this.skin = manager.get("data/uiskin.json");
 		ground = manager.get("data/ground.png");
 		sky = manager.get("data/sky.png");
-		
+		font_visitor_10 = manager.get("data/visitor_10.fnt");
 		sheets = new PersonSheet[PERSON_SPRITES];
 		
 		playerEffect = new ParticleEffect();
