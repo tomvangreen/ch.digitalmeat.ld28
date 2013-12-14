@@ -32,7 +32,7 @@ public class ConcertSmugglers extends Game {
 		float h = Gdx.graphics.getHeight();
 		this.inGameScreen = new InGameScreen();
 		this.introScreen = new IntroScreen();
-		setScreen(introScreen);
+		setScreen(inGameScreen);
 	}
 
 	@Override
