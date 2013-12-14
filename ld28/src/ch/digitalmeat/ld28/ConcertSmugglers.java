@@ -18,6 +18,8 @@ public class ConcertSmugglers extends Game {
 	private InGameScreen inGameScreen;
 
 	private IntroScreen introScreen;
+
+	public TextManager textManager;
 	
 	public ConcertSmugglers(Config config){
 		instance = this;
@@ -30,6 +32,7 @@ public class ConcertSmugglers extends Game {
 	@Override
 	public void create() {			
 		assets.create();
+		this.textManager = new TextManager();
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		this.inGameScreen = new InGameScreen();

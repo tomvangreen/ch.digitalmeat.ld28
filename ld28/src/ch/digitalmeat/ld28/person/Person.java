@@ -1,8 +1,12 @@
 package ch.digitalmeat.ld28.person;
 
+import ch.digitalmeat.ld28.ConcertSmugglers;
+import ch.digitalmeat.ld28.TextManager;
+import ch.digitalmeat.ld28.person.PersonConfig.PersonType;
 import ch.digitalmeat.ld28.person.ai.GuardData;
 import ch.digitalmeat.ld28.person.ai.Node;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -16,7 +20,7 @@ public class Person extends Actor {
 	public enum LookingDirection {
 		None, Left, Right
 	}
-
+	private boolean saidSomething;
 	private ParticleEffect effect;
 	private PersonSheet sheet;
 	private PersonConfig config;
@@ -69,6 +73,12 @@ public class Person extends Actor {
 
 	@Override
 	public void act(float delta) {
+		if(!saidSomething){
+			if(config.type == PersonType.Player){
+				say("Naaay", Color.WHITE);
+			}
+			saidSomething = true;
+		}
 		if (effect != null) {
 			effect.setPosition(getX() + 8, getY() + 4); 
 			effect.update(delta); 
@@ -126,6 +136,11 @@ public class Person extends Actor {
 
 	public PersonState getState() {
 		return state;
+	}
+	
+	public void say(String text, Color color){
+		TextManager manager = ConcertSmugglers.instance.textManager;
+		manager.spawnText(text, color, getX() + getWidth() / 2, getY() + getHeight());
 	}
 
 	public LookingDirection getDirection() {

@@ -11,7 +11,6 @@ public class ActionChecker extends Node {
 			}
 		}
 		if (person.aiUpdateTimer > person.aiUpdateTime) {
-			System.out.println("Update AI");
 			person.aiUpdateTimer = 0;
 			return true;
 		}

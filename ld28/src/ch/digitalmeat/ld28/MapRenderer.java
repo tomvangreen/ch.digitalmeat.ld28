@@ -154,11 +154,14 @@ public class MapRenderer {
 		if(playerPersons.size() > 0){
 			focusedPerson = playerPersons.get(0);
 		}
+		stage.addActor(ConcertSmugglers.instance.textManager);
 		camera.position.x = +mapPixelWidth / 2;
 		camera.position.y = +mapPixelHeight / 2;
 		mapRenderer = new OrthogonalTiledMapRenderer(map);
 		mapRenderer.setView(camera.combined, 0, 0, w, h);
 		nextPlayer();
+		
+		
 	}
 	
 	private Person spawnPerson(PersonConfig config, MapObject obj, boolean addToStage) {
