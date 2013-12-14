@@ -9,10 +9,12 @@ public class MainActivity extends AndroidApplication {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		Config gameConfig = new Config(800, 600);
         
         AndroidApplicationConfiguration cfg = new AndroidApplicationConfiguration();
-        cfg.useGL20 = false;
+        cfg.useGL20 = true;
         
-        initialize(new Ld28Game(), cfg);
+        
+        initialize(new ConcertSmugglers(gameConfig), cfg);
     }
 }
