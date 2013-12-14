@@ -19,12 +19,23 @@
  <tileset firstgid="33" name="foreground" tilewidth="32" tileheight="32">
   <image source="foreground.png" width="256" height="256"/>
  </tileset>
+ <tileset firstgid="97" name="Backgrounds" tilewidth="32" tileheight="32">
+  <image source="D:/Sabby/Projekte/Dhy/LudumDare/Backgrounds.png" width="128" height="128"/>
+ </tileset>
  <layer name="Background 1" width="32" height="8">
   <properties>
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgwA6YgJiPRMyMwyxyAAsBeZD7GKGYGcoXwOM2RiwYn3u5CdjPBcT8UMwDdS+ym9Dt4URSj6yPWD8iY5ifBKCYG2o/F5KYANQOmDyp9rOimYWMsYUvNnEBBky3ImNCYTwKaA8ArfACXAAEAAA=
+  </data>
+ </layer>
+ <layer name="Background 2" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjADtIBOIkIE4G4pQBdssooA0AAMmXLAcABAAA
   </data>
  </layer>
  <objectgroup name="Entities" width="32" height="8">
