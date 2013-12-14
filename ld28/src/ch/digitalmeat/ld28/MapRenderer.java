@@ -133,10 +133,12 @@ public class MapRenderer {
 		Person person = new Person();
 		person.init(sheets[0], config);
 		person.setSize(16f, 16f);
-		person.setPosition(eObj.getEllipse().x, eObj.getEllipse().y );
+		float y = eObj.getEllipse().y;
+		y -= y % 32;
+		person.setPosition(eObj.getEllipse().x, y);
 		stage.addActor(person);
 		if(config.type == PersonType.Player){
-			person.addAction(Actions.moveBy(50, 50, 10));
+			person.addAction(Actions.moveBy(50, 500, 10));
 		}
 		return person;
 	}

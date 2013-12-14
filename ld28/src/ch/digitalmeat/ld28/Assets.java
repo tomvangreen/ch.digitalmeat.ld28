@@ -45,8 +45,10 @@ public class Assets {
 				pr(personsTexture, px(1), py(index))	
 				, pr(personsTexture, px(2), py(index))	
 			};
-			sheet.side_idle = new TextureRegion[]{
-				pr(personsTexture, px(3), py(index))	
+			sheet.side_walk = new TextureRegion[]{
+				pr(personsTexture, px(1), py(index))	
+				, pr(personsTexture, px(3), py(index))	
+				, pr(personsTexture, px(2), py(index))	
 				, pr(personsTexture, px(4), py(index))	
 			};
 			sheets[index] = sheet;
