@@ -35,7 +35,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGFmgkZGBoYmR9vaI4rBjIlB8Egn2CwLVCgGxMFTPdwbsNAgoMaJiZDFywEMgfgTEj6H4CXnGjIJBDAAlaj71AAQAAA==
+   H4sIAAAAAAAAC2NgGFmgkZGBoYmRMjPEGLHTyEAUhx0TgeKTSLBfEKhWCIiFoXq+M2CnQUCZERWDgC4jBJMDHgLxIyB+DMVPyDMGJzChMB5GAeUAAEceH4wABAAA
   </data>
  </layer>
  <layer name="Background 2" width="32" height="8">
@@ -43,7 +43,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAX0AoaMA2u/IwH7jYHyTlA1RlD6GRC/AOKnSOpgaozRzDNC0j8KhgYAAIaH3WwABAAA
+   H4sIAAAAAAAAC2NgGAX0AoaMpKkXZ8TPJxU4EtBvDJR3gqoxgtLPgPgFED9FUgdTY4xmnhGSfmKAKYX+GQWUAwAbPkPuAAQAAA==
   </data>
  </layer>
  <layer name="background 3" width="32" height="8">
@@ -260,16 +260,16 @@
   <object type="guest" x="891" y="136" width="14" height="14">
    <ellipse/>
   </object>
-  <object type="guest" x="1001" y="135" width="14" height="14">
+  <object type="guest" x="966" y="139" width="14" height="14">
    <ellipse/>
   </object>
-  <object type="guest" x="984" y="136" width="14" height="14">
+  <object type="guest" x="970" y="141" width="14" height="14">
    <ellipse/>
   </object>
   <object type="guest" x="940" y="136" width="14" height="14">
    <ellipse/>
   </object>
-  <object type="guest" x="994" y="135" width="14" height="14">
+  <object type="guest" x="967" y="136" width="14" height="14">
    <ellipse/>
   </object>
   <object type="guest" x="916" y="136" width="14" height="14">
@@ -349,7 +349,7 @@
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="goal" x="865" y="110" width="134" height="44"/>
+  <object type="goal" x="863" y="111" width="134" height="44"/>
  </objectgroup>
  <objectgroup name="Passages" width="32" height="8">
   <properties>
@@ -451,7 +451,7 @@
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGB5g8QixfyEQLyLSfkrd9AlKf0birwTiVUDMyIjAX2hk/yigPQAA3JJaqAAEAAA=
+   H4sIAAAAAAAAC2NgGB5g8QixfyEQLyLSfkrd9AlKf0birwTiVUDMyIjAX/DYL85IoSNGAU0BAObxg5sABAAA
   </data>
  </layer>
  <layer name="Foreground 2" width="32" height="8">
@@ -459,7 +459,7 @@
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjgIGBg5GBgRMNUwOwAs1ho5JZo4D6AAA2wjvGAAQAAA==
+   H4sIAAAAAAAAC2NgGAWjgIGBg5GBgRMN4wPijKg0LnFWIM1GwKxRMHAAAANWqjQABAAA
   </data>
  </layer>
  <layer name="Collision" width="32" height="8">
@@ -467,7 +467,7 @@
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA5mQjEpYA6J6skBpLqJngCX26gZLtjsmINHjlj7ByJc6ZFeRgF+AAALBaRbAAQAAA==
+   H4sIAAAAAAAAC2NgwA5mQjEpYA6J6skBpLqJngCX26gZLtjsmINHjlj76R2u9Egro4AwAADM1j1TAAQAAA==
   </data>
  </layer>
 </map>
