@@ -355,17 +355,45 @@
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="transport" x="394" y="146" width="8" height="7">
+  <object type="transport" x="394" y="149" width="8" height="7">
    <properties>
     <property name="key" value="stairs1_bottom"/>
     <property name="target" value="stairs1_top"/>
     <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="423" y="110" width="10" height="12">
+  <object type="transport" x="424" y="114" width="10" height="12">
    <properties>
     <property name="key" value="stairs1_top"/>
     <property name="target" value="stairs1_bottom"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="transport" x="745" y="114" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet1_top"/>
+    <property name="target" value="toilet1_bottom"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="transport" x="585" y="144" width="16" height="12">
+   <properties>
+    <property name="key" value="mntn1_bottom"/>
+    <property name="target" value="mntn1_top"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="transport" x="745" y="142" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet1_bottom"/>
+    <property name="target" value="toilet1_top"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="transport" x="585" y="18" width="16" height="12">
+   <properties>
+    <property name="key" value="mntn1_top"/>
+    <property name="target" value="mntn1_bottom"/>
     <property name="text" value="Use stairs"/>
    </properties>
   </object>

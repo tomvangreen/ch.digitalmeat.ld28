@@ -187,8 +187,8 @@ public class MapRenderer {
 	private void addTransport(MapObject obj) {
 		RectangleMapObject robj = (RectangleMapObject)obj;
 		Rectangle rect = robj.getRectangle();
-		float x = rect.getX() + rect.getWidth() / 2;
-		float y = rect.getY() + rect.getHeight() / 2;
+		float x = rect.getX() ;
+		float y = rect.getY() ;
 		y = y - y % 32 + 2;
 		MapProperties props = obj.getProperties();
 		String key = props.get("key", String.class);
