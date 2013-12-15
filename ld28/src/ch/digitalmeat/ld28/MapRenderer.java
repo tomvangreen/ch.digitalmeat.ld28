@@ -74,13 +74,13 @@ public class MapRenderer {
 		if(playerPersons.size() == 0){
 			return;
 		}
-		if(focusedPerson != null){
-			focusedPerson.setEffect(null);
-		}
+//		if(focusedPerson != null){
+//			focusedPerson.setEffect(null);
+//		}
 		focusedPerson.setState(PersonState.Idle);
 		focusIndex = (focusIndex + 1) % playerPersons.size();
 		focusedPerson = playerPersons.get(focusIndex);
-		focusedPerson.setEffect(ConcertSmugglers.instance.assets.playerEffect);
+//		focusedPerson.setEffect(ConcertSmugglers.instance.assets.playerEffect);
 	}
 	
 	public void loadMap(String file)
@@ -163,8 +163,6 @@ public class MapRenderer {
 		mapRenderer.setView(camera.combined, 0, 0, config.xTarget, config.yTarget);
 		
 		nextPlayer();
-		
-		
 	}
 	
 	private Person spawnPerson(PersonConfig config, MapObject obj, boolean addToStage) {
@@ -178,9 +176,11 @@ public class MapRenderer {
 		Node ai = null;
 		if(config.type == PersonType.Player){
 			ai = new Node();
+			person.setEffect(ConcertSmugglers.instance.assets.playerEffect());
 		}
 		else if(config.type == PersonType.Guard){
 			ai = PersonAi.guestAi;
+			person.setEffect(ConcertSmugglers.instance.assets.guardEffect());
 		}
 		else{
 			ai = PersonAi.guestAi;

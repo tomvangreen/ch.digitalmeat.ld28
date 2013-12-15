@@ -48,8 +48,7 @@ public class Assets {
 		font_visitor_10 = manager.get("data/visitor_10.fnt");
 		sheets = new PersonSheet[PERSON_SPRITES];
 		
-		playerEffect = new ParticleEffect();
-		playerEffect.load(Gdx.files.internal("data/player.p"), Gdx.files.internal("data"));		
+		playerEffect = playerEffect();		
 		Texture personsTexture = manager.get("data/PeopleParts.png");
 		this.androidButtons = manager.get("data/android_controls.png");
 		int persons = 8;
@@ -103,7 +102,17 @@ public class Assets {
 			sheets[index] = sheet;
 		}
 	}
-	
+
+	public ParticleEffect playerEffect() {
+		ParticleEffect playerEffect = new ParticleEffect();
+		playerEffect.load(Gdx.files.internal("data/player.p"), Gdx.files.internal("data"));
+		return playerEffect;
+	}
+	public ParticleEffect guardEffect(){
+		ParticleEffect effect = new ParticleEffect();
+		effect.load(Gdx.files.internal("data/guard.p"), Gdx.files.internal("data"));
+		return effect;
+	}
 	private TextureRegion pr(Texture texture, int x, int y){
 		return new TextureRegion(texture, x, y, PERSON_WIDTH, PERSON_HEIGHT);
 	}
