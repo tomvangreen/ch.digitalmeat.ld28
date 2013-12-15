@@ -1,5 +1,7 @@
 package ch.digitalmeat.ld28;
 
+import java.util.Random;
+
 import ch.digitalmeat.ld28.person.PersonSheet;
 
 import com.badlogic.gdx.Gdx;
@@ -27,11 +29,17 @@ public class Assets {
 	public Skin skin;
 	public Texture androidButtons;
 	private Music music;
+	public String[] names;
+	public Texture trance;
 
 	
 	public Assets()
 	{
 		this.manager = new AssetManager();
+	}
+	public String randomName(){
+		Random random = ConcertSmugglers.instance.random;
+		return names[random.nextInt(names.length)];
 	}
 	
 	public void create(){
@@ -39,6 +47,7 @@ public class Assets {
 		manager.load("data/Persons.png", Texture.class);
 		manager.load("data/PeopleParts.png", Texture.class);
 		manager.load("data/ground.png", Texture.class);
+		manager.load("data/trance.png", Texture.class);
 		manager.load("data/sky.png", Texture.class);
 		manager.load("data/visitor_10.fnt", BitmapFont.class);
 		manager.load("data/uiskin.json", Skin.class);
@@ -47,13 +56,17 @@ public class Assets {
 		manager.finishLoading();
 		this.skin = manager.get("data/uiskin.json");
 		ground = manager.get("data/ground.png");
+		trance = manager.get("data/trance.png");
 		sky = manager.get("data/sky.png");
 		font_visitor_10 = manager.get("data/visitor_10.fnt");
 		sheets = new PersonSheet[PERSON_SPRITES];
 		music = manager.get("data/mentex_track_01.wav");
 		music.setLooping(true);
+		music.setVolume(0.5f);
 		music.play();
-
+		String namesString = Gdx.files.internal("data/names.txt").readString();
+		this.names = namesString.split("\n");
+		
 		playerEffect = playerEffect();		
 		Texture personsTexture = manager.get("data/PeopleParts.png");
 		this.androidButtons = manager.get("data/android_controls.png");
@@ -112,6 +125,11 @@ public class Assets {
 	public ParticleEffect playerEffect() {
 		ParticleEffect playerEffect = new ParticleEffect();
 		playerEffect.load(Gdx.files.internal("data/player.p"), Gdx.files.internal("data"));
+		return playerEffect;
+	}
+	public ParticleEffect introEffect() {
+		ParticleEffect playerEffect = new ParticleEffect();
+		playerEffect.load(Gdx.files.internal("data/intro.p"), Gdx.files.internal("data"));
 		return playerEffect;
 	}
 	public ParticleEffect guardEffect(){

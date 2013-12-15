@@ -13,9 +13,9 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.Align;
-import com.badlogic.gdx.utils.ObjectSet.SetIterator;
 
 public class InGameScreen implements Screen{
 	private MapRenderer mapRenderer;
@@ -28,6 +28,8 @@ public class InGameScreen implements Screen{
 	private ImageButton rightButton;
 	private ImageButton switchButton;
 	private ImageButton actionButton;
+	private Stage uiStage;
+	private Table playersTable;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -37,6 +39,7 @@ public class InGameScreen implements Screen{
 		mapRenderer = new MapRenderer();
 		mapRenderer.create(camera);
 		camera.update();
+		uiStage = new Stage(cs.config.xTarget, cs.config.yTarget, true);
 		Assets assets = cs.assets;
 		this.backgroundRenderer = new BackgroundRenderer(assets.ground, assets.sky, camera);
 		androidControls = new Stage(cs.config.xTarget, cs.config.yTarget, true);
@@ -51,7 +54,9 @@ public class InGameScreen implements Screen{
 		c.update();
 		if(c.switchPlayer){
 			mapRenderer.nextPlayer();
+			updatePlayersTable();
 		}
+		
 		Person focus = mapRenderer.focusedPerson;		
 		if(focus != null){
 			if(c.left && !c.right){
@@ -82,6 +87,8 @@ public class InGameScreen implements Screen{
 		mapRenderer.renderBackground();
 		mapRenderer.renderEntities();
 		mapRenderer.renderForeground();
+		uiStage.act();
+		uiStage.draw();
 		androidControls.act();
 		androidControls.draw();
 	}
@@ -90,6 +97,7 @@ public class InGameScreen implements Screen{
 	public void resize(int width, int height) {
 		mapRenderer.resize(width, height);
 		androidControls.setViewport(ConcertSmugglers.instance.config.xTarget, ConcertSmugglers.instance.config.yTarget);
+		uiStage.setViewport(ConcertSmugglers.instance.config.xTarget, ConcertSmugglers.instance.config.yTarget);
 	}
 
 	@Override
@@ -120,11 +128,10 @@ public class InGameScreen implements Screen{
 				new Image(new TextureRegion(tex, 96, 0, 32, 32)).getDrawable()
 				, new Image(new TextureRegion(tex, 96, 32, 32, 32)).getDrawable()
 		);
-		controller.leftButton = new ButtonTrap(leftButton);
-		controller.rightButton = new ButtonTrap(rightButton);
-		controller.switchButton = new ButtonTrap(switchButton);
-		controller.useButton = new ButtonTrap(actionButton);
-		controller.addTrapsToList();
+		controller.leftButton.setButton(leftButton);
+		controller.rightButton.setButton(rightButton);
+		controller.switchButton.setButton(switchButton);
+		controller.useButton.setButton(actionButton);
 		table.row().align(Align.bottom);
 		table.add(leftButton).expand();
 		table.add(switchButton).expand();
@@ -132,6 +139,31 @@ public class InGameScreen implements Screen{
 		table.add(rightButton).expand();
 		androidControls.addActor(table);
 		Gdx.input.setInputProcessor(androidControls);
+		
+		uiStage.clear();
+		Table ui = new Table(assets.skin);
+		ui.align(Align.top);
+		ui.setSize(config.xTarget, config.yTarget);
+		playersTable = new Table();
+		
+		updatePlayersTable();
+		
+		ui.add(playersTable);
+		uiStage.addActor(ui);
+	}
+
+	public void updatePlayersTable() {
+		Assets assets = ConcertSmugglers.instance.assets;
+		playersTable.clear();
+		for(Person player : mapRenderer.players()){
+			String skin = "player-unselected";
+			if(player == mapRenderer.focusedPerson){
+				skin = "player-selected";
+			}
+			Label label = new Label(player.name, assets.skin, skin);
+			playersTable.row();
+			playersTable.add(label);
+		}
 	}
 
 	@Override

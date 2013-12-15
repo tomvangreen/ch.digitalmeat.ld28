@@ -12,14 +12,19 @@ public class PlayerController {
 	public boolean right;
 	public boolean switchPlayer;
 	public boolean use;
+	public boolean any;
 	
 	public KeyTrap switchPlayerTrap = new KeyTrap(Input.Keys.TAB);
 	public KeyTrap useTrap = new KeyTrap(Input.Keys.SPACE);
 	
-	public Trap leftButton = new NullTrap();
-	public Trap rightButton = new NullTrap();
-	public Trap switchButton = new NullTrap();
-	public Trap useButton = new NullTrap();
+	public ButtonTrap leftButton = new ButtonTrap();
+	public ButtonTrap rightButton = new ButtonTrap();
+	public ButtonTrap switchButton = new ButtonTrap();
+	public ButtonTrap useButton = new ButtonTrap();
+	
+	public Trap touch = new TouchTrap();
+	
+	public Trap anyKey = new KeyTrap(Input.Keys.ANY_KEY);
 	
 	private List<Trap> traps;
 	public PlayerController(){
@@ -32,6 +37,8 @@ public class PlayerController {
 		traps.add(rightButton);
 		traps.add(useButton);
 		traps.add(switchButton);
+		traps.add(touch);
+		traps.add(anyKey);
 	}
 	
 	public void clear(){
@@ -47,5 +54,6 @@ public class PlayerController {
 		right = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || rightButton.isPressed;
 		switchPlayer = switchPlayerTrap.isDown || switchButton.isDown;
 		use = useTrap.isDown || useButton.isDown;
+		any = touch.isDown || anyKey.isDown;
 	}
 }

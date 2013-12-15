@@ -40,6 +40,8 @@ com.badlogic.gdx.scenes.scene2d.ui.Slider$SliderStyle: {
 },
 com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	default: { font: default-font, fontColor: gold }
+	, player-selected: { font: default-font, fontColor: gold }
+	, player-unselected: { font: default-font, fontColor: white }
 	, inactive: { font: default-font, fontColor: grey}
 	, header-value: { font: "default-font", fontColor: gold }
 },

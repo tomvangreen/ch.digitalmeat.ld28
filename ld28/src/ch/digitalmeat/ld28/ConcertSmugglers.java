@@ -15,7 +15,7 @@ public class ConcertSmugglers extends Game {
 	public final Random random;
 	public final PlayerController controller;
 	
-	private InGameScreen inGameScreen;
+	public InGameScreen inGameScreen;
 
 	private IntroScreen introScreen;
 
@@ -27,6 +27,7 @@ public class ConcertSmugglers extends Game {
 		this.config = config;
 		this.assets = new Assets();
 		this.controller = new PlayerController();
+		controller.addTrapsToList();
 	}
 	
 	@Override
@@ -39,7 +40,7 @@ public class ConcertSmugglers extends Game {
 		this.inGameScreen = new InGameScreen();
 		this.introScreen = new IntroScreen();
 		PersonAi.buildAi();
-		setScreen(inGameScreen);
+		setScreen(introScreen);
 		
 	}
 
@@ -64,5 +65,9 @@ public class ConcertSmugglers extends Game {
 
 	@Override
 	public void resume() {
+	}
+	
+	public void game(){
+		setScreen(inGameScreen);
 	}
 }
