@@ -49,12 +49,6 @@ public class InGameScreen implements Screen{
 		PlayerController c = cs.controller;
 		c.clear();
 		c.update();
-		if(leftButton.isPressed()){
-			c.left = true;
-		}
-		if(rightButton.isPressed()){
-			c.right = true;
-		}
 		if(c.switchPlayer){
 			mapRenderer.nextPlayer();
 		}
@@ -127,7 +121,7 @@ public class InGameScreen implements Screen{
 				, new Image(new TextureRegion(tex, 96, 32, 32, 32)).getDrawable()
 		);
 		controller.leftButton = new ButtonTrap(leftButton);
-		controller.rightButton = new ButtonTrap(leftButton);
+		controller.rightButton = new ButtonTrap(rightButton);
 		controller.switchButton = new ButtonTrap(switchButton);
 		controller.useButton = new ButtonTrap(actionButton);
 		controller.addTrapsToList();

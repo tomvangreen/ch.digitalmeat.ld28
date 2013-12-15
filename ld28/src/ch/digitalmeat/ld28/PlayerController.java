@@ -40,11 +40,11 @@ public class PlayerController {
 	}
 	
 	public void update(){
-		left = Gdx.input.isKeyPressed(Input.Keys.LEFT) || leftButton.isPressed;
-		right = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || rightButton.isPressed;
 		for(Trap trap : traps){
 			trap.update();
 		}
+		left = Gdx.input.isKeyPressed(Input.Keys.LEFT) || leftButton.isPressed;
+		right = Gdx.input.isKeyPressed(Input.Keys.RIGHT) || rightButton.isPressed;
 		switchPlayer = switchPlayerTrap.isDown || switchButton.isDown;
 		use = useTrap.isDown || useButton.isDown;
 	}
