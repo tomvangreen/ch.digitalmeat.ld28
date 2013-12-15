@@ -3,6 +3,7 @@ package ch.digitalmeat.ld28.person.ai;
 import java.util.Random;
 
 import ch.digitalmeat.ld28.ConcertSmugglers;
+import ch.digitalmeat.ld28.level.Transport;
 import ch.digitalmeat.ld28.person.Person;
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
@@ -16,7 +17,19 @@ public class Roam extends Node {
 	
 	@Override
 	public boolean onExecute(Person person){
+		if(person.gameAction instanceof Transport){
+			System.out.println("Transport Action Found");
+			int tpick = random.nextInt(4);
+			if(tpick >= 0){
+				Transport transport = (Transport) person.gameAction;
+				transport.transport(person);
+				return true;
+			}
+		}
+		
 		int pick = random.nextInt(4);
+		
+		
 		LookingDirection dir = LookingDirection.None;
 		if(pick == 1){
 			dir = LookingDirection.Left;

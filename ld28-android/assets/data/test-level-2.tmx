@@ -339,28 +339,9 @@
     <property name="key" value="entry"/>
    </properties>
   </object>
-  <object type="wp" x="364" y="138" width="16" height="14">
+  <object type="wp" x="418" y="109" width="16" height="14">
    <properties>
     <property name="key" value="stairs1"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup name="Passages" width="32" height="8">
-  <properties>
-   <property name="type" value="entity"/>
-  </properties>
-  <object type="trigger" x="397" y="142" width="13" height="11">
-   <properties>
-    <property name="key" value="stairs1_bottom"/>
-    <property name="target" value="stairs1_top"/>
-    <property name="text" value="Use stairs"/>
-   </properties>
-  </object>
-  <object type="trigger" x="425" y="112" width="13" height="11">
-   <properties>
-    <property name="key" value="stairs1_top"/>
-    <property name="target" value="stairs1_bottom"/>
-    <property name="text" value="Use stairs"/>
    </properties>
   </object>
  </objectgroup>
@@ -369,6 +350,25 @@
    <property name="type" value="entity"/>
   </properties>
   <object type="goal" x="865" y="110" width="134" height="44"/>
+ </objectgroup>
+ <objectgroup name="Passages" width="32" height="8">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="transport" x="394" y="146" width="8" height="7">
+   <properties>
+    <property name="key" value="stairs1_bottom"/>
+    <property name="target" value="stairs1_top"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="transport" x="423" y="110" width="10" height="12">
+   <properties>
+    <property name="key" value="stairs1_top"/>
+    <property name="target" value="stairs1_bottom"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Foreground 1" width="32" height="8">
   <properties>

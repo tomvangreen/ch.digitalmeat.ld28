@@ -20,8 +20,8 @@ public abstract class Trap {
 		isPressed = isPressed();
 		isDown = isPressed && !wasPressed;
 		isUp = !isPressed && wasPressed;
-		if(isDown)System.out.println("Trap down");
-		if(isUp)System.out.println("Trap up");
+//		if(isDown)System.out.println("Trap down");
+//		if(isUp)System.out.println("Trap up");
 	}
 
 }

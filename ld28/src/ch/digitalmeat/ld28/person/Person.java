@@ -2,14 +2,18 @@ package ch.digitalmeat.ld28.person;
 
 import ch.digitalmeat.ld28.ConcertSmugglers;
 import ch.digitalmeat.ld28.TextManager;
+import ch.digitalmeat.ld28.level.Transport;
 import ch.digitalmeat.ld28.person.PersonConfig.PersonType;
 import ch.digitalmeat.ld28.person.ai.GuardData;
 import ch.digitalmeat.ld28.person.ai.Node;
 
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Person extends Actor {
@@ -38,6 +42,8 @@ public class Person extends Actor {
 	public float actionTime;
 	public boolean actionRunning = false;
 	public GuardData guardData = new GuardData();
+	public boolean isTransporting;
+	public Transport gameAction;
 	public Person() {
 		state = PersonState.Idle;
 		dir = LookingDirection.Left;
@@ -77,6 +83,8 @@ public class Person extends Actor {
 
 	@Override
 	public void act(float delta) {
+		super.act(delta);
+		
 		if(!saidSomething){
 			if(config.type == PersonType.Player){
 				say("Naaay", Color.WHITE);
@@ -118,6 +126,14 @@ public class Person extends Actor {
 		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_HEAD), x, getY(), w, getHeight());
 		batch.setColor(config.hairColor);
 		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_HAIR), x, getY(), w, getHeight());
+		
+		if(gameAction != null /*&& this == ConcertSmugglers.instance.mapRenderer.focusedPerson*/){
+			batch.setColor(Color.WHITE);
+			BitmapFont font = ConcertSmugglers.instance.assets.font_visitor_10;
+			TextBounds bounds = font.getBounds(gameAction.text);
+			
+			font.draw(batch, gameAction.text, getX() - bounds.width / 2 + getWidth() / 2, getY() + getHeight() + bounds.height);
+		}
 	}
 
 	private TextureRegion getRelevantTextureRegion(TextureRegion[][] parts,
