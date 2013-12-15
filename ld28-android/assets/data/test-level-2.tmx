@@ -20,7 +20,7 @@
   <image source="foreground.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="97" name="Backgrounds" tilewidth="32" tileheight="32">
-  <image source="Backgrounds.png" width="128" height="128"/>
+  <image source="Backgrounds.png" width="320" height="320"/>
  </tileset>
  <layer name="Background 1" width="32" height="8">
   <properties>
@@ -326,12 +326,31 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="Passages" width="32" height="8">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="trigger" x="397" y="142" width="13" height="11">
+   <properties>
+    <property name="key" value="stairs1_bottom"/>
+    <property name="target" value="stairs1_top"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="trigger" x="425" y="112" width="13" height="11">
+   <properties>
+    <property name="key" value="stairs1_top"/>
+    <property name="target" value="stairs1_bottom"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="Foreground 1" width="32" height="8">
   <properties>
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAVDCSgCsdIA2q8JxFoDaP8ooC4AAJEs8uEABAAA
+   H4sIAAAAAAAAC2NgGB5AeYTYrwjESkTaT6mbcqB0LhJfE4i1gLgUCefRyP5RQHsAADeRID0ABAAA
   </data>
  </layer>
  <layer name="Collision" width="32" height="8">
