@@ -1,5 +1,9 @@
 package ch.digitalmeat.ld28.person;
 
+import java.util.Random;
+
+import ch.digitalmeat.ld28.ConcertSmugglers;
+
 import com.badlogic.gdx.graphics.Color;
 
 public class PersonConfig {
@@ -41,7 +45,14 @@ public class PersonConfig {
 		col(0, 0, 0)
 	};
 	public static Color[] FACE_COLORS = new Color[]{
-		col(255, 255, 255)
+		col(231, 158, 109)
+		, col(229, 194, 152)
+		, col(227, 194, 124)
+		, col(221, 168, 160)
+		, col(203, 132, 66)
+		, col(189, 114, 60)
+		, col(173, 100, 82)
+		, col(48, 46, 46)
 	};
 	
 	public PersonType type;
@@ -61,35 +72,42 @@ public class PersonConfig {
 		this.hairColor = hair;
 	}
 	
-	public final static PersonConfig PLAYER_WITH_TICKET = new PersonConfig(
+	public final static PersonConfig PLAYER_WITH_TICKET(){
+		return new PersonConfig(
 			PersonType.Player
 			, true
 			, Color.YELLOW
-			, Color.BLUE
-			, Color.RED
-			, Color.WHITE
+			, col(SECONDARY_COLORS)
+			, col(HAIR_COLORS)
+			, col(FACE_COLORS)
 		);
+}
 		
-	public final static PersonConfig PLAYER_WITHOUT_TICKET = new PersonConfig(
-		PersonType.Player
-		, true
-		, Color.GRAY
-		, Color.BLUE
-		, Color.RED
-		, Color.WHITE
-	);
-		
-	public final static PersonConfig NORMAL_GUARD = new PersonConfig(
-		PersonType.Guard
-		, true
-		, Color.BLUE
-		, Color.BLUE
-		, Color.BLACK
-		, Color.WHITE
-	);
+	public final static PersonConfig PLAYER_WITHOUT_TICKET() {
+		return new PersonConfig(
+			PersonType.Player
+			, true
+			, Color.GRAY
+			, col(SECONDARY_COLORS)
+			, col(HAIR_COLORS)
+			, col(FACE_COLORS)
+		);
+	}
+	
+	public final static PersonConfig NORMAL_GUARD(){
+		return new PersonConfig(
+			PersonType.Guard
+			, true
+			, Color.BLUE
+			, Color.BLUE
+			, col(HAIR_COLORS)
+			, col(FACE_COLORS)
+		);
+	}
 	
 	public static Color col(Color[] colors) {
-		return colors[spawnIndex++ % colors.length];
+		Random random = ConcertSmugglers.instance.random;
+		return colors[random.nextInt(colors.length)];
 	}
 	
 	public static PersonConfig Guest(){

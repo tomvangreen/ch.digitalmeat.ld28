@@ -125,15 +125,15 @@ public class MapRenderer {
 				PersonConfig config = null;
 				List<Person> list = null;
 				if("player_ticket".equals(type)){
-					config = PersonConfig.PLAYER_WITH_TICKET;
+					config = PersonConfig.PLAYER_WITH_TICKET();
 					list = playerPersons;
 				}
 				else if("player_without_ticket".equals(type)){
-					config = PersonConfig.PLAYER_WITHOUT_TICKET;
+					config = PersonConfig.PLAYER_WITHOUT_TICKET();
 					list = playerPersons;
 				}
 				else if("guard".equals(type)){
-					config = PersonConfig.NORMAL_GUARD;
+					config = PersonConfig.NORMAL_GUARD();
 					list = guardPersons;
 				}
 				else if("guest".equals(type)){
