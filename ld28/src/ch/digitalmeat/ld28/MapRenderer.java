@@ -203,6 +203,8 @@ public class MapRenderer {
 		System.out.println("Arrived");
 		playerPersons.remove(person);
 		guestPersons.add(person);
+		person.setEffect(null);
+		person.setAi(PersonAi.guestAi);
 		ConcertSmugglers.instance.inGameScreen.updatePlayersTable();
 		if(playerPersons.size() == 1){
 			won();

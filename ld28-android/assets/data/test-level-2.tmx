@@ -35,7 +35,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGFmgkZGBoYmR9vaI4rBjIlB8Egn2CwLVCgGxMBF6lBhRMbIYOeAhED8C4sdQ/IQ8Y0bBIAYAPFkCWAAEAAA=
+   H4sIAAAAAAAAC2NgGFmgkZGBoYmR9vaI4rBjIlB8Egn2CwLVCgGxMFTPdwbsNAgoMaJiZDFywEMgfgTEj6H4CXnGjIJBDAAlaj71AAQAAA==
   </data>
  </layer>
  <layer name="Background 2" width="32" height="8">
@@ -43,7 +43,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAX0AoaMA2u/Iwn2G0HVPgPiF0D8FEnOCSpnzIipx2mA/TgKSAMA2APUPwAEAAA=
+   H4sIAAAAAAAAC2NgGAX0AoaMA2u/IwH7jYHyTlA1RlD6GRC/AOKnSOpgaozRzDNC0j8KhgYAAIaH3WwABAAA
   </data>
  </layer>
  <layer name="background 3" width="32" height="8">
@@ -224,7 +224,7 @@
   <object type="guest" x="813" y="142" width="14" height="14">
    <ellipse/>
   </object>
-  <object type="guest" x="835" y="140" width="14" height="14">
+  <object type="guest" x="836" y="138" width="14" height="14">
    <ellipse/>
   </object>
   <object type="guest" x="756" y="140" width="14" height="14">
@@ -368,7 +368,7 @@
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="goal" x="834" y="112" width="185" height="45"/>
+  <object type="goal" x="865" y="110" width="134" height="44"/>
  </objectgroup>
  <layer name="Foreground 1" width="32" height="8">
   <properties>

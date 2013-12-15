@@ -44,6 +44,9 @@ public class Person extends Actor {
 		animationIndex = 0;
 	}
 
+	public void setAi(Node node){
+		this.node = node;
+	}
 	public void init(PersonSheet sheet, PersonConfig config, Node node) {
 		this.sheet = sheet;
 		this.config = config;
