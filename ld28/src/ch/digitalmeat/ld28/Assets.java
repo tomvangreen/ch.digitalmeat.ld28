@@ -52,6 +52,7 @@ public class Assets {
 		sheets = new PersonSheet[PERSON_SPRITES];
 		music = manager.get("data/mentex_track_01.wav");
 		music.setLooping(true);
+		music.setVolume(0.5f);
 		music.play();
 
 		playerEffect = playerEffect();		
