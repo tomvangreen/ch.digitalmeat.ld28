@@ -52,6 +52,10 @@ public class MapRenderer {
 	private List<Person> guestPersons;
 	private PersonManager personManager;
 	private MapLayer collisionLayer; 
+
+	public List<Person> players(){ return playerPersons; }
+	public List<Person> guards(){ return guardPersons; }
+	public List<Person> guests(){ return guestPersons; }
 	
 	public MapRenderer()
 	{
@@ -80,6 +84,7 @@ public class MapRenderer {
 		focusedPerson.setState(PersonState.Idle);
 		focusIndex = (focusIndex + 1) % playerPersons.size();
 		focusedPerson = playerPersons.get(focusIndex);
+		
 //		focusedPerson.setEffect(ConcertSmugglers.instance.assets.playerEffect);
 	}
 	
@@ -185,6 +190,7 @@ public class MapRenderer {
 		else{
 			ai = PersonAi.guestAi;
 		}
+		person.name = ConcertSmugglers.instance.assets.randomName();
 		person.init(getRandomPerson(sheets), config, ai);
 		person.setSize(16f, 16f);
 		float y = eObj.getEllipse().y;

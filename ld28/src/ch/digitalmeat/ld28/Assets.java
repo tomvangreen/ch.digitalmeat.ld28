@@ -1,5 +1,7 @@
 package ch.digitalmeat.ld28;
 
+import java.util.Random;
+
 import ch.digitalmeat.ld28.person.PersonSheet;
 
 import com.badlogic.gdx.Gdx;
@@ -27,11 +29,16 @@ public class Assets {
 	public Skin skin;
 	public Texture androidButtons;
 	private Music music;
+	public String[] names;
 
 	
 	public Assets()
 	{
 		this.manager = new AssetManager();
+	}
+	public String randomName(){
+		Random random = ConcertSmugglers.instance.random;
+		return names[random.nextInt(names.length)];
 	}
 	
 	public void create(){
@@ -54,7 +61,9 @@ public class Assets {
 		music.setLooping(true);
 		music.setVolume(0.5f);
 		music.play();
-
+		String namesString = Gdx.files.internal("data/names.txt").readString();
+		this.names = namesString.split("\n");
+		
 		playerEffect = playerEffect();		
 		Texture personsTexture = manager.get("data/PeopleParts.png");
 		this.androidButtons = manager.get("data/android_controls.png");

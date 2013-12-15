@@ -20,6 +20,7 @@ public class Person extends Actor {
 	public enum LookingDirection {
 		None, Left, Right
 	}
+	public String name;
 	private boolean saidSomething;
 	private ParticleEffect effect;
 	private PersonSheet sheet;
