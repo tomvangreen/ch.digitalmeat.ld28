@@ -24,7 +24,7 @@ public class Person extends Actor {
 	private boolean saidSomething;
 	private ParticleEffect effect;
 	private PersonSheet sheet;
-	private PersonConfig config;
+	public PersonConfig config;
 	private PersonState state;
 	private LookingDirection dir;
 	private float animationTimer = 0f;

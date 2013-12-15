@@ -64,7 +64,10 @@
    </properties>
    <ellipse/>
   </object>
-  <object type="player_without_ticket" x="202" y="141" width="14" height="14">
+  <object type="player_without_ticket" x="107" y="135" width="14" height="14">
+   <ellipse/>
+  </object>
+  <object type="player_without_ticket" x="86" y="134" width="14" height="14">
    <ellipse/>
   </object>
  </objectgroup>
@@ -152,7 +155,7 @@
   <object type="guest" x="880" y="138" width="14" height="14">
    <ellipse/>
   </object>
-  <object type="guest" x="836" y="144" width="11" height="12">
+  <object type="guest" x="837" y="142" width="11" height="12">
    <properties>
     <property name="" value=""/>
    </properties>
@@ -360,6 +363,12 @@
     <property name="text" value="Use stairs"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="Triggers" width="32" height="8">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="goal" x="834" y="112" width="185" height="45"/>
  </objectgroup>
  <layer name="Foreground 1" width="32" height="8">
   <properties>

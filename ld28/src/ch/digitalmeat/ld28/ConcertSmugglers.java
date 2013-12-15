@@ -15,7 +15,7 @@ public class ConcertSmugglers extends Game {
 	public final Random random;
 	public final PlayerController controller;
 	
-	private InGameScreen inGameScreen;
+	public InGameScreen inGameScreen;
 
 	private IntroScreen introScreen;
 

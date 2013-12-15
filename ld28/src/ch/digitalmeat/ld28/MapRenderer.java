@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import ch.digitalmeat.ld28.level.TriggerListener;
+import ch.digitalmeat.ld28.level.TriggerZone;
 import ch.digitalmeat.ld28.person.Person;
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
@@ -22,9 +24,11 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
 import com.badlogic.gdx.maps.objects.EllipseMapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
@@ -45,7 +49,7 @@ public class MapRenderer {
 	private int mapPixelWidth;
 	private int mapPixelHeight;
 	private int focusIndex;
-
+	private List<TriggerZone> triggers;
 	public Person focusedPerson = null;
 	private List<Person> playerPersons;
 	private List<Person> guardPersons;
@@ -64,6 +68,7 @@ public class MapRenderer {
 		guardPersons = new ArrayList<Person>();
 		guestPersons = new ArrayList<Person>();
 		personManager = new PersonManager();
+		triggers = new ArrayList<TriggerZone>();
 	}
 	
 	public void create(OrthographicCamera camera){
@@ -120,7 +125,7 @@ public class MapRenderer {
 		int w = ConcertSmugglers.instance.config.xResolution;
 		int h = ConcertSmugglers.instance.config.yResolution;
 
-		int toCreate = 10;
+
 		stage.clear();
 		for(int layerIndex : entityLayers){
 			MapLayer layer = layers.get(layerIndex);
@@ -144,6 +149,9 @@ public class MapRenderer {
 				else if("guest".equals(type)){
 					config = PersonConfig.Guest();
 					list = guestPersons;
+				}
+				else if("goal".equals(type)){
+					addGoalTrigger(obj);
 				}
 				if(config != null){
 					list.add(spawnPerson(config, obj, list == guestPersons));
@@ -170,6 +178,34 @@ public class MapRenderer {
 		nextPlayer();
 	}
 	
+	private void addGoalTrigger(MapObject obj) {
+		TriggerZone zone = new TriggerZone();
+		RectangleMapObject rectangle = (RectangleMapObject) obj;		
+		zone.zone = rectangle.getRectangle();
+		zone.triggeredByPlayer = true;
+		zone.active = true;
+		zone.listener = new TriggerListener() {
+			
+			@Override
+			public boolean trigger(Person person) {
+				playerArrived(person);
+				return true;
+			}
+
+		};
+		triggers.add(zone);
+	}
+	protected void playerArrived(Person person) {
+		if(person.config.hasTicket){
+			System.out.println("Person already has a ticket");
+			return;
+		}
+		System.out.println("Arrived");
+		playerPersons.remove(person);
+		guestPersons.add(person);
+		ConcertSmugglers.instance.inGameScreen.updatePlayersTable();
+		nextPlayer();
+	}
 	private Person spawnPerson(PersonConfig config, MapObject obj, boolean addToStage) {
 		if(!(obj instanceof EllipseMapObject)){
 			return null;
@@ -296,6 +332,9 @@ public class MapRenderer {
 	public void update(){
 		personManager.handleMovement(Gdx.graphics.getDeltaTime(), stage.getActors(), collisionLayer);
 		stage.act();
+		for(TriggerZone trigger : triggers){
+			trigger.execute(this);
+		}
 	}
 	
 	public void renderEntities(){

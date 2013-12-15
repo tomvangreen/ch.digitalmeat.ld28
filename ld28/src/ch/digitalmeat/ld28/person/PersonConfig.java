@@ -86,7 +86,7 @@ public class PersonConfig {
 	public final static PersonConfig PLAYER_WITHOUT_TICKET() {
 		return new PersonConfig(
 			PersonType.Player
-			, true
+			, false
 			, Color.GRAY
 			, col(SECONDARY_COLORS)
 			, col(HAIR_COLORS)

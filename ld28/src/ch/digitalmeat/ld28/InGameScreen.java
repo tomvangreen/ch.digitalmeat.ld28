@@ -56,6 +56,7 @@ public class InGameScreen implements Screen{
 			mapRenderer.nextPlayer();
 			updatePlayersTable();
 		}
+		
 		Person focus = mapRenderer.focusedPerson;		
 		if(focus != null){
 			if(c.left && !c.right){
@@ -152,7 +153,7 @@ public class InGameScreen implements Screen{
 		uiStage.addActor(ui);
 	}
 
-	private void updatePlayersTable() {
+	public void updatePlayersTable() {
 		Assets assets = ConcertSmugglers.instance.assets;
 		playersTable.clear();
 		for(Person player : mapRenderer.players()){
