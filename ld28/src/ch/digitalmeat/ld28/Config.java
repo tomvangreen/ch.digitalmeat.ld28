@@ -1,10 +1,18 @@
 package ch.digitalmeat.ld28;
 
 public class Config {
-	public final int xResolution;
-	public final int yResolution;
+	public int xResolution;
+	public int yResolution;
+	
+	public final int xTarget = 320;
+	public final int yTarget = 240;
 	
 	public Config(int xResolution, int yResolution){
+		this.xResolution = xResolution;
+		this.yResolution = yResolution;
+	}
+	
+	public void set(int xResolution, int yResolution){
 		this.xResolution = xResolution;
 		this.yResolution = yResolution;
 	}

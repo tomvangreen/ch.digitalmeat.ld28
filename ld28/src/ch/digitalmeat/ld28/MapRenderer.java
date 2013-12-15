@@ -158,7 +158,10 @@ public class MapRenderer {
 		camera.position.x = +mapPixelWidth / 2;
 		camera.position.y = +mapPixelHeight / 2;
 		mapRenderer = new OrthogonalTiledMapRenderer(map);
-		mapRenderer.setView(camera.combined, 0, 0, w, h);
+		resize(0, 0);
+		Config config = ConcertSmugglers.instance.config;
+		mapRenderer.setView(camera.combined, 0, 0, config.xTarget, config.yTarget);
+		
 		nextPlayer();
 		
 		
@@ -280,5 +283,11 @@ public class MapRenderer {
 		stage.setCamera(camera);
 		stage.draw();
 
+	}
+
+	public void resize(int width, int height) {
+		Config config = ConcertSmugglers.instance.config;
+		stage.setViewport(config.xTarget, config.yTarget, true, camera.position.x, camera.position.y, config.xResolution, config.yResolution);
+		stage.setCamera(camera);
 	}
 }

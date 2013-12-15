@@ -30,7 +30,8 @@ public class ConcertSmugglers extends Game {
 	}
 	
 	@Override
-	public void create() {			
+	public void create() {
+		config.set(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		assets.create();
 		this.textManager = new TextManager();
 		float w = Gdx.graphics.getWidth();

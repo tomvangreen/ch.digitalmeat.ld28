@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class InGameScreen implements Screen{
 	private MapRenderer mapRenderer;
@@ -71,7 +72,7 @@ public class InGameScreen implements Screen{
 
 	@Override
 	public void resize(int width, int height) {
-		
+		mapRenderer.resize(width, height);
 	}
 
 	@Override
