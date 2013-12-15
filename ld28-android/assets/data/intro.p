@@ -42,8 +42,8 @@ shape: square
 - Spawn Width - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 320.0
-highMax: 320.0
+highMin: 800.0
+highMax: 800.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -52,8 +52,8 @@ timeline0: 0.0
 - Spawn Height - 
 lowMin: 0.0
 lowMax: 0.0
-highMin: 240.0
-highMax: 240.0
+highMin: 600.0
+highMax: 600.0
 relative: false
 scalingCount: 1
 scaling0: 1.0
@@ -142,4 +142,4 @@ aligned: false
 additive: true
 behind: false
 - Image Path -
-F:\files\coding\ld28\git\ld28-android\assets\data\trance.png
+F:\files\coding\ld28\git\ld28-android\assets\data\ticket.png
