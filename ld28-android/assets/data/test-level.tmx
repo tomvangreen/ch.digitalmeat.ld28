@@ -43,7 +43,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGJpAjJE0GgYagfwmNDFsQIMRgaWBWA+IdYHYAMpXIsIMdGAI1DMRiCcxQtjEAEGgOiEgFibDPhj4AaUdkcxwJGCeEVD+IZB+BMSPofgJkrwMI362MSOEzcoIMQsbMKHAT6OAOgAALx9v3gAEAAA=
+   H4sIAAAAAAAAC2NgGJpAjJE0GgYagfwmNDFsQIMRgaWBWA+IdYHYAMpXIsIMdGAI1DMRiCeRoFcQqFYIiIXJsA8GfkBpRyQzAgmYZwSUfwikHwHxYyh+AhUHARkk/SC2E5L4dyBtzAhhszIi9CCDRKCYCQV+GgXUAQAhRJ3/AAQAAA==
   </data>
  </layer>
  <layer name="Furniture" width="32" height="8">
@@ -51,15 +51,15 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGLxAAwljA4xIeCCBDJ3tA/lXjQrmEHL3WyB+DcRvoPRbqPgnIP4IxF+A+DMV3DEKBg4AALqQA/wABAAA
+   H4sIAAAAAAAAC2NgGLxAAwljA4xIeCCBDJ3tA/lXjQrmEHL3WyB+DcRvoPRbqPgnIP4IxF+A+DMJ9jkDHe4KxC7QCDMd6IgbBQwAMOyvBQAEAAA=
   </data>
  </layer>
  <layer name="Stuff on Stuff" width="32" height="8">
   <properties>
-   <property name="Type" value="bg"/>
+   <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWDGYgxQvBAgJdA/AKInwHxUyB+NTDOGAU0BACvtIDHAAQAAA==
+   H4sIAAAAAAAAC2NgGAWDGYgxQvBAgJdA/AKInwHxUyB+RWXzzQbIX6MAAQAFSKbbAAQAAA==
   </data>
  </layer>
  <objectgroup name="Entities" width="32" height="8">

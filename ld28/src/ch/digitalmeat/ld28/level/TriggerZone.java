@@ -17,8 +17,10 @@ public class TriggerZone {
 	public boolean triggeredByGuest;
 
 	public TriggerListener listener;
+	private String name;
 	
-	public TriggerZone(){
+	public TriggerZone(String name){
+		this.name = name;
 		zone = new Rectangle();
 		compareRect = new Rectangle();
 	}
@@ -43,7 +45,9 @@ public class TriggerZone {
 		for(int index = persons.size() - 1; index >= 0; index--){
 			Person person = persons.get(index);
 			if(triggers(person)){
-				if(!listener.trigger(person)){
+				if(!
+						listener.trigger(person)
+				){
 					return false;
 				}
 			}
@@ -52,7 +56,7 @@ public class TriggerZone {
 	}
 
 	private boolean triggers(Person person) {
-		compareRect.set(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+		compareRect.set(person.getX() + 4, person.getY(), person.getWidth(), person.getHeight() - 8);
 		return compareRect.overlaps(zone);
 	}
 }

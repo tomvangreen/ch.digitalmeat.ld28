@@ -41,8 +41,8 @@ public class BackgroundRenderer {
 		batch.end();
 	}
 	private void renderGround() {
-		float w = groundTexture.getWidth();
 		Config gc = ConcertSmugglers.instance.config;
+		float w = groundTexture.getWidth() * camera.viewportWidth / gc.xResolution;
 		float startX = -camera.position.x;
 		while(startX + w < 0){
 			startX += w;

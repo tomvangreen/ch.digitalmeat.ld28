@@ -32,6 +32,7 @@ public class PlayerController {
 	}
 	public void addTrapsToList(){
 		traps.clear();
+		traps.add(useTrap);
 		traps.add(switchPlayerTrap);
 		traps.add(leftButton);
 		traps.add(rightButton);

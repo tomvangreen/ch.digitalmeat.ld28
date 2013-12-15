@@ -1,9 +1,11 @@
 package ch.digitalmeat.ld28;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import ch.digitalmeat.ld28.level.Transport;
 import ch.digitalmeat.ld28.level.TriggerListener;
 import ch.digitalmeat.ld28.level.TriggerZone;
 import ch.digitalmeat.ld28.person.Person;
@@ -56,7 +58,7 @@ public class MapRenderer {
 	private List<Person> guestPersons;
 	private PersonManager personManager;
 	private MapLayer collisionLayer; 
-
+	public java.util.Map<String, Transport> transports;
 	public List<Person> players(){ return playerPersons; }
 	public List<Person> guards(){ return guardPersons; }
 	public List<Person> guests(){ return guestPersons; }
@@ -64,6 +66,7 @@ public class MapRenderer {
 	public MapRenderer()
 	{
 		this.layerList = new ArrayList<Integer>();
+		transports = new HashMap<String, Transport>();
 		playerPersons = new ArrayList<Person>();
 		guardPersons = new ArrayList<Person>();
 		guestPersons = new ArrayList<Person>();
@@ -153,6 +156,9 @@ public class MapRenderer {
 				else if("goal".equals(type)){
 					addGoalTrigger(obj);
 				}
+				else if("transport".equals(type)){
+					addTransport(obj);
+				}
 				if(config != null){
 					list.add(spawnPerson(config, obj, list == guestPersons));
 				}
@@ -178,8 +184,56 @@ public class MapRenderer {
 		nextPlayer();
 	}
 	
+	private void addTransport(MapObject obj) {
+		RectangleMapObject robj = (RectangleMapObject)obj;
+		Rectangle rect = robj.getRectangle();
+		float x = rect.getX() ;
+		float y = rect.getY() ;
+		y = y - y % 32 + 2;
+		MapProperties props = obj.getProperties();
+		String key = props.get("key", String.class);
+		String target = props.get("target", String.class);
+		final Transport transport = new Transport(key, target, this, x, y);
+		transport.text = props.get("text", String.class);
+		transport.auto = "true".equals(props.get("auto", String.class));
+		transports.put(key, transport);
+		String speed = props.get("speed", String.class);
+		if(speed != null){
+			try{
+			transport.speed = Float.parseFloat(speed);
+			}
+			catch(Exception ex){}
+		}
+		TriggerZone zone = new TriggerZone("Transport " + key);
+		zone.active = true;
+		zone.zone = rect;
+		zone.triggeredByPlayer = true;
+		zone.triggeredByGuard = true;
+		zone.triggeredByGuest = true;
+		zone.listener = new TriggerListener() {
+		
+			@Override
+			public boolean trigger(Person person) {
+				if(!person.isTransporting){
+					if(transport.auto){
+						transport.transport(person);
+					}
+					else{
+						transportEnabled(transport, person);
+					}
+				}
+				return true;
+			}
+		};
+		triggers.add(zone);
+	}
+	
+	protected void transportEnabled(Transport transport, Person person) {
+		person.gameAction = transport;
+	}
+	
 	private void addGoalTrigger(MapObject obj) {
-		TriggerZone zone = new TriggerZone();
+		TriggerZone zone = new TriggerZone("Goal");
 		RectangleMapObject rectangle = (RectangleMapObject) obj;		
 		zone.zone = rectangle.getRectangle();
 		zone.triggeredByPlayer = true;
@@ -203,6 +257,8 @@ public class MapRenderer {
 		System.out.println("Arrived");
 		playerPersons.remove(person);
 		guestPersons.add(person);
+		person.setEffect(null);
+		person.setAi(PersonAi.guestAi);
 		ConcertSmugglers.instance.inGameScreen.updatePlayersTable();
 		if(playerPersons.size() == 1){
 			won();
@@ -253,9 +309,6 @@ public class MapRenderer {
 
 		person.setPosition(eObj.getEllipse().x, y);
 		stage.addActor(person);
-		if(config.type == PersonType.Player){
-			person.addAction(Actions.moveBy(50, 500, 10));
-		}
 		return person;
 	}
 

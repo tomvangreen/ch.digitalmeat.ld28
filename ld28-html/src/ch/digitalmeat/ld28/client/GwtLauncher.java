@@ -1,6 +1,8 @@
 package ch.digitalmeat.ld28.client;
 
 import ch.digitalmeat.ld28.ConcertSmugglers;
+import ch.digitalmeat.ld28.Config;
+
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.backends.gwt.GwtApplication;
 import com.badlogic.gdx.backends.gwt.GwtApplicationConfiguration;
@@ -14,6 +16,7 @@ public class GwtLauncher extends GwtApplication {
 
 	@Override
 	public ApplicationListener getApplicationListener () {
-		return new ConcertSmugglers();
+		Config gameConfig = new Config(640, 480);
+		return new ConcertSmugglers(gameConfig);
 	}
 }

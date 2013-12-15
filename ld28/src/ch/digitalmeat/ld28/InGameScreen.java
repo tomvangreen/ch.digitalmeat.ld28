@@ -1,5 +1,7 @@
 package ch.digitalmeat.ld28;
 
+import java.util.List;
+
 import ch.digitalmeat.ld28.person.Person;
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
@@ -37,6 +39,7 @@ public class InGameScreen implements Screen{
 		int h = cs.config.yResolution;
 		this.camera = new OrthographicCamera(w, h);
 		mapRenderer = new MapRenderer();
+		cs.mapRenderer = mapRenderer;
 		mapRenderer.create(camera);
 		camera.update();
 		uiStage = new Stage(cs.config.xTarget, cs.config.yTarget, true);
@@ -47,8 +50,47 @@ public class InGameScreen implements Screen{
 	
 	@Override
 	public void render(float delta) {
+		clearActions(mapRenderer.players());
+		clearActions(mapRenderer.guards());
+		clearActions(mapRenderer.guests());
+		mapRenderer.update();		
+		updatePlayer();
+		updateCamera();
+		renderMap();
+		renderUI();
+	}
+
+	private void clearActions(List<Person> list) {
+		for(Person p : list){
+			p.gameAction = null;
+		}
+	}
+
+	private void updateCamera() {
+		Person focus = mapRenderer.focusedPerson;		
+		if(focus != null){
+			camera.position.set(focus.getX(), focus.getY(), 0);
+		}
+		camera.update();
+	}
+
+	private void renderUI() {
+		uiStage.act();
+		uiStage.draw();
+		androidControls.act();
+		androidControls.draw();
+	}
+
+	private void renderMap() {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		backgroundRenderer.render();
+		mapRenderer.renderBackground();
+		mapRenderer.renderEntities();
+		mapRenderer.renderForeground();
+	}
+
+	private void updatePlayer() {
 		PlayerController c = cs.controller;
 		c.clear();
 		c.update();
@@ -56,10 +98,12 @@ public class InGameScreen implements Screen{
 			mapRenderer.nextPlayer();
 			updatePlayersTable();
 		}
-		
 		Person focus = mapRenderer.focusedPerson;		
-		if(focus != null){
-			if(c.left && !c.right){
+		if(focus != null && !focus.isTransporting){
+			if(focus.gameAction != null && c.use){
+				focus.gameAction.execute(focus);
+			}
+			else if(c.left && !c.right){
 				focus.setDirection(LookingDirection.Left);
 				focus.setState(PersonState.Walking);
 			}
@@ -77,20 +121,6 @@ public class InGameScreen implements Screen{
 		}
 		
 		c.clear();
-		if(focus != null){
-			camera.position.set(focus.getX(), focus.getY(), 0);
-		}
-		camera.update();
-		mapRenderer.update();
-		
-		backgroundRenderer.render();
-		mapRenderer.renderBackground();
-		mapRenderer.renderEntities();
-		mapRenderer.renderForeground();
-		uiStage.act();
-		uiStage.draw();
-		androidControls.act();
-		androidControls.draw();
 	}
 
 	@Override

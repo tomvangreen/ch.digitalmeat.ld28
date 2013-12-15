@@ -5,6 +5,9 @@ import ch.digitalmeat.ld28.person.Person;
 public class ActionChecker extends Node {
 	@Override
 	public boolean onExecute(Person person){
+		if(person.isTransporting){
+			return false;
+		}
 		if(person.actionRunning){
 			if(person.actionTimer <= person.actionTime){
 				return false;

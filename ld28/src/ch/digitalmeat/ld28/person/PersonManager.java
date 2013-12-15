@@ -22,6 +22,9 @@ public class PersonManager {
 	}
 
 	private void handlePerson(float delta, MapLayer layer, Person p) {
+		if(p.isTransporting){
+			return;
+		}
 		if(p.getState() == PersonState.Walking && p.getDirection() != LookingDirection.None){
 			float x = p.getX();
 			float moveBy = delta * (p.running ? 128f : 64f);
