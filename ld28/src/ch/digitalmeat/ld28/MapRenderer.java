@@ -237,7 +237,7 @@ public class MapRenderer {
 		for(int index = 0; index < count; index ++){
 			MapLayer layer = layers.get(index);
 			String type = layer.getProperties().get("type", String.class);
-			System.out.println(type);
+			//System.out.println(type);
 			if(name.equals(type)){
 				layerList.add(index);
 			}
