@@ -24,6 +24,10 @@ public class InGameScreen implements Screen{
 	private ConcertSmugglers cs;
 	
 	private Stage androidControls;
+	private ImageButton leftButton;
+	private ImageButton rightButton;
+	private ImageButton switchButton;
+	private ImageButton actionButton;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -45,7 +49,13 @@ public class InGameScreen implements Screen{
 		PlayerController c = cs.controller;
 		c.clear();
 		c.update();
-		if(c.switchPlayer.isDown){
+		if(leftButton.isPressed()){
+			c.left = true;
+		}
+		if(rightButton.isPressed()){
+			c.right = true;
+		}
+		if(c.switchPlayer){
 			mapRenderer.nextPlayer();
 		}
 		Person focus = mapRenderer.focusedPerson;		
@@ -99,22 +109,28 @@ public class InGameScreen implements Screen{
 		table.setSize(config.xTarget, config.yTarget);
 		table.setFillParent(true);
 		Texture tex = assets.androidButtons;
-		ImageButton leftButton = new ImageButton(
+		PlayerController controller = ConcertSmugglers.instance.controller;
+		leftButton = new ImageButton(
 				new Image(new TextureRegion(tex, 0, 0, 32, 32)).getDrawable()
 				, new Image(new TextureRegion(tex, 0, 32, 32, 32)).getDrawable()
 		);
-		ImageButton rightButton = new ImageButton(
+		rightButton = new ImageButton(
 				new Image(new TextureRegion(tex, 32, 0, 32, 32)).getDrawable()
 				, new Image(new TextureRegion(tex, 32, 32, 32, 32)).getDrawable()
 		);
-		ImageButton switchButton = new ImageButton(
+		switchButton = new ImageButton(
 				new Image(new TextureRegion(tex, 64, 0, 32, 32)).getDrawable()
 				, new Image(new TextureRegion(tex, 64, 32, 32, 32)).getDrawable()
 		);
-		ImageButton actionButton = new ImageButton(
+		actionButton = new ImageButton(
 				new Image(new TextureRegion(tex, 96, 0, 32, 32)).getDrawable()
 				, new Image(new TextureRegion(tex, 96, 32, 32, 32)).getDrawable()
 		);
+		controller.leftButton = new ButtonTrap(leftButton);
+		controller.rightButton = new ButtonTrap(leftButton);
+		controller.switchButton = new ButtonTrap(switchButton);
+		controller.useButton = new ButtonTrap(actionButton);
+		controller.addTrapsToList();
 		table.row().align(Align.bottom);
 		table.add(leftButton).expand();
 		table.add(switchButton).expand();
