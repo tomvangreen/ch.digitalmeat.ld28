@@ -56,7 +56,7 @@ public class TriggerZone {
 	}
 
 	private boolean triggers(Person person) {
-		compareRect.set(person.getX(), person.getY(), person.getWidth(), person.getHeight());
+		compareRect.set(person.getX() + 4, person.getY(), person.getWidth(), person.getHeight() - 8);
 		return compareRect.overlaps(zone);
 	}
 }

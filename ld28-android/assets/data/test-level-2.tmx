@@ -27,7 +27,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA7YgFiLRMyOwyxygDyaW1ihGJfdIDkdPPILGTHxYkbi3CIHNRuEVwH1rETDq6Hm5AHpXCw4H4g3AfFmJBqEjxCwfx1Qfi0avoMFn4aa0wekFyDh+VC6nwj77zFi4gdYMDZ193DIIYtdwYIPExn+o4B2AAAFoFvdAAQAAA==
+   H4sIAAAAAAAAC2NgwA7YgFiLRMyOwyxygDwSexkjA8NSKL6GA68FYh08blvIiIkXMxLnlmNAdTeA+DgQrwLilWh4NRBvAOI8IM7FgvOBeBMQb0aiQfgIAfvXQf2FjO9gwaeh9vcB8QIkPB9K9xNh/z1GTPwAC8am7h4OOWSxK1jwYSLDfxTQDgAAZcU8+gAEAAA=
   </data>
  </layer>
  <layer name="Background 1" width="32" height="8">
@@ -373,28 +373,76 @@
    <properties>
     <property name="key" value="toilet1_top"/>
     <property name="target" value="toilet1_bottom"/>
-    <property name="text" value="Use stairs"/>
+    <property name="text" value="Use elevator"/>
    </properties>
   </object>
   <object type="transport" x="585" y="144" width="16" height="12">
    <properties>
     <property name="key" value="mntn1_bottom"/>
     <property name="target" value="mntn1_top"/>
-    <property name="text" value="Use stairs"/>
+    <property name="text" value="Use elevator"/>
    </properties>
   </object>
   <object type="transport" x="745" y="142" width="16" height="12">
    <properties>
     <property name="key" value="toilet1_bottom"/>
     <property name="target" value="toilet1_top"/>
-    <property name="text" value="Use stairs"/>
+    <property name="text" value="Use elevator"/>
    </properties>
   </object>
-  <object type="transport" x="585" y="18" width="16" height="12">
+  <object type="transport" x="618" y="16" width="11" height="11">
+   <properties>
+    <property name="auto" value="true"/>
+    <property name="key" value="topfall1_top"/>
+    <property name="speed" value="180"/>
+    <property name="target" value="topfall1_bottom"/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="582" y="17" width="16" height="12">
    <properties>
     <property name="key" value="mntn1_top"/>
     <property name="target" value="mntn1_bottom"/>
-    <property name="text" value="Use stairs"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="839" y="143" width="16" height="12">
+   <properties>
+    <property name="key" value="bottomfall1_bottom"/>
+    <property name="target" value=""/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="842" y="47" width="11" height="12">
+   <properties>
+    <property name="auto" value="true"/>
+    <property name="key" value="bottomfall1_top"/>
+    <property name="speed" value="180"/>
+    <property name="target" value="bottomfall1_bottom"/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="362" y="143" width="16" height="12">
+   <properties>
+    <property name="key" value="barfall1_bottom"/>
+    <property name="target" value=""/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="361" y="115" width="16" height="11">
+   <properties>
+    <property name="auto" value="true"/>
+    <property name="key" value="barfall1_top"/>
+    <property name="speed" value="180"/>
+    <property name="target" value="barfall1_bottom"/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="613" y="47" width="16" height="12">
+   <properties>
+    <property name="key" value="topfall1_bottom"/>
+    <property name="target" value=""/>
+    <property name="text" value=""/>
    </properties>
   </object>
  </objectgroup>
@@ -419,7 +467,7 @@
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA5m4hDHB+aQoWeoAmzhgyvMqBku2OyYg0eOWPvJiW9KwUhKL4MVAACmxRfAAAQAAA==
+   H4sIAAAAAAAAC2NgwA5mQjEpYA6J6skBpLqJngCX26gZLtjsmINHjlj7ByJc6ZFeRgF+AAALBaRbAAQAAA==
   </data>
  </layer>
 </map>

@@ -13,11 +13,15 @@ public class Transport extends GameAction{
 	public Transport target;
 	private MapRenderer map;
 	public Vector2 pos;
+	public Vector2 tmp;
+	public boolean auto;
+	public float speed = 64f;
 	public Transport(String key, String targetKey, MapRenderer map, float x, float y){
 		this.key = key;
 		this.targetKey = targetKey;
 		this.map = map;
 		pos = new Vector2(x, y);
+		tmp = new Vector2();
 	}
 	
 	
@@ -28,9 +32,11 @@ public class Transport extends GameAction{
 		System.out.println("Transporting " + person.name);
 		if(target != null){
 			person.isTransporting = true;
+			tmp.set(target.pos);
+			float distance = tmp.sub(pos).len();
 			person.addAction(
 				Actions.sequence(
-					Actions.moveTo(target.pos.x, target.pos.y, 1f)
+					Actions.moveTo(target.pos.x, target.pos.y, distance / speed)
 					, Actions.run(new Runnable() {
 						@Override
 						public void run() {

@@ -195,7 +195,15 @@ public class MapRenderer {
 		String target = props.get("target", String.class);
 		final Transport transport = new Transport(key, target, this, x, y);
 		transport.text = props.get("text", String.class);
+		transport.auto = "true".equals(props.get("auto", String.class));
 		transports.put(key, transport);
+		String speed = props.get("speed", String.class);
+		if(speed != null){
+			try{
+			transport.speed = Float.parseFloat(speed);
+			}
+			catch(Exception ex){}
+		}
 		TriggerZone zone = new TriggerZone("Transport " + key);
 		zone.active = true;
 		zone.zone = rect;
@@ -207,7 +215,12 @@ public class MapRenderer {
 			@Override
 			public boolean trigger(Person person) {
 				if(!person.isTransporting){
-					transportEnabled(transport, person);
+					if(transport.auto){
+						transport.transport(person);
+					}
+					else{
+						transportEnabled(transport, person);
+					}
 				}
 				return true;
 			}
