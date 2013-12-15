@@ -78,7 +78,7 @@ public class InGameScreen implements Screen{
 	@Override
 	public void show() {
 //		camera.setToOrtho(false, 500, 500);
-		mapRenderer.loadMap("data/test-level-2.tmx");
+		mapRenderer.loadMap("data/test-level.tmx");
 	}
 
 	@Override
