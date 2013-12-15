@@ -39,7 +39,7 @@ public class ConcertSmugglers extends Game {
 		this.inGameScreen = new InGameScreen();
 		this.introScreen = new IntroScreen();
 		PersonAi.buildAi();
-		setScreen(inGameScreen);
+		setScreen(introScreen);
 		
 	}
 

@@ -204,7 +204,16 @@ public class MapRenderer {
 		playerPersons.remove(person);
 		guestPersons.add(person);
 		ConcertSmugglers.instance.inGameScreen.updatePlayersTable();
-		nextPlayer();
+		if(playerPersons.size() == 1){
+			won();
+		}
+		else{
+			nextPlayer();			
+		}
+	}
+	
+	private void won() {
+		System.out.println("Won Game");
 	}
 	private Person spawnPerson(PersonConfig config, MapObject obj, boolean addToStage) {
 		if(!(obj instanceof EllipseMapObject)){

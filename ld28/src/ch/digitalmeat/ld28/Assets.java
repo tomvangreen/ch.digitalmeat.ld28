@@ -30,6 +30,7 @@ public class Assets {
 	public Texture androidButtons;
 	private Music music;
 	public String[] names;
+	public Texture trance;
 
 	
 	public Assets()
@@ -46,6 +47,7 @@ public class Assets {
 		manager.load("data/Persons.png", Texture.class);
 		manager.load("data/PeopleParts.png", Texture.class);
 		manager.load("data/ground.png", Texture.class);
+		manager.load("data/trance.png", Texture.class);
 		manager.load("data/sky.png", Texture.class);
 		manager.load("data/visitor_10.fnt", BitmapFont.class);
 		manager.load("data/uiskin.json", Skin.class);
@@ -54,6 +56,7 @@ public class Assets {
 		manager.finishLoading();
 		this.skin = manager.get("data/uiskin.json");
 		ground = manager.get("data/ground.png");
+		trance = manager.get("data/trance.png");
 		sky = manager.get("data/sky.png");
 		font_visitor_10 = manager.get("data/visitor_10.fnt");
 		sheets = new PersonSheet[PERSON_SPRITES];
@@ -122,6 +125,11 @@ public class Assets {
 	public ParticleEffect playerEffect() {
 		ParticleEffect playerEffect = new ParticleEffect();
 		playerEffect.load(Gdx.files.internal("data/player.p"), Gdx.files.internal("data"));
+		return playerEffect;
+	}
+	public ParticleEffect introEffect() {
+		ParticleEffect playerEffect = new ParticleEffect();
+		playerEffect.load(Gdx.files.internal("data/intro.p"), Gdx.files.internal("data"));
 		return playerEffect;
 	}
 	public ParticleEffect guardEffect(){
