@@ -27,7 +27,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA7YgJgVD9ZCwyAxdhxmkQPkgFgHB5YH4jxGBoZcKM4HYlmoOB8OvAioZiEaXsyI235hHOI6ULoPqLceiicAMQcB/xwEqtkExJeBeDOUfQSP/SCwDii/FgueB8ULoLgfaj96mAkhsWH2w9xwmYD9e4FyD3Dge1gwLnEYvoIFHybg/1FAewAAcQtdhwAEAAA=
+   H4sIAAAAAAAAC2NgwA7yGBkYcvFgWoNeoB11OPAEIF4FxCuJxKuBeBEQL0TDi/H4ow8otwAH7gfiU0C8i0h8BogPAvEmIL4MxJuh7CMEwnEdUH4tDrweiO8QiU8j2Q9zw2UC9u8Fyj0ggO8hYXQ+Or6CBR+mQzoaBfgBAExX3fAABAAA
   </data>
  </layer>
  <layer name="Shadow" width="32" height="8" visible="0">
@@ -43,7 +43,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGFmgkZGBoYlx4OyfCLR7Egn2CwLVCgGxMBY9UlAxVRr55yEQPwLix1D8BElOhpE4NisQsw1geI8C/AAAQYOcoAAEAAA=
+   H4sIAAAAAAAAC2NgGJpAjJE0GgYagfwmNDFsQIMRgaWBWA+IdYHYAMpXIsIMdGAI1DMRiCcxQtjEAEGgOiEgFibDPhj4AaUdkcxwJGCeEVD+IZB+BMSPofgJkrwMI362MSOEzcoIMQsbMKHAT6OAOgAALx9v3gAEAAA=
   </data>
  </layer>
  <layer name="Furniture" width="32" height="8">
@@ -51,7 +51,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGLxAAwkzMTIwMDNCaBZGiDwjEh5IIENn+0D+VaOCOYTc/RaIXwPxGyj9Fir+CYg/AvEXIP5MBXeMgoEDAK42wPQABAAA
+   H4sIAAAAAAAAC2NgGLxAAwljA4xIeCCBDJ3tA/lXjQrmEHL3WyB+DcRvoPRbqPgnIP4IxF+A+DMV3DEKBg4AALqQA/wABAAA
   </data>
  </layer>
  <layer name="Stuff on Stuff" width="32" height="8">
@@ -90,7 +90,7 @@
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAVDAYgxQuiFQLxoAN2xEohXDaD9o4C6AADsQRXLAAQAAA==
+   H4sIAAAAAAAAC2NgGAVDAYgxQuiFeNQsootLsIOVQLxqAO0fBeQBAHHriIsABAAA
   </data>
  </layer>
  <layer name="Collision" width="32" height="8">
@@ -98,7 +98,7 @@
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA5m4hDHB+aQoWeoAmzhQ06YEQvEGHHLwcIdl/3kxAst/QIDIym9DFYAAG2/lmgABAAA
+   H4sIAAAAAAAAC2NgIB3kM5KhaYiBmRTKUxuIURDmc8jQQw//keOuUUBdAAAvS4kkAAQAAA==
   </data>
  </layer>
 </map>
