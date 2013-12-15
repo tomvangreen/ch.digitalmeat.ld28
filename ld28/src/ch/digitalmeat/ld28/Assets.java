@@ -24,6 +24,7 @@ public class Assets {
 	public ParticleEffect playerEffect;
 	public BitmapFont font_visitor_10;
 	public Skin skin;
+	public Texture androidButtons;
 
 	
 	public Assets()
@@ -39,6 +40,7 @@ public class Assets {
 		manager.load("data/sky.png", Texture.class);
 		manager.load("data/visitor_10.fnt", BitmapFont.class);
 		manager.load("data/uiskin.json", Skin.class);
+		manager.load("data/android_controls.png", Texture.class);
 		manager.finishLoading();
 		this.skin = manager.get("data/uiskin.json");
 		ground = manager.get("data/ground.png");
@@ -49,7 +51,7 @@ public class Assets {
 		playerEffect = new ParticleEffect();
 		playerEffect.load(Gdx.files.internal("data/player.p"), Gdx.files.internal("data"));		
 		Texture personsTexture = manager.get("data/PeopleParts.png");
-
+		this.androidButtons = manager.get("data/android_controls.png");
 		int persons = 8;
 		for(int index = 0; index < persons; index++){
 			PersonSheet sheet = new PersonSheet();

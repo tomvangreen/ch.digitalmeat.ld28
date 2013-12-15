@@ -8,13 +8,22 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
+import com.badlogic.gdx.utils.ObjectSet.SetIterator;
 
 public class InGameScreen implements Screen{
 	private MapRenderer mapRenderer;
 	private OrthographicCamera camera;
 	private BackgroundRenderer backgroundRenderer;
 	private ConcertSmugglers cs;
+	
+	private Stage androidControls;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -26,6 +35,7 @@ public class InGameScreen implements Screen{
 		camera.update();
 		Assets assets = cs.assets;
 		this.backgroundRenderer = new BackgroundRenderer(assets.ground, assets.sky, camera);
+		androidControls = new Stage(cs.config.xTarget, cs.config.yTarget, true);
 	}
 	
 	@Override
@@ -68,17 +78,50 @@ public class InGameScreen implements Screen{
 		mapRenderer.renderBackground();
 		mapRenderer.renderEntities();
 		mapRenderer.renderForeground();
+		androidControls.act();
+		androidControls.draw();
 	}
 
 	@Override
 	public void resize(int width, int height) {
 		mapRenderer.resize(width, height);
+		androidControls.setViewport(ConcertSmugglers.instance.config.xTarget, ConcertSmugglers.instance.config.yTarget);
 	}
 
 	@Override
 	public void show() {
 //		camera.setToOrtho(false, 500, 500);
-		mapRenderer.loadMap("data/test-level.tmx");
+		mapRenderer.loadMap("data/test-level-2.tmx");
+		Assets assets = ConcertSmugglers.instance.assets;
+		Config config = ConcertSmugglers.instance.config;
+		androidControls = new Stage(cs.config.xTarget, cs.config.yTarget, true);
+		Table table = new Table(assets.skin);
+		table.setSize(config.xTarget, config.yTarget);
+		table.setFillParent(true);
+		Texture tex = assets.androidButtons;
+		ImageButton leftButton = new ImageButton(
+				new Image(new TextureRegion(tex, 0, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 0, 32, 32, 32)).getDrawable()
+		);
+		ImageButton rightButton = new ImageButton(
+				new Image(new TextureRegion(tex, 32, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 32, 32, 32, 32)).getDrawable()
+		);
+		ImageButton switchButton = new ImageButton(
+				new Image(new TextureRegion(tex, 64, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 64, 32, 32, 32)).getDrawable()
+		);
+		ImageButton actionButton = new ImageButton(
+				new Image(new TextureRegion(tex, 96, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 96, 32, 32, 32)).getDrawable()
+		);
+		table.row().align(Align.bottom);
+		table.add(leftButton).expand();
+		table.add(switchButton).expand();
+		table.add(actionButton).expand();
+		table.add(rightButton).expand();
+		androidControls.addActor(table);
+		Gdx.input.setInputProcessor(androidControls);
 	}
 
 	@Override
