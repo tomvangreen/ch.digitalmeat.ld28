@@ -128,11 +128,10 @@ public class InGameScreen implements Screen{
 				new Image(new TextureRegion(tex, 96, 0, 32, 32)).getDrawable()
 				, new Image(new TextureRegion(tex, 96, 32, 32, 32)).getDrawable()
 		);
-		controller.leftButton = new ButtonTrap(leftButton);
-		controller.rightButton = new ButtonTrap(rightButton);
-		controller.switchButton = new ButtonTrap(switchButton);
-		controller.useButton = new ButtonTrap(actionButton);
-		controller.addTrapsToList();
+		controller.leftButton.setButton(leftButton);
+		controller.rightButton.setButton(rightButton);
+		controller.switchButton.setButton(switchButton);
+		controller.useButton.setButton(actionButton);
 		table.row().align(Align.bottom);
 		table.add(leftButton).expand();
 		table.add(switchButton).expand();

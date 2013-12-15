@@ -22,6 +22,14 @@ public class IntroScreen implements Screen {
 	
 	@Override
 	public void render(float delta) {
+		PlayerController c = ConcertSmugglers.instance.controller;
+		c.update();
+		if(c.any){
+			System.out.println("Update");
+			ConcertSmugglers.instance.game();
+			return;
+		}
+
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		

@@ -27,6 +27,7 @@ public class ConcertSmugglers extends Game {
 		this.config = config;
 		this.assets = new Assets();
 		this.controller = new PlayerController();
+		controller.addTrapsToList();
 	}
 	
 	@Override
@@ -64,5 +65,9 @@ public class ConcertSmugglers extends Game {
 
 	@Override
 	public void resume() {
+	}
+	
+	public void game(){
+		setScreen(inGameScreen);
 	}
 }
