@@ -27,7 +27,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA7YgFiLRMyOwyxygDyaW1ihGJfdIDkdPPIMSGbAMLHulYOarYPmFnRzsMnhs0eBgL3YzMMGYGGF7E4dqJgOA2pYEmu/FppZMIwrfLHJ6aCx0TEud40C+gEAQa5pwwAEAAA=
+   H4sIAAAAAAAAC2NgwA7YgFiLRMyOwyxygDyaW1ihGJfdIDkdPPILGTHxYkbi3CIHNRuEVwH1rETDq6Hm5AHpXCw4H4g3AfFmJBqEjxCwfx1Qfi0avoMFn4aa0wekFyDh+VC6nwj77zFi4gdYMDZ193DIIYtdwYIPExn+o4B2AAAFoFvdAAQAAA==
   </data>
  </layer>
  <layer name="Background 1" width="32" height="8">
@@ -35,7 +35,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBSMVAAALq+17wAEAAA=
+   H4sIAAAAAAAAC2NgGFmgkZGBoYmR9vaI4rBjIlB8Egn2CwLVCgGxMBF6lBhRMbIYOeAhED8C4sdQ/IQ8Y0bBIAYAPFkCWAAEAAA=
   </data>
  </layer>
  <layer name="Background 2" width="32" height="8">
@@ -43,7 +43,15 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjADt4CMSPgPgxFD8ZWOeMAhoAAPkpnOcABAAA
+   H4sIAAAAAAAAC2NgGAX0AoaMA2u/Iwn2G0HVPgPiF0D8FEnOCSpnzIipx2mA/TgKSAMA2APUPwAEAAA=
+  </data>
+ </layer>
+ <layer name="background 3" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjADt4C8Svkeg3A+ucUUADAAAFijM+AAQAAA==
   </data>
  </layer>
  <objectgroup name="Player" width="32" height="8">
@@ -361,12 +369,20 @@
    H4sIAAAAAAAAC2NgGB5g8QixfyEQLyLSfkrd9AlKf0birwTiVUDMyIjAX2hk/yigPQAA3JJaqAAEAAA=
   </data>
  </layer>
+ <layer name="Foreground 2" width="32" height="8">
+  <properties>
+   <property name="type" value="fg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjgIGBg5GBgRMNUwOwAs1ho5JZo4D6AAA2wjvGAAQAAA==
+  </data>
+ </layer>
  <layer name="Collision" width="32" height="8">
   <properties>
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA5m4hDHB+aQoWeoAmzhgyvMqBku2OyYg0eOXPvJiX9SwUhKL4MVAAAkFazCAAQAAA==
+   H4sIAAAAAAAAC2NgwA5m4hDHB+aQoWeoAmzhgyvMqBku2OyYg0eOWPvJiW9KwUhKL4MVAACmxRfAAAQAAA==
   </data>
  </layer>
 </map>
