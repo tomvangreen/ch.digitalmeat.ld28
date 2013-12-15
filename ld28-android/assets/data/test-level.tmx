@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="8" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test-tiles" tilewidth="32" tileheight="32">
-  <image source="test-tiles.png" width="394" height="128"/>
+  <image source="test-tiles.png" width="414" height="414"/>
  </tileset>
- <tileset firstgid="49" name="collision_tiles" tilewidth="32" tileheight="32">
+ <tileset firstgid="145" name="collision_tiles" tilewidth="32" tileheight="32">
   <image source="collision_tiles.png" width="128" height="128"/>
   <tile id="8">
    <properties>
@@ -16,26 +16,50 @@
    </properties>
   </tile>
  </tileset>
- <tileset firstgid="65" name="foreground" tilewidth="32" tileheight="32">
+ <tileset firstgid="161" name="foreground" tilewidth="32" tileheight="32">
   <image source="foreground.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="129" name="Backgrounds" tilewidth="32" tileheight="32">
-  <image source="Backgrounds.png" width="320" height="320"/>
+ <tileset firstgid="225" name="Backgrounds" tilewidth="32" tileheight="32">
+  <image source="Backgrounds.png" width="512" height="512"/>
  </tileset>
  <layer name="Background 1" width="32" height="8">
   <properties>
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA7YgJgVD9ZCwyAxdhxmkQPkgFgHB5ZHcx/IXlmoOB8OjMs/uIAwDnEdJPfxQ7ECEHPgsQPmPn40rEAgDPDFAXp4cDBghhk/EptU+7UYcIe/DgNm/OMS08FjljwB/48C2gMAeljQWgAEAAA=
+   H4sIAAAAAAAAC2NgwA7YgJgVD9ZCwyAxdhxmkQPkgFgHB5YH4jxGBoZcKM4HYlmoOB8OvAioZiEaXsyI235hHOI6ULoPqLceiicAMQcB/xwEqtkExJeBeDOUfQSP/SCwDii/FgueB8ULoLgfaj96mAkhsWH2w9xwmYD9e4FyD3Dge1gwLnEYvoIFHybg/1FAewAAcQtdhwAEAAA=
   </data>
  </layer>
- <layer name="Background 2" width="32" height="8">
+ <layer name="Shadow" width="32" height="8" visible="0">
   <properties>
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjADtoBOImIG6G4paBdc4ooAEAAElCbH8ABAAA
+   H4sIAAAAAAAAC2NgwA6YcIjDgAYaBgFmAnpIAVJ45KQZUN3HjCSOC2DzDyXuRXcfCwVm4QIgN4sxIjAyQA57aaj9UgyYcQKTH4xgsLprJAEAeZ7t9QAEAAA=
+  </data>
+ </layer>
+ <layer name="Inventory" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGFmgkZGBoYlx4OyfCLR7Egn2CwLVCgGxMBY9UlAxVRr55yEQPwLix1D8BElOhpE4NisQsw1geI8C/AAAQYOcoAAEAAA=
+  </data>
+ </layer>
+ <layer name="Furniture" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGLxAAwkzMTIwMDNCaBZGiDwjEh5IIENn+0D+VaOCOYTc/RaIXwPxGyj9Fir+CYg/AvEXIP5MBXeMgoEDAK42wPQABAAA
+  </data>
+ </layer>
+ <layer name="Stuff on Stuff" width="32" height="8">
+  <properties>
+   <property name="Type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWDGYgxQvBAgJdA/AKInwHxUyB+NTDOGAU0BACvtIDHAAQAAA==
   </data>
  </layer>
  <objectgroup name="Entities" width="32" height="8">
@@ -66,7 +90,7 @@
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAVDCTgCsdMA2u8JxF4DaP8ooC4AAIp6QgcABAAA
+   H4sIAAAAAAAAC2NgGAVDAYgxQuiFQLxoAN2xEohXDaD9o4C6AADsQRXLAAQAAA==
   </data>
  </layer>
  <layer name="Collision" width="32" height="8">
@@ -74,20 +98,7 @@
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA4scYjjAzZk6BmqAFv44AozWocLzHxq2k9O/JMKRlJ6GawAAPfCXqMABAAA
-  </data>
- </layer>
- <layer name="Background 3" width="32" height="8">
-  <properties>
-   <property name="type" value="bg"/>
-  </properties>
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjADvoBOJWIG4H4jY0ualA3A3E/UDcA8S9QDyBrq4bBdQAALFZU/sABAAA
-  </data>
- </layer>
- <layer name="Shadow" width="32" height="8">
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA6YcIjDgAYaBgFmAnpIAVJ45KQZUN3HjCSOC2DzDyXuRXcfCw47KLEHXxwgh7001H4pBsw4gcmTCnjJ0IMNaOGRI8ddo4C6AAC4J+hiAAQAAA==
+   H4sIAAAAAAAAC2NgwA5m4hDHB+aQoWeoAmzhQ06YEQvEGHHLwcIdl/3kxAst/QIDIym9DFYAAG2/lmgABAAA
   </data>
  </layer>
 </map>
