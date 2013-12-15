@@ -20,7 +20,7 @@
   <image source="foreground.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="97" name="Backgrounds" tilewidth="32" tileheight="32">
-  <image source="Backgrounds.png" width="128" height="128"/>
+  <image source="Backgrounds.png" width="320" height="320"/>
  </tileset>
  <layer name="Background 1" width="32" height="8">
   <properties>
@@ -75,6 +75,14 @@
   </properties>
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAC2NgwA4kcYjjAzJk6BmqAFv44AozWocLzHxq2k9O/JMKRlJ6GawAAC0sqgMABAAA
+  </data>
+ </layer>
+ <layer name="Background 3" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjADvIBOJUIE4H4jQ0uVIgzgbifCDOAeJcIC6gq+tGATUAACB2RAMABAAA
   </data>
  </layer>
 </map>
