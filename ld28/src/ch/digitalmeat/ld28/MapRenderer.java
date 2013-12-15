@@ -211,10 +211,23 @@ public class MapRenderer {
 	private PersonSheet getRandomPerson(PersonSheet[] sheets) {
 		PersonSheet sheet = new PersonSheet();
 		Random r = ConcertSmugglers.instance.random;
-		PersonSheet legs = sheets[r.nextInt(sheets.length)];
-		PersonSheet torso = sheets[r.nextInt(sheets.length)];
-		PersonSheet face = sheets[r.nextInt(sheets.length)];
-		PersonSheet hair = sheets[r.nextInt(sheets.length)];
+		int len = 3;
+		int offset = 0;
+		if(r.nextBoolean()){
+			offset = 4;
+			len = 4;
+		}
+		else{
+			if(r.nextInt(5) == 0){
+				offset = 3;
+				len = 1;
+			}
+		}
+		
+		PersonSheet legs = sheets[r.nextInt(len) + offset];
+		PersonSheet torso = sheets[r.nextInt(len) + offset];
+		PersonSheet face = sheets[r.nextInt(len) + offset];
+		PersonSheet hair = sheets[r.nextInt(len) + offset];
 
 		assign(sheet, hair, PersonSheet.SHEET_HAIR);
 		assign(sheet, face, PersonSheet.SHEET_HEAD);
