@@ -5,6 +5,7 @@ import ch.digitalmeat.ld28.person.PersonSheet;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
@@ -25,6 +26,7 @@ public class Assets {
 	public BitmapFont font_visitor_10;
 	public Skin skin;
 	public Texture androidButtons;
+	private Music music;
 
 	
 	public Assets()
@@ -41,13 +43,17 @@ public class Assets {
 		manager.load("data/visitor_10.fnt", BitmapFont.class);
 		manager.load("data/uiskin.json", Skin.class);
 		manager.load("data/android_controls.png", Texture.class);
+		manager.load("data/mentex_track_01.wav", Music.class);
 		manager.finishLoading();
 		this.skin = manager.get("data/uiskin.json");
 		ground = manager.get("data/ground.png");
 		sky = manager.get("data/sky.png");
 		font_visitor_10 = manager.get("data/visitor_10.fnt");
 		sheets = new PersonSheet[PERSON_SPRITES];
-		
+		music = manager.get("data/mentex_track_01.wav");
+		music.setLooping(true);
+		music.play();
+
 		playerEffect = playerEffect();		
 		Texture personsTexture = manager.get("data/PeopleParts.png");
 		this.androidButtons = manager.get("data/android_controls.png");
@@ -128,5 +134,10 @@ public class Assets {
 		manager.load(file, TiledMap.class);
 		manager.finishLoading();
 		return manager.get(file);
+	}
+	
+	public void dispose(){
+		music.dispose();
+		music = null;
 	}
 }

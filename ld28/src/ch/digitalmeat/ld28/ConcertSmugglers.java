@@ -44,7 +44,8 @@ public class ConcertSmugglers extends Game {
 	}
 
 	@Override
-	public void dispose() {
+	public void dispose(){
+		assets.dispose();
 	}
 
 	@Override
