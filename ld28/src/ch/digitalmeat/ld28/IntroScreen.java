@@ -45,7 +45,8 @@ public class IntroScreen implements Screen {
 
 	@Override
 	public void resize(int width, int height) {
-		
+		Config cfg = ConcertSmugglers.instance.config;
+		stage.setViewport(cfg.xTarget, cfg.yTarget, false);
 	}
 
 	@Override
@@ -55,11 +56,12 @@ public class IntroScreen implements Screen {
 		Assets assets = ConcertSmugglers.instance.assets;
 		Image image = new Image(assets.trance);
 		this.effect = assets.introEffect();
-		this.effect.setPosition(cfg.xTarget / 2, 0);
+		this.effect.setPosition(cfg.xResolution / 2, 0);
 		Skin skin = assets.skin;
-		image.scale(2f);
-		float x = cfg.xTarget/2 - image.getWidth() ;
-		image.setPosition(x, - image.getHeight() * 3);
+		image.setWidth(64);
+		image.setHeight(128);
+		float x = cfg.xTarget / 2 - image.getWidth() / 2 ;
+		image.setPosition(x, - image.getHeight());
 		image.addAction(Actions.alpha(0));
 		image.act(10);
 		
@@ -72,16 +74,16 @@ public class IntroScreen implements Screen {
 						)
 						, Actions.forever(
 							Actions.sequence(
-								Actions.moveBy(0, 30, 2.5f)
-								, Actions.moveBy(0, -30, 2.5f)
+								Actions.moveBy(0, 30, 3f)
+								, Actions.moveBy(0, -30, 3f)
 							)
 						)
 
 					)
 					, Actions.forever(
 						Actions.sequence(
-							Actions.rotateTo(-1, 3f)
-							, Actions.rotateTo(1, 3f)
+							Actions.rotateTo(-4, 5f)
+							, Actions.rotateTo(4, 5f)
 						)
 					)
 				)
@@ -118,7 +120,7 @@ public class IntroScreen implements Screen {
 			)
 		);
 		Label label2 = new Label("Ticket", skin);
-		label2.setPosition(cfg.xTarget - label2.getWidth() - 10, cfg.yTarget / 2 - 5 - label2.getHeight() / 2);
+		label2.setPosition(cfg.xTarget - label2.getWidth() - 30, cfg.yTarget / 2 - 5 - label2.getHeight() / 2);
 		label2.addAction(Actions.alpha(0));
 		label2.act(10f);
 		label2.addAction(
