@@ -27,7 +27,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA7yGBkYcvFgWoNeoB11OPAEIF4FxCuJxKuBeBEQL0TDi/H4ow8otwAH7gfiU0C8i0h8BogPAvEmIL4MxJuh7CMEwnEdUH4tDrweiO8QiU8j2Q9zw2UC9u8Fyj0ggO8hYXQ+Or6CBR+mQzoaBfgBAExX3fAABAAA
+   H4sIAAAAAAAAC2NgwA7yGBkYcvFgWoNeoB11OPAEIF4FxCuJxKuBeBEQL0TDi/H4ow8otwAH7gfiU0C8i0h8BogPAvEmIL4MxJuh7CMEwnEdUH4tDrweiO8g4V1ofGR8Gsl+mBsuE7B/L1DuAQF8Dwmj89HxFSz4MB3S0SjADwATOPXcAAQAAA==
   </data>
  </layer>
  <layer name="Shadow" width="32" height="8" visible="0">
@@ -43,7 +43,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGJpAjJE0GgYagfwmNDFsQIMRgaWBWA+IdYHYAMpXIsIMdGAI1DMRiCeRoFcQqFYIiIXJsA8GfkBpRyQzAgmYZwSUfwikHwHxYyh+AhUHARkk/SC2E5L4dyBtzAhhszIi9CCDRKCYCQV+GgXUAQAhRJ3/AAQAAA==
+   H4sIAAAAAAAAC2NgGJpAjJE0GgYagfwmNDFsQB2oRg2IlYHYCIglgNgWSjsBsRIRZqADQ6CeiUA8iQS9gkC1QkAsTIKeh0D8CIgfQ+knUHFHJDMCCZgH8jOyOY+h5hhB9ckg6ZeBhgmM/R1IGzNC2KyMCD3IIBEoZkJGGI4C6gIAi5w2jwAEAAA=
   </data>
  </layer>
  <layer name="Furniture" width="32" height="8">
@@ -51,7 +51,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGLxAAwljA4xIeCCBDJ3tA/lXjQrmEHL3WyB+DcRvoPRbqPgnIP4IxF+A+DMJ9jkDHe4KxC7QCDMd6IgbBQwAMOyvBQAEAAA=
+   H4sIAAAAAAAAC2NgGLxAAwljA4xIeCCBDJ3tA/lXDYhZgAwmIGZGC4CXQPwUiF8A8TMgfoXDHELufgvEr4H4DZR+CxX/BMQfgfgLEH8mwd3OQHe6ArEL1L2mAx1xo4ABAHHtX7YABAAA
   </data>
  </layer>
  <layer name="Stuff on Stuff" width="32" height="8">
@@ -83,6 +83,20 @@
   </object>
   <object type="player_without_ticket" x="274" y="136" width="5" height="9">
    <ellipse/>
+  </object>
+  <object type="transport" x="586" y="146" width="11" height="9">
+   <properties>
+    <property name="key" value="elev_bottom"/>
+    <property name="target" value="elev_top"/>
+    <property name="text" value="use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="618" y="112" width="11" height="11">
+   <properties>
+    <property name="key" value="elev_top"/>
+    <property name="target" value="elev_bottom"/>
+    <property name="text" value="use elevator"/>
+   </properties>
   </object>
  </objectgroup>
  <layer name="Foreground 1" width="32" height="8">
