@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="32" height="8" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="test-tiles" tilewidth="32" tileheight="32">
+  <image source="test-tiles.png" width="414" height="414"/>
+ </tileset>
+ <tileset firstgid="145" name="collision_tiles" tilewidth="32" tileheight="32">
+  <image source="collision_tiles.png" width="128" height="128"/>
+  <tile id="8">
+   <properties>
+    <property name="collision" value="left"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="collision" value="right"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="161" name="foreground" tilewidth="32" tileheight="32">
+  <image source="foreground.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="225" name="Backgrounds" tilewidth="32" tileheight="32">
+  <image source="Backgrounds.png" width="512" height="512"/>
+ </tileset>
+ <layer name="Background 0" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAX4wAbGwW9/HlBNLhDPw4EbsJixDCi2nAiz0e3HZv4CIO5nhJi5FIqvEcA3gPg4GfavA/LXA/EqIF6JhFcD8VGouSA8DQteBMQLkfARIuw/B1RzDwk/gOI7WPANAn6+jIaJsZ+a4BDQvitI+DAQAwCFDO4BAAQAAA==
+  </data>
+ </layer>
+ <layer name="Background 1" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAUjEQQyUt/MFixmpkDFiqF0CZROpMD+YiL12gLVqQGxEhCrYtGzggz7CoHsIiD+DmQ/BOLHQPyEAcJvZkQNgyRGVD3oYAOR9tMK7ABiAL12OOYABAAA
+  </data>
+ </layer>
+ <layer name="Background 2" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjgHiwfIDtXz/A9m9H4z8dEFdQDwAAiO1dSAAEAAA=
+  </data>
+ </layer>
+ <layer name="background 3" width="32" height="8">
+  <properties>
+   <property name="type" value="bg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBQQAl6MmGJvgfg1EL+ht2OoCABmWuwDAAQAAA==
+  </data>
+ </layer>
+ <objectgroup name="Player" width="32" height="8" opacity="0.9">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="player_ticket" x="321" y="200" width="11" height="12">
+   <properties>
+    <property name="" value=""/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="player_without_ticket" x="293" y="203" width="14" height="14">
+   <ellipse/>
+  </object>
+  <object type="player_without_ticket" x="270" y="198" width="14" height="14">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Guards" width="32" height="8">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="guard" x="483" y="140" width="14" height="14">
+   <properties>
+    <property name="roam" value="entry;besides_stairs"/>
+    <property name="roamDelay" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Guests" width="32" height="8" visible="0">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Waypoints" width="32" height="8" visible="0">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Triggers" width="32" height="8">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="goal" x="889" y="208" width="119" height="43"/>
+ </objectgroup>
+ <objectgroup name="Passages" width="32" height="8" visible="0">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="transport" x="394" y="149" width="8" height="7">
+   <properties>
+    <property name="key" value="stairs1_bottom"/>
+    <property name="target" value="stairs1_top"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="transport" x="424" y="114" width="10" height="12">
+   <properties>
+    <property name="key" value="stairs1_top"/>
+    <property name="target" value="stairs1_bottom"/>
+    <property name="text" value="Use stairs"/>
+   </properties>
+  </object>
+  <object type="transport" x="773" y="111" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet2_top"/>
+    <property name="target" value="toilet2_bottom"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="585" y="144" width="16" height="12">
+   <properties>
+    <property name="key" value="mntn1_bottom"/>
+    <property name="target" value="mntn1_top"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="776" y="141" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet2_bottom"/>
+    <property name="target" value="toilet2_top"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="618" y="16" width="11" height="11">
+   <properties>
+    <property name="auto" value="true"/>
+    <property name="key" value="topfall1_top"/>
+    <property name="speed" value="180"/>
+    <property name="target" value="topfall1_bottom"/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="582" y="17" width="16" height="12">
+   <properties>
+    <property name="key" value="mntn1_top"/>
+    <property name="target" value="mntn1_bottom"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="839" y="143" width="16" height="12">
+   <properties>
+    <property name="key" value="bottomfall1_bottom"/>
+    <property name="target" value=""/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="842" y="47" width="11" height="12">
+   <properties>
+    <property name="auto" value="true"/>
+    <property name="key" value="bottomfall1_top"/>
+    <property name="speed" value="180"/>
+    <property name="target" value="bottomfall1_bottom"/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="362" y="143" width="16" height="12">
+   <properties>
+    <property name="key" value="barfall1_bottom"/>
+    <property name="target" value=""/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="361" y="115" width="16" height="11">
+   <properties>
+    <property name="auto" value="true"/>
+    <property name="key" value="barfall1_top"/>
+    <property name="speed" value="180"/>
+    <property name="target" value="barfall1_bottom"/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="613" y="47" width="16" height="12">
+   <properties>
+    <property name="key" value="topfall1_bottom"/>
+    <property name="target" value=""/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="650" y="112" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet1_top"/>
+    <property name="target" value="toilet1_bottom"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="648" y="141" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet1_bottom"/>
+    <property name="target" value="toilet1_top"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Foreground 1" width="32" height="8">
+  <properties>
+   <property name="type" value="fg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBQQA9wZB9oF1AcASCcILQAEAAA=
+  </data>
+ </layer>
+ <layer name="Foreground 2" width="32" height="8">
+  <properties>
+   <property name="type" value="fg"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAX4wOIhYv9CIF6EJraCjvavBOJVaG7ZQUf7ke1Fdgs97cdn7xIgXkq5c8gGa4B4LRZxAAqX3tIABAAA
+  </data>
+ </layer>
+ <layer name="Collision" width="32" height="8">
+  <properties>
+   <property name="type" value="collision"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAXDBczEIT5nAOzApQ6fHmoAaocBMf4gBtDCr6QCdL+A3AQAS4a+OgAEAAA=
+  </data>
+ </layer>
+</map>
