@@ -46,6 +46,9 @@ com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle: {
 	, player-unselected: { font: default-font, fontColor: white }
 	, inactive: { font: default-font, fontColor: grey}
 	, header-value: { font: "default-font", fontColor: gold }
+	, talk: { font: "default-font", fontColor: white }
+	, talk-red: { font: "default-font", fontColor: red }
+	, talk-gold: { font: "default-font", fontColor: gold }
 },
 com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle: {
 	default: { selection: selection, background: textfield, font: default-font, fontColor: gold, cursor: cursor }

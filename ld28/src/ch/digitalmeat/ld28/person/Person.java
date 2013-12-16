@@ -52,11 +52,15 @@ public class Person extends Actor {
 	public Waypoint waypoint;
 	public float roamDelay;
 	public String lastWaypoint;
+	public List<Person> detectedPlayers;
+	public float lastChecked = 0f;
+	
 	public Person() {
 		waypoints = new ArrayList<String>();
 		state = PersonState.Idle;
 		dir = LookingDirection.Left;
 		animationIndex = 0;
+		detectedPlayers = new ArrayList<Person>();
 	}
 	
 	public void addWaypoint(String key){
@@ -100,10 +104,10 @@ public class Person extends Actor {
 	@Override
 	public void act(float delta) {
 		super.act(delta);
-		
+		lastChecked += delta;
 		if(!saidSomething){
 			if(config.type == PersonType.Player){
-				say("Naaay", Color.WHITE);
+				say("Naaay", "talk");
 			}
 			saidSomething = true;
 		}
@@ -174,9 +178,9 @@ public class Person extends Actor {
 		return state;
 	}
 	
-	public void say(String text, Color color){
+	public void say(String text, String skin){
 		TextManager manager = ConcertSmugglers.instance.textManager;
-		manager.spawnText(text, color, getX() + getWidth() / 2, getY() + getHeight());
+		manager.spawnText(text, skin, getX() + getWidth() / 2, getY() + getHeight());
 	}
 
 	public LookingDirection getDirection() {

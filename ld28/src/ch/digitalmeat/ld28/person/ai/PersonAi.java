@@ -10,7 +10,8 @@ public class PersonAi {
 		
 		guestAi.add(new Roam());
 		
-		guardAi = new ActionChecker();
+		guardAi = new DetectPlayer();
+		guardAi.add(new ActionChecker());
 		guardAi.add(new RoamWaypoints());
 		guardAi.add(new Roam());
 	}

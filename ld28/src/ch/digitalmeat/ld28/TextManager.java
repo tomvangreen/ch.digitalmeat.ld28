@@ -1,6 +1,5 @@
 package ch.digitalmeat.ld28;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
@@ -15,9 +14,9 @@ public class TextManager extends Actor{
 		this.skin = ConcertSmugglers.instance.assets.skin;
 	}	
 	
-	public void spawnText(String text, Color color, float x, float y){
+	public void spawnText(String text, String skinName, float x, float y){
 		//TODO: Change to skin instead of color
-		Label label = new Label(text, skin);
+		Label label = new Label(text, skin, skinName);
 		label.setPosition(x - label.getWidth() / 2, y - label.getHeight() / 2);
 		label.addAction(
 			Actions.sequence(
