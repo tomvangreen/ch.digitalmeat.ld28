@@ -19,7 +19,7 @@
  <tileset firstgid="161" name="foreground" tilewidth="32" tileheight="32">
   <image source="foreground.png" width="256" height="256"/>
  </tileset>
- <tileset firstgid="417" name="Backgrounds" tilewidth="32" tileheight="32">
+ <tileset firstgid="225" name="Backgrounds" tilewidth="32" tileheight="32">
   <image source="Backgrounds.png" width="512" height="512"/>
  </tileset>
  <layer name="Background 1" width="32" height="8">
@@ -27,15 +27,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIA2oMTEwqALxNBJxOhOJFuGw2wyIPYBYC4g1icTaQNwIxIloOBmPm0yBcmFoOAINWxGJfaD2FwHxZCAuhrJbCIRJHlA+FwvOB2IvII4hEnsj2Q9zw2QC9tcC5RbgwfNIxFOw4GYqpIlRQBkAAO9TFHcABAAA
-  </data>
- </layer>
- <layer name="Shadow" width="32" height="8" visible="0">
-  <properties>
-   <property name="type" value="bg"/>
-  </properties>
-  <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA6YcIjDgAYaBgFmAnpIAVJ45KQZUN3HjCSOC2DzDyXuRXcfCwVm4QIgN19jRGBkgBz20lD7pRgw4wQmPxjBYHXXSAIAopQilwAEAAA=
+   H4sIAAAAAAAAC2NgIA2kMTIwpALxNRLxckYSLcJhdxkQdwBxFhBnEomzgfggEC9Ew4vxuKkUKDcNDc9Aw1VE4h6o/ZuA+DIQb4ayjxAIk3VA+bVY8Hog7gLiOUTibiT7YW64TMD+vUC5B3jwPRLxFSz4MBXSxCigDAAAIxQ3QgAEAAA=
   </data>
  </layer>
  <layer name="Inventory" width="32" height="8">
@@ -43,7 +35,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgoA4QYWJgEAViMSZUcXEgX4IJux5ygCCZZi2H0o5A/U5EmPGckYHhGRA/BuJPQHwDiP8CsSJQLxMZblgPxB+B+gOBeoNI0H8RqOcSEF9mJE79EaC6w0B8EIgXAvEiIF4CxNuBcoxI9hIKx09I+hdD8RJoWIDAHST3gNjGTKjinxkR7E9Y3A4Kxy9E+mkU0A4AABJkae4ABAAA
+   H4sIAAAAAAAAC2NgIA80MzIwFAJxERAXA3EIEIcCcRgjRD4JSKcAcTgQRzCSaQkWEAg1SxxKixFJL4fqbwTym4hwjzpQjRoQKwOxERBLALEtECcCsRMZ/lkPxIZAfROBeBIJ+gWBaoWAWJhIPSxAdcxAzAjED4H8R0D8BIi3A7EjkhmBBMwzQtL/GIqfQMVBQAZJvww0DSCLGzMi2EZY7AKFowkV08UoIA8AALYJnAcABAAA
   </data>
  </layer>
  <layer name="Furniture" width="32" height="8">
@@ -51,7 +43,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB2sIEMPNcGGAbDzDSOUwcTAsGMA7EcGjFjE3qMJcjNB6KVA8VXYNACBDAF71gL1rQbiNVB6LdScTUB6IxBvAeLNOMzGBpiBbmIFYhao276SoHcU0AYAAF9NAikABAAA
+   H4sIAAAAAAAAC2NgIB2sIENPMiMZmnCADdQzimigA3W/A5DeMQD2IwP0oDQCCuijCXpD+U+B+BUOc2QI2PMWiF8D8Rso/RYq/gmIPwLxFyD+TJyTwcAZ6CZXIHaBus2UimliFJAHAICzab8ABAAA
   </data>
  </layer>
  <layer name="Stuff on Stuff" width="32" height="8">
@@ -59,9 +51,195 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWDGVxjhOCBACuB9q4A4mVAvBSIV1HZHd8GyF+jAAEA5WuGDAAEAAA=
+   H4sIAAAAAAAAC2NgoD5wYqSBoaOAbKBHZny8BOIXQPwMiJ8C8SvqOQkMzEbTyYADAEkiHt8ABAAA
   </data>
  </layer>
+ <objectgroup name="Guards" width="32" height="8" visible="0">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="guard" x="532" y="138" width="8" height="12">
+   <properties>
+    <property name="roam" value="before_stairs;behind_stairs"/>
+    <property name="roamDelay" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Guests" width="32" height="8" visible="0">
+  <properties>
+   <property name="type" value="entity"/>
+  </properties>
+  <object type="guest" x="805" y="110" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="660" y="108" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="795" y="110" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="771" y="110" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="756" y="110" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="747" y="112" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="715" y="112" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="674" y="108" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="357" y="76" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="268" y="79" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="206" y="80" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="873" y="142" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="960" y="142" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="952" y="141" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="933" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="918" y="139" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="904" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="911" y="141" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="865" y="139" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="883" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="888" y="141" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="974" y="142" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="859" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="849" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="434" y="138" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="914" y="145" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="866" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="942" y="143" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="1008" y="175" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="456" y="143" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="482" y="139" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="488" y="142" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="504" y="139" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="514" y="139" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="422" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="415" y="136" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="287" y="139" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="675" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="689" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="800" y="139" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="788" y="141" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="352" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="776" y="138" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="768" y="142" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="896" y="142" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="680" y="138" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="718" y="140" width="9" height="12">
+   <ellipse/>
+  </object>
+  <object type="guest" x="580" y="141" width="9" height="12">
+   <ellipse/>
+  </object>
+ </objectgroup>
+ <objectgroup name="Waypoints" width="32" height="8" visible="0">
+  <properties>
+   <property name="type" value="wp"/>
+  </properties>
+  <object type="wp" x="528" y="135" width="17" height="17">
+   <properties>
+    <property name="key" value="before_stair"/>
+   </properties>
+  </object>
+  <object type="wp" x="625" y="134" width="19" height="19">
+   <properties>
+    <property name="key" value="behind_stair"/>
+   </properties>
+  </object>
+  <object type="wp" x="819" y="137" width="13" height="17">
+   <properties>
+    <property name="key" value="entry"/>
+   </properties>
+  </object>
+  <object type="wp" x="782" y="136" width="15" height="18">
+   <properties>
+    <property name="key" value="near_entry"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup name="Entities" width="32" height="8">
   <properties>
    <property name="type" value="entity"/>
@@ -72,7 +250,11 @@
    </properties>
    <ellipse/>
   </object>
-  <object type="guard" x="294" y="138" width="13" height="11">
+  <object type="guard" x="813" y="137" width="13" height="11">
+   <properties>
+    <property name="roam" value="near_entry;entry"/>
+    <property name="roamDelay" value="3"/>
+   </properties>
    <ellipse/>
   </object>
   <object type="guest" x="369" y="140" width="7" height="8">
@@ -88,14 +270,14 @@
    <properties>
     <property name="key" value="elev_bottom"/>
     <property name="target" value="elev_top"/>
-    <property name="text" value="use elevator"/>
+    <property name="text" value="use stairs"/>
    </properties>
   </object>
   <object type="transport" x="618" y="112" width="11" height="11">
    <properties>
     <property name="key" value="elev_top"/>
     <property name="target" value="elev_bottom"/>
-    <property name="text" value="use elevator"/>
+    <property name="text" value="use stairs"/>
    </properties>
   </object>
   <object type="transport" x="435" y="83" width="8" height="9">
@@ -105,7 +287,7 @@
     <property name="text" value="use leader"/>
    </properties>
   </object>
-  <object type="transport" x="435" y="11" width="22" height="15">
+  <object type="transport" x="435" y="11" width="18" height="15">
    <properties>
     <property name="key" value="leader_top"/>
     <property name="target" value="leader_bottom"/>
@@ -127,27 +309,28 @@
     <property name="text" value="use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="822" y="19" width="20" height="12">
+  <object type="transport" x="833" y="17" width="20" height="12">
    <properties>
     <property name="key" value="leader1_top"/>
     <property name="target" value="leader1_bottom"/>
     <property name="text" value="use leader"/>
    </properties>
   </object>
-  <object type="transport" x="838" y="115" width="6" height="44">
+  <object type="transport" x="838" y="115" width="5" height="19">
    <properties>
     <property name="key" value="leader1_bottom"/>
     <property name="target" value="leader1_top"/>
     <property name="text" value="use leader"/>
    </properties>
   </object>
+  <object type="goal" x="895" y="116" width="87" height="39"/>
  </objectgroup>
  <layer name="Foreground 1" width="32" height="8">
   <properties>
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXkgCV0tu8aIyp/DRCvRVOziF6OwQJWAvEqLOJHge4+xohFYhQMCgAAFLyG4AAEAAA=
+   H4sIAAAAAAAAC2NgGAXkgCUDbP8aIF6LJrZoIBwCBSuBeBUWcVZGBgY2Rnq7ZhQQCwAJTiKoAAQAAA==
   </data>
  </layer>
  <layer name="Collision" width="32" height="8">
@@ -155,7 +338,7 @@
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB1MJEPPHDL0DCSYOdAOQAPXGFH5pLiPnLCntf+HWnoYrgAA939nvwAEAAA=
+   H4sIAAAAAAAAC2NgIB1MJEPPHDL0DCSYOdAOIABIcR85YU9r/w+19DBcAQAx99diAAQAAA==
   </data>
  </layer>
 </map>
