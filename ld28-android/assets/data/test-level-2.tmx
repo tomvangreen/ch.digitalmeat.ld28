@@ -27,7 +27,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgwA7YgFiLRMyOwyxygDwSexkjA8NSKL6GA68FYh08blvIiIkXMxLnlmNAdTeA+DgQrwLilWh4NRBvAOI8IM7FgvOBeBMQb0aiQfgIAfvXQf2FjO9gwaeh9vcB8QIkPB9K9xNh/z1GTPwAC8am7h4OOWSxK1jwYSLDfxTQDgAAZcU8+gAEAAA=
+   H4sIAAAAAAAAC2NgwA7YgFiLRMyOwyxygDwSexkjA8NSKL6GA68FYh08blvIiIkXMxLnlmNAdTeA+DgQrwLilWh4NRBvAOI8IM7FgvOBeBMQb0aiQfgIAfvXQf2FjO9gwaeh9vcB8XwgXoCEQfx+Iuy/x4iJH2DB2NTdwyGHLHYFCz5MZPiPAtoBAH6UgWgABAAA
   </data>
  </layer>
  <layer name="Background 1" width="32" height="8">
@@ -54,7 +54,7 @@
    H4sIAAAAAAAAC2NgGAWjADt4C8Svkeg3A+ucUUADAAAFijM+AAQAAA==
   </data>
  </layer>
- <objectgroup name="Player" width="32" height="8">
+ <objectgroup name="Player" width="32" height="8" visible="0" opacity="0.9">
   <properties>
    <property name="type" value="entity"/>
   </properties>
@@ -75,9 +75,11 @@
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="guard" x="782" y="140" width="11" height="12">
+  <object type="guard" x="722" y="142" width="11" height="12">
    <properties>
     <property name="" value=""/>
+    <property name="roam" value="toilet_dl;toilet_dr"/>
+    <property name="roamDelay" value="0.2"/>
    </properties>
    <ellipse/>
   </object>
@@ -89,7 +91,7 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup name="Guests" width="32" height="8">
+ <objectgroup name="Guests" width="32" height="8" visible="0">
   <properties>
    <property name="type" value="entity"/>
   </properties>
@@ -300,12 +302,6 @@
   <object type="guest" x="799" y="107" width="14" height="14">
    <ellipse/>
   </object>
-  <object type="guard" x="800" y="107" width="11" height="12">
-   <properties>
-    <property name="" value=""/>
-   </properties>
-   <ellipse/>
-  </object>
   <object type="guest" x="786" y="107" width="14" height="14">
    <ellipse/>
   </object>
@@ -345,14 +341,42 @@
     <property name="key" value="besides_stairs"/>
    </properties>
   </object>
+  <object type="wp" x="808" y="108" width="16" height="14">
+   <properties>
+    <property name="key" value="toilet_ur"/>
+   </properties>
+  </object>
+  <object type="wp" x="621" y="110" width="16" height="14">
+   <properties>
+    <property name="key" value="toilet_ul"/>
+   </properties>
+  </object>
+  <object type="wp" x="680" y="140" width="16" height="14">
+   <properties>
+    <property name="key" value="toilet_dl"/>
+   </properties>
+  </object>
+  <object type="wp" x="745" y="141" width="16" height="14">
+   <properties>
+    <property name="key" value="toilet_dr"/>
+   </properties>
+  </object>
+  <object type="guard" x="719" y="111" width="11" height="12">
+   <properties>
+    <property name="" value=""/>
+    <property name="roam" value="toilet_ul;toilet_ur"/>
+    <property name="roamDelay" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
  </objectgroup>
- <objectgroup name="Triggers" width="32" height="8">
+ <objectgroup name="Triggers" width="32" height="8" visible="0">
   <properties>
    <property name="type" value="entity"/>
   </properties>
   <object type="goal" x="863" y="111" width="134" height="44"/>
  </objectgroup>
- <objectgroup name="Passages" width="32" height="8">
+ <objectgroup name="Passages" width="32" height="8" visible="0">
   <properties>
    <property name="type" value="entity"/>
   </properties>
@@ -370,10 +394,10 @@
     <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="745" y="114" width="16" height="12">
+  <object type="transport" x="773" y="111" width="16" height="12">
    <properties>
-    <property name="key" value="toilet1_top"/>
-    <property name="target" value="toilet1_bottom"/>
+    <property name="key" value="toilet2_top"/>
+    <property name="target" value="toilet2_bottom"/>
     <property name="text" value="Use elevator"/>
    </properties>
   </object>
@@ -384,10 +408,10 @@
     <property name="text" value="Use elevator"/>
    </properties>
   </object>
-  <object type="transport" x="745" y="142" width="16" height="12">
+  <object type="transport" x="776" y="141" width="16" height="12">
    <properties>
-    <property name="key" value="toilet1_bottom"/>
-    <property name="target" value="toilet1_top"/>
+    <property name="key" value="toilet2_bottom"/>
+    <property name="target" value="toilet2_top"/>
     <property name="text" value="Use elevator"/>
    </properties>
   </object>
@@ -446,13 +470,27 @@
     <property name="text" value=""/>
    </properties>
   </object>
+  <object type="transport" x="650" y="112" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet1_top"/>
+    <property name="target" value="toilet1_bottom"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="648" y="141" width="16" height="12">
+   <properties>
+    <property name="key" value="toilet1_bottom"/>
+    <property name="target" value="toilet1_top"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="Foreground 1" width="32" height="8">
   <properties>
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGB5g8QixfyEQLyLSfkrd9AlKf0birwTiVUDMyIjAX/DYL85IoSNGAU0BAObxg5sABAAA
+   H4sIAAAAAAAAC2NgGB5g8QixfyEQL8JjP7o7KHHXJyj9GYm/EohXATEjIwJ/oZH9o4D2AADaIYvAAAQAAA==
   </data>
  </layer>
  <layer name="Foreground 2" width="32" height="8">
