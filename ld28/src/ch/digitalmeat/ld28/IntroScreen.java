@@ -171,6 +171,7 @@ public class IntroScreen implements Screen {
 		createIntroFadeText(skin, 0.5f, "You only get one...", textX, textY);
 		createIntroFadeText(skin, 2.5f, "A ludum dare 28 game", textX, textY);
 		createIntroFadeText(skin, 4.5f, "Made by atombrot & dhy", textX, textY);
+		createPressAnyKeyText(skin, 12, "Press Any Key to Start", textX, 20);
 	}
 
 	private void createIntroFadeText(Skin skin, float delay, String text,
@@ -189,6 +190,33 @@ public class IntroScreen implements Screen {
 						Actions.fadeIn(0.5f)
 						, Actions.delay(1f)
 						, Actions.fadeOut(2.5f)
+					)
+				)
+			)
+		);
+		introFadeText.setPosition(textX, textY);
+		stage.addActor(introFadeText);
+	}
+	private void createPressAnyKeyText(Skin skin, float delay, String text,
+			float textX, float textY) {
+		Label introFadeText = new Label(text, skin);
+		textX -= introFadeText.getWidth() / 2;
+		textY -= introFadeText.getHeight() / 2;
+		introFadeText.addAction(Actions.alpha(0));
+		introFadeText.act(10);
+		introFadeText.addAction(
+			Actions.sequence(
+				Actions.delay(delay)
+				, Actions.parallel(
+					Actions.forever(
+						Actions.sequence(
+							Actions.moveBy(0, 20, 1)
+							, Actions.moveBy(0, -20, 1)
+						)
+					)
+					, Actions.sequence(
+						Actions.fadeIn(0.5f)
+						, Actions.delay(1f)
 					)
 				)
 			)
