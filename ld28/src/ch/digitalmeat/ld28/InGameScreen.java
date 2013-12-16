@@ -42,6 +42,7 @@ public class InGameScreen implements Screen{
 	private Label wonKeyLabel;
 	private float stoppedTimer;
 	private boolean stopped;
+	private boolean won;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -182,6 +183,7 @@ public class InGameScreen implements Screen{
 
 	@Override
 	public void show() {
+		this.won = false;
 		stopped = false;
 		ConcertSmugglers.instance.running = false;
 //		camera.setToOrtho(false, 500, 500);
