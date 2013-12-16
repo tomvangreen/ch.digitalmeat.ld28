@@ -96,7 +96,7 @@ public class InGameScreen implements Screen{
 	private void next() {
 		level++;
 		if(level >= ConcertSmugglers.instance.assets.levels.length){
-			ConcertSmugglers.instance.menu();
+			ConcertSmugglers.instance.intro();
 		}
 		restart();
 	}

@@ -16,18 +16,21 @@ public class IntroScreen implements Screen {
 	private ParticleEffect effect;
 	private SpriteBatch batch;
 	private boolean started = false;
+	private float timer = 0f;
 	public IntroScreen(){
 		this.batch = new SpriteBatch();
 	}
 	
 	@Override
 	public void render(float delta) {
-		PlayerController c = ConcertSmugglers.instance.controller;
-		c.update();
-		if(c.any){
-			Gdx.app.log("", "Update");
-			ConcertSmugglers.instance.game();
-			return;
+		timer += delta;
+		if(timer > 2){
+			PlayerController c = ConcertSmugglers.instance.controller;
+			c.update();
+			if(c.any){
+				ConcertSmugglers.instance.rules();
+				return;
+			}
 		}
 
 		Gdx.gl.glClearColor(0, 0, 0, 1);
@@ -51,6 +54,7 @@ public class IntroScreen implements Screen {
 
 	@Override
 	public void show() {
+		timer = 0f;
 		Config cfg = ConcertSmugglers.instance.config;
 		stage = new Stage(cfg.xTarget, cfg.yTarget, true);
 		Assets assets = ConcertSmugglers.instance.assets;

@@ -23,6 +23,14 @@ public class RulesScreen implements Screen{
 	
 	@Override
 	public void render(float delta) {
+		PlayerController c = ConcertSmugglers.instance.controller;
+		c.update();
+		if(c.any){
+			ConcertSmugglers.instance.game();
+			return;
+		}
+
+		
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		effect.update(delta);
@@ -44,6 +52,17 @@ public class RulesScreen implements Screen{
 		Assets assets = ConcertSmugglers.instance.assets;
 		this.effect = assets.introEffect();
 		this.effect.setPosition(cfg.xResolution / 2, 0);
+		String[] howto = assets.howto.split("\n");
+		
+		float textX = cfg.xTarget / 2;
+		float textY = cfg.yTarget / 4;
+		
+		for(int index = 0; index < howto.length; index++){
+			String text =howto[index];
+			if(text != null && text != ""){
+				createIntroFadeText(assets.skin, 0.5f + index * 1f, text , textX, textY);
+			}
+		}
 	}
 	
 	private void createIntroFadeText(Skin skin, float delay, String text,
@@ -59,8 +78,8 @@ public class RulesScreen implements Screen{
 				, Actions.parallel(
 					Actions.moveBy(0, 200, 15)
 					, Actions.sequence(
-						Actions.fadeIn(1.5f)
-						, Actions.delay(1f)
+						Actions.fadeIn(3.5f)
+						, Actions.delay(3f)
 						, Actions.fadeOut(2.5f)
 					)
 				)

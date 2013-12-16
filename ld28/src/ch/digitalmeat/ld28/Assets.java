@@ -38,6 +38,7 @@ public class Assets {
 	
 	public static Color gold = new Color(1f, 0.8f, 0f, 1f);
 	private ParticleEffect introEffect;
+	public String howto;
 	
 	public Assets()
 	{
@@ -77,6 +78,7 @@ public class Assets {
 		String namesString = Gdx.files.internal("data/names.txt").readString();
 		this.names = namesString.split("\n");
 		String levelsString = Gdx.files.internal("data/levels.txt").readString();
+		this.howto = Gdx.files.internal("data/howto.txt").readString();
 		this.levels = levelsString.split(";");
 		playerEffect = playerEffect();		
 		Texture personsTexture = manager.get("data/PeopleParts.png");

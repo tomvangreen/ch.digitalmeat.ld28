@@ -26,6 +26,8 @@ public class ConcertSmugglers extends Game {
 	private MenuScreen menuScreen;
 	
 	public boolean running;
+
+	private RulesScreen rulesScreen;
 	
 	public ConcertSmugglers(Config config){
 		
@@ -47,6 +49,7 @@ public class ConcertSmugglers extends Game {
 		this.inGameScreen = new InGameScreen();
 		this.introScreen = new IntroScreen();
 		this.menuScreen = new MenuScreen();
+		this.rulesScreen = new RulesScreen();
 		PersonAi.buildAi();
 		intro();
 		//game();
@@ -58,6 +61,10 @@ public class ConcertSmugglers extends Game {
 
 	public void menu() {
 		setScreen(menuScreen);
+	}
+	
+	public void rules(){
+		setScreen(rulesScreen);
 	}
 
 	@Override
