@@ -13,9 +13,11 @@ public class PlayerController {
 	public boolean switchPlayer;
 	public boolean use;
 	public boolean any;
+	public boolean restart;
 	
 	public KeyTrap switchPlayerTrap = new KeyTrap(Input.Keys.TAB);
 	public KeyTrap useTrap = new KeyTrap(Input.Keys.SPACE);
+	public KeyTrap restartTrap = new KeyTrap(Input.Keys.R);
 	
 	public ButtonTrap leftButton = new ButtonTrap();
 	public ButtonTrap rightButton = new ButtonTrap();
@@ -40,6 +42,7 @@ public class PlayerController {
 		traps.add(switchButton);
 		traps.add(touch);
 		traps.add(anyKey);
+		traps.add(restartTrap);
 	}
 	
 	public void clear(){
@@ -56,5 +59,6 @@ public class PlayerController {
 		switchPlayer = switchPlayerTrap.isDown || switchButton.isDown;
 		use = useTrap.isDown || useButton.isDown;
 		any = touch.isDown || anyKey.isDown;
+		restart = restartTrap.isDown;
 	}
 }

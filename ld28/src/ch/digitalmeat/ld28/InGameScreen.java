@@ -34,6 +34,7 @@ public class InGameScreen implements Screen{
 	private ImageButton actionButton;
 	private Stage uiStage;
 	private Table playersTable;
+	private Image sightBlocker;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -102,6 +103,21 @@ public class InGameScreen implements Screen{
 		}
 		Person focus = mapRenderer.focusedPerson;		
 		if(focus != null && !focus.isTransporting){
+			if(c.restart){
+				sightBlocker.addAction(
+					Actions.sequence(
+						Actions.alpha(1f, 1f)
+						, Actions.run(new Runnable() {
+							
+							@Override
+							public void run() {
+								//TODO: Replace with restart
+								ConcertSmugglers.instance.game();
+							}
+						})
+					)
+				);
+			}
 			if(focus.gameAction != null && c.use){
 				focus.gameAction.execute(focus);
 			}
@@ -185,10 +201,10 @@ public class InGameScreen implements Screen{
 		
 		
 		uiStage.addActor(ui);
-		Image sightBlocker = new Image(assets.blank);
+		sightBlocker = new Image(assets.blank);
 		sightBlocker.setColor(Color.BLACK);
 		sightBlocker.setSize(config.xTarget, config.yTarget);
-		sightBlocker.addAction(Actions.fadeOut(3f));
+		sightBlocker.addAction(Actions.fadeOut(1f));
 		uiStage.addActor(sightBlocker);
 	}
 
