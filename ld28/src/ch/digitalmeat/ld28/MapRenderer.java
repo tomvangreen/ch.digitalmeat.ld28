@@ -8,6 +8,7 @@ import java.util.Random;
 import ch.digitalmeat.ld28.level.Transport;
 import ch.digitalmeat.ld28.level.TriggerListener;
 import ch.digitalmeat.ld28.level.TriggerZone;
+import ch.digitalmeat.ld28.level.Waypoint;
 import ch.digitalmeat.ld28.person.Person;
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
@@ -32,7 +33,6 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
 public class MapRenderer {
 	private OrthographicCamera camera;
@@ -59,6 +59,7 @@ public class MapRenderer {
 	private PersonManager personManager;
 	private MapLayer collisionLayer; 
 	public java.util.Map<String, Transport> transports;
+	public java.util.Map<String, Waypoint> waypoints;
 	public List<Person> players(){ return playerPersons; }
 	public List<Person> guards(){ return guardPersons; }
 	public List<Person> guests(){ return guestPersons; }
@@ -67,6 +68,7 @@ public class MapRenderer {
 	{
 		this.layerList = new ArrayList<Integer>();
 		transports = new HashMap<String, Transport>();
+		waypoints = new HashMap<String, Waypoint>();
 		playerPersons = new ArrayList<Person>();
 		guardPersons = new ArrayList<Person>();
 		guestPersons = new ArrayList<Person>();
@@ -159,6 +161,9 @@ public class MapRenderer {
 				else if("transport".equals(type)){
 					addTransport(obj);
 				}
+				else if("wp".equals(type)){
+					addWaypoint(obj);
+				}
 				if(config != null){
 					list.add(spawnPerson(config, obj, list == guestPersons));
 				}
@@ -182,6 +187,15 @@ public class MapRenderer {
 		mapRenderer.setView(camera.combined, 0, 0, config.xTarget, config.yTarget);
 		
 		nextPlayer();
+	}
+	
+	private void addWaypoint(MapObject obj) {
+		RectangleMapObject robj = (RectangleMapObject)obj;
+		Rectangle rect = robj.getRectangle();
+		String key = obj.getProperties().get("key", String.class);
+		Waypoint wp = new Waypoint(key, rect.x, rect.y);
+		Gdx.app.log("AddWaypoint", key);
+		waypoints.put(key, wp);
 	}
 	
 	private void addTransport(MapObject obj) {
@@ -285,7 +299,7 @@ public class MapRenderer {
 			person.setEffect(ConcertSmugglers.instance.assets.playerEffect());
 		}
 		else if(config.type == PersonType.Guard){
-			ai = PersonAi.guestAi;
+			ai = PersonAi.guardAi;
 			person.setEffect(ConcertSmugglers.instance.assets.guardEffect());
 		}
 		else{
@@ -294,6 +308,21 @@ public class MapRenderer {
 		person.name = ConcertSmugglers.instance.assets.randomName();
 		person.init(getRandomPerson(sheets), config, ai);
 		person.setSize(16f, 16f);
+		String roamTargets = obj.getProperties().get("roam", String.class);
+		if(roamTargets != null){
+			String[] targets = roamTargets.split(";");
+			for(String target : targets){
+				Gdx.app.log("SpawnPerson", "Adding Waypoint: " + target);
+				person.addWaypoint(target);
+			}
+		}
+		String roamDelay = obj.getProperties().get("roamDelay", String.class);
+		try{
+			person.roamDelay = Float.parseFloat(roamDelay);
+		}
+		catch(Exception ex){
+			
+		}
 		float y = eObj.getEllipse().y;
 		y -= y % 32 + -2;
 		int dir = ConcertSmugglers.instance.random.nextInt(3);

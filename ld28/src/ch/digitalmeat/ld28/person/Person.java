@@ -1,8 +1,12 @@
 package ch.digitalmeat.ld28.person;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ch.digitalmeat.ld28.ConcertSmugglers;
 import ch.digitalmeat.ld28.TextManager;
 import ch.digitalmeat.ld28.level.Transport;
+import ch.digitalmeat.ld28.level.Waypoint;
 import ch.digitalmeat.ld28.person.PersonConfig.PersonType;
 import ch.digitalmeat.ld28.person.ai.GuardData;
 import ch.digitalmeat.ld28.person.ai.Node;
@@ -13,7 +17,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont.TextBounds;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Person extends Actor {
@@ -44,10 +47,23 @@ public class Person extends Actor {
 	public GuardData guardData = new GuardData();
 	public boolean isTransporting;
 	public Transport gameAction;
+	public List<String> waypoints;
+	public boolean targetingWaypoint;
+	public Waypoint waypoint;
+	public float roamDelay;
+	public String lastWaypoint;
 	public Person() {
+		waypoints = new ArrayList<String>();
 		state = PersonState.Idle;
 		dir = LookingDirection.Left;
 		animationIndex = 0;
+	}
+	
+	public void addWaypoint(String key){
+		if(waypoints == null){
+			waypoints = new ArrayList<String>();
+		}
+		waypoints.add(key);
 	}
 
 	public void setAi(Node node){

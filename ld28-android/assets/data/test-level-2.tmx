@@ -83,7 +83,8 @@
   </object>
   <object type="guard" x="350" y="141" width="14" height="14">
    <properties>
-    <property name="roam" value="entry;stairs1"/>
+    <property name="roam" value="entry;besides_stairs"/>
+    <property name="roamDelay" value="2"/>
    </properties>
    <ellipse/>
   </object>
@@ -334,14 +335,14 @@
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="wp" x="265" y="139" width="16" height="14">
+  <object type="wp" x="374" y="140" width="16" height="14">
    <properties>
     <property name="key" value="entry"/>
    </properties>
   </object>
-  <object type="wp" x="418" y="109" width="16" height="14">
+  <object type="wp" x="439" y="141" width="16" height="14">
    <properties>
-    <property name="key" value="stairs1"/>
+    <property name="key" value="besides_stairs"/>
    </properties>
   </object>
  </objectgroup>
