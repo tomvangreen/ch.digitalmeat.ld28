@@ -25,6 +25,8 @@ public class ConcertSmugglers extends Game {
 
 	private MenuScreen menuScreen;
 	
+	public boolean running;
+	
 	public ConcertSmugglers(Config config){
 		instance = this;
 		random = new Random();

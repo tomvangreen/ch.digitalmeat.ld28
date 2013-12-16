@@ -102,21 +102,9 @@ public class InGameScreen implements Screen{
 			updatePlayersTable();
 		}
 		Person focus = mapRenderer.focusedPerson;		
-		if(focus != null && !focus.isTransporting){
+		if(ConcertSmugglers.instance.running && focus != null && !focus.isTransporting){
 			if(c.restart){
-				sightBlocker.addAction(
-					Actions.sequence(
-						Actions.alpha(1f, 1f)
-						, Actions.run(new Runnable() {
-							
-							@Override
-							public void run() {
-								//TODO: Replace with restart
-								ConcertSmugglers.instance.game();
-							}
-						})
-					)
-				);
+				restart();
 			}
 			if(focus.gameAction != null && c.use){
 				focus.gameAction.execute(focus);
@@ -141,6 +129,25 @@ public class InGameScreen implements Screen{
 		c.clear();
 	}
 
+	private void restart() {
+		ConcertSmugglers.instance.running = false;
+		mapRenderer.focusedPerson.setState(PersonState.Idle);
+		
+		sightBlocker.addAction(
+			Actions.sequence(
+				Actions.alpha(1f, 1f)
+				, Actions.run(new Runnable() {
+					
+					@Override
+					public void run() {
+						//TODO: Replace with restart
+						ConcertSmugglers.instance.game();
+					}
+				})
+			)
+		);
+	}
+
 	@Override
 	public void resize(int width, int height) {
 		mapRenderer.resize(width, height);
@@ -150,6 +157,7 @@ public class InGameScreen implements Screen{
 
 	@Override
 	public void show() {
+		ConcertSmugglers.instance.running = false;
 //		camera.setToOrtho(false, 500, 500);
 		mapRenderer.loadMap("data/test-level-2.tmx");
 		Assets assets = ConcertSmugglers.instance.assets;
@@ -201,10 +209,21 @@ public class InGameScreen implements Screen{
 		
 		
 		uiStage.addActor(ui);
+		
 		sightBlocker = new Image(assets.blank);
 		sightBlocker.setColor(Color.BLACK);
 		sightBlocker.setSize(config.xTarget, config.yTarget);
-		sightBlocker.addAction(Actions.fadeOut(1f));
+		sightBlocker.addAction(
+			Actions.sequence(
+				Actions.fadeOut(1f)
+				, Actions.run(new Runnable() {
+					@Override
+					public void run() {
+						ConcertSmugglers.instance.running = true;						
+					}
+				})
+			)
+		);
 		uiStage.addActor(sightBlocker);
 	}
 
