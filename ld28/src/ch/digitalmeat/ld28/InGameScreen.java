@@ -187,7 +187,7 @@ public class InGameScreen implements Screen{
 		stopped = false;
 		ConcertSmugglers.instance.running = false;
 //		camera.setToOrtho(false, 500, 500);
-		mapRenderer.loadMap("data/test-level-2.tmx");
+		mapRenderer.loadMap("data/test-level.tmx");
 		Assets assets = ConcertSmugglers.instance.assets;
 		Config config = ConcertSmugglers.instance.config;
 		

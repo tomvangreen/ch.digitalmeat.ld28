@@ -8,6 +8,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
@@ -33,7 +34,8 @@ public class Assets {
 	public String[] names;
 	public Texture trance;
 	public Texture blank;
-
+	
+	public static Color gold = new Color(1f, 0.8f, 0f, 1f);
 	
 	public Assets()
 	{

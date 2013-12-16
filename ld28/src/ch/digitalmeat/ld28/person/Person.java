@@ -3,6 +3,7 @@ package ch.digitalmeat.ld28.person;
 import java.util.ArrayList;
 import java.util.List;
 
+import ch.digitalmeat.ld28.Assets;
 import ch.digitalmeat.ld28.ConcertSmugglers;
 import ch.digitalmeat.ld28.TextManager;
 import ch.digitalmeat.ld28.level.Transport;
@@ -148,10 +149,12 @@ public class Person extends Actor {
 		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_HAIR), x, getY(), w, getHeight());
 		
 		if(gameAction != null && gameAction.text != null && !"".equals(gameAction.text)/*&& this == ConcertSmugglers.instance.mapRenderer.focusedPerson*/){
-			batch.setColor(Color.WHITE);
 			BitmapFont font = ConcertSmugglers.instance.assets.font_visitor_10;
 			TextBounds bounds = font.getBounds(gameAction.text);
-			
+			batch.setColor(Color.BLACK);
+
+			batch.draw(ConcertSmugglers.instance.assets.blank, getX() - bounds.width / 2 + getWidth() / 2 - 1, getY() + getHeight() - 1, bounds.width + 2, bounds.height + 2);
+			font.setColor(Assets.gold);
 			font.draw(batch, gameAction.text, getX() - bounds.width / 2 + getWidth() / 2, getY() + getHeight() + bounds.height);
 		}
 	}
