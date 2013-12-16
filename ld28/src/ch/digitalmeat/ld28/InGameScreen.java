@@ -6,6 +6,7 @@ import ch.digitalmeat.ld28.person.Person;
 import ch.digitalmeat.ld28.person.Person.LookingDirection;
 import ch.digitalmeat.ld28.person.Person.PersonState;
 
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -162,40 +163,10 @@ public class InGameScreen implements Screen{
 		mapRenderer.loadMap("data/test-level-2.tmx");
 		Assets assets = ConcertSmugglers.instance.assets;
 		Config config = ConcertSmugglers.instance.config;
-		androidControls = new Stage(cs.config.xTarget, cs.config.yTarget, true);
-		Table table = new Table(assets.skin);
-		table.setSize(config.xTarget, config.yTarget);
-		table.setFillParent(true);
-		Texture tex = assets.androidButtons;
-		PlayerController controller = ConcertSmugglers.instance.controller;
-		leftButton = new ImageButton(
-				new Image(new TextureRegion(tex, 0, 0, 32, 32)).getDrawable()
-				, new Image(new TextureRegion(tex, 0, 32, 32, 32)).getDrawable()
-		);
-		rightButton = new ImageButton(
-				new Image(new TextureRegion(tex, 32, 0, 32, 32)).getDrawable()
-				, new Image(new TextureRegion(tex, 32, 32, 32, 32)).getDrawable()
-		);
-		switchButton = new ImageButton(
-				new Image(new TextureRegion(tex, 64, 0, 32, 32)).getDrawable()
-				, new Image(new TextureRegion(tex, 64, 32, 32, 32)).getDrawable()
-		);
-		actionButton = new ImageButton(
-				new Image(new TextureRegion(tex, 96, 0, 32, 32)).getDrawable()
-				, new Image(new TextureRegion(tex, 96, 32, 32, 32)).getDrawable()
-		);
-		controller.leftButton.setButton(leftButton);
-		controller.rightButton.setButton(rightButton);
-		controller.switchButton.setButton(switchButton);
-		controller.useButton.setButton(actionButton);
-		table.row().align(Align.bottom);
-		table.add(leftButton).expand();
-		table.add(switchButton).expand();
-		table.add(actionButton).expand();
-		table.add(rightButton).expand();
-		androidControls.addActor(table);
-		Gdx.input.setInputProcessor(androidControls);
 		
+		if(Gdx.app.getType() == ApplicationType.Android){
+			createAndroidButtons(assets, config);
+		}
 		uiStage.clear();
 		Table ui = new Table(assets.skin);
 		ui.align(Align.top);
@@ -225,6 +196,43 @@ public class InGameScreen implements Screen{
 			)
 		);
 		uiStage.addActor(sightBlocker);
+	}
+
+	private void createAndroidButtons(Assets assets, Config config) {
+		androidControls = new Stage(cs.config.xTarget, cs.config.yTarget, true);
+		Table table = new Table(assets.skin);
+		table.setSize(config.xTarget, config.yTarget);
+		table.setFillParent(true);
+		
+		Texture tex = assets.androidButtons;
+		PlayerController controller = ConcertSmugglers.instance.controller;
+		leftButton = new ImageButton(
+				new Image(new TextureRegion(tex, 0, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 0, 32, 32, 32)).getDrawable()
+		);
+		rightButton = new ImageButton(
+				new Image(new TextureRegion(tex, 32, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 32, 32, 32, 32)).getDrawable()
+		);
+		switchButton = new ImageButton(
+				new Image(new TextureRegion(tex, 64, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 64, 32, 32, 32)).getDrawable()
+		);
+		actionButton = new ImageButton(
+				new Image(new TextureRegion(tex, 96, 0, 32, 32)).getDrawable()
+				, new Image(new TextureRegion(tex, 96, 32, 32, 32)).getDrawable()
+		);
+		controller.leftButton.setButton(leftButton);
+		controller.rightButton.setButton(rightButton);
+		controller.switchButton.setButton(switchButton);
+		controller.useButton.setButton(actionButton);
+		table.row().align(Align.bottom);
+		table.add(leftButton).expand();
+		table.add(switchButton).expand();
+		table.add(actionButton).expand();
+		table.add(rightButton).expand();
+		androidControls.addActor(table);
+		Gdx.input.setInputProcessor(androidControls);
 	}
 
 

@@ -28,6 +28,7 @@ public class ConcertSmugglers extends Game {
 	public boolean running;
 	
 	public ConcertSmugglers(Config config){
+		
 		instance = this;
 		random = new Random();
 		this.config = config;
@@ -43,8 +44,6 @@ public class ConcertSmugglers extends Game {
 		config.set(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		assets.create();
 		this.textManager = new TextManager();
-		float w = Gdx.graphics.getWidth();
-		float h = Gdx.graphics.getHeight();
 		this.inGameScreen = new InGameScreen();
 		this.introScreen = new IntroScreen();
 		this.menuScreen = new MenuScreen();
