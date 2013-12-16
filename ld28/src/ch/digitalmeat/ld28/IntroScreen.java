@@ -70,7 +70,7 @@ public class IntroScreen implements Screen {
 					Actions.sequence(
 						Actions.parallel(
 							Actions.moveTo(x, 0, 8f)
-							, Actions.alpha(1f, 3f)
+							, Actions.sequence(Actions.alpha(0.25f, 6f), Actions.alpha(1f, 2f))
 						)
 						, Actions.forever(
 							Actions.sequence(
@@ -167,10 +167,10 @@ public class IntroScreen implements Screen {
 		stage.addActor(label2);
 		stage.addActor(title);
 		float textX = cfg.xTarget / 2;
-		float textY = cfg.yTarget / 4;
+		float textY = cfg.yTarget / 3;
 		createIntroFadeText(skin, 0.5f, "You only get one...", textX, textY);
-		createIntroFadeText(skin, 3.5f, "A ludum dare 28 game", textX, textY);
-		createIntroFadeText(skin, 6.5f, "Made by atombrot & dhy", textX, textY);
+		createIntroFadeText(skin, 2.5f, "A ludum dare 28 game", textX, textY);
+		createIntroFadeText(skin, 4.5f, "Made by atombrot & dhy", textX, textY);
 	}
 
 	private void createIntroFadeText(Skin skin, float delay, String text,
@@ -186,9 +186,9 @@ public class IntroScreen implements Screen {
 				, Actions.parallel(
 					Actions.moveBy(0, 200, 10)
 					, Actions.sequence(
-						Actions.fadeIn(1f)
+						Actions.fadeIn(0.5f)
 						, Actions.delay(1f)
-						, Actions.fadeOut(1f)
+						, Actions.fadeOut(2.5f)
 					)
 				)
 			)
