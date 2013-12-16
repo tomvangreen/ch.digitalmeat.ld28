@@ -33,6 +33,9 @@ public class DetectPlayer extends Node {
 	
 	@Override
 	public boolean onExecute(Person source) {
+		if(!ConcertSmugglers.instance.running){
+			return false;
+		}
 		MapRenderer map = ConcertSmugglers.instance.mapRenderer;
 		List<Person> persons = map.players();
 		for (Person target : persons) {
@@ -53,6 +56,7 @@ public class DetectPlayer extends Node {
 				}
 				else{
 					source.say(GOT_NO_TICKET_MESSAGES[random.nextInt(GOT_NO_TICKET_MESSAGES.length)], "talk-red");
+					ConcertSmugglers.instance.inGameScreen.lost();
 				}
 				return false;
 			}

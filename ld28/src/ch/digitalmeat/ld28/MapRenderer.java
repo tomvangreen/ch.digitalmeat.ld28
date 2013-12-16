@@ -284,6 +284,7 @@ public class MapRenderer {
 	
 	private void won() {
 		Gdx.app.log("", "Won Game");
+		ConcertSmugglers.instance.inGameScreen.won();
 	}
 	private Person spawnPerson(PersonConfig config, MapObject obj, boolean addToStage) {
 		if(!(obj instanceof EllipseMapObject)){

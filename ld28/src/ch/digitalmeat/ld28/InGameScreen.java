@@ -36,6 +36,8 @@ public class InGameScreen implements Screen{
 	private Stage uiStage;
 	private Table playersTable;
 	private Image sightBlocker;
+	private Label wonLabel;
+	private Label lostLabel;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -181,6 +183,17 @@ public class InGameScreen implements Screen{
 		
 		uiStage.addActor(ui);
 		
+		wonLabel = new Label("Yay :D All got in", assets.skin, "title");
+		lostLabel = new Label("You got caught", assets.skin, "title");
+		setProperties(wonLabel);
+		setProperties(lostLabel);
+		wonLabel.addAction(Actions.alpha(0));
+		wonLabel.act(10);
+		lostLabel.addAction(Actions.alpha(0));
+		lostLabel.act(10);
+		uiStage.addActor(wonLabel);
+		uiStage.addActor(lostLabel);
+		
 		sightBlocker = new Image(assets.blank);
 		sightBlocker.setColor(Color.BLACK);
 		sightBlocker.setSize(config.xTarget, config.yTarget);
@@ -196,6 +209,46 @@ public class InGameScreen implements Screen{
 			)
 		);
 		uiStage.addActor(sightBlocker);
+	}
+	
+	public void won(){
+		stop();
+		fadeIn(wonLabel);
+	}
+	
+	public void lost(){
+		stop();
+		fadeIn(lostLabel);		
+	}
+	
+	public void stop(){
+		ConcertSmugglers.instance.running = false;		
+		List<Person> persons = ConcertSmugglers.instance.mapRenderer.players();
+		for(Person person : persons){
+			person.setState(PersonState.Idle);
+		}
+	}
+
+	private void fadeIn(Label label) {
+		label.addAction(
+			Actions.sequence(
+				Actions.parallel(				
+					Actions.fadeIn(0.5f)
+					, Actions.moveBy(0, 10, 0.5f)
+				)
+				, Actions.forever(
+					Actions.sequence(
+						Actions.moveBy(0, -20, 1f)						
+						, Actions.moveBy(0, 20, 1f)
+					)
+				)
+			)
+		);
+	}
+
+	private void setProperties(Label label) {
+		Config cfg = ConcertSmugglers.instance.config;
+		label.setPosition(cfg.xTarget / 2 - label.getWidth() / 2, cfg.yTarget / 2 - label.getHeight() / 2);
 	}
 
 	private void createAndroidButtons(Assets assets, Config config) {
