@@ -25,7 +25,7 @@ public class IntroScreen implements Screen {
 		PlayerController c = ConcertSmugglers.instance.controller;
 		c.update();
 		if(c.any){
-			System.out.println("Update");
+			Gdx.app.log("", "Update");
 			ConcertSmugglers.instance.game();
 			return;
 		}

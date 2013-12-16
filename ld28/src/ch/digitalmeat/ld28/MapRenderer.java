@@ -251,10 +251,10 @@ public class MapRenderer {
 	}
 	protected void playerArrived(Person person) {
 		if(person.config.hasTicket){
-			System.out.println("Person already has a ticket");
+			Gdx.app.log("", "Person already has a ticket");
 			return;
 		}
-		System.out.println("Arrived");
+		Gdx.app.log("", "Arrived");
 		playerPersons.remove(person);
 		guestPersons.add(person);
 		person.setEffect(null);
@@ -269,14 +269,14 @@ public class MapRenderer {
 	}
 	
 	private void won() {
-		System.out.println("Won Game");
+		Gdx.app.log("", "Won Game");
 	}
 	private Person spawnPerson(PersonConfig config, MapObject obj, boolean addToStage) {
 		if(!(obj instanceof EllipseMapObject)){
 			return null;
 		}
 		EllipseMapObject eObj = (EllipseMapObject) obj;
-		System.out.println("Spawning " + config.type);
+		Gdx.app.log("", "Spawning " + config.type);
 		PersonSheet[] sheets = ConcertSmugglers.instance.assets.sheets;
 		Person person = new Person();
 		Node ai = null;
@@ -354,7 +354,7 @@ public class MapRenderer {
 		for(int index = 0; index < count; index ++){
 			MapLayer layer = layers.get(index);
 			String type = layer.getProperties().get("type", String.class);
-			//System.out.println(type);
+			//Gdx.app.log("", type);
 			if(name.equals(type)){
 				layerList.add(index);
 			}

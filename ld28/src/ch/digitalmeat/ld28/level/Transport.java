@@ -3,6 +3,7 @@ package ch.digitalmeat.ld28.level;
 import ch.digitalmeat.ld28.MapRenderer;
 import ch.digitalmeat.ld28.person.Person;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 
@@ -29,7 +30,7 @@ public class Transport extends GameAction{
 		if(target == null){
 			target = map.transports.get(targetKey);
 		}
-		System.out.println("Transporting " + person.name);
+		Gdx.app.log("", "Transporting " + person.name);
 		if(target != null){
 			person.isTransporting = true;
 			tmp.set(target.pos);

@@ -2,6 +2,8 @@ package ch.digitalmeat.ld28.person.ai;
 
 import java.util.Random;
 
+import com.badlogic.gdx.Gdx;
+
 import ch.digitalmeat.ld28.ConcertSmugglers;
 import ch.digitalmeat.ld28.level.Transport;
 import ch.digitalmeat.ld28.person.Person;
@@ -18,7 +20,7 @@ public class Roam extends Node {
 	@Override
 	public boolean onExecute(Person person){
 		if(person.gameAction instanceof Transport){
-			System.out.println("Transport Action Found");
+			Gdx.app.log("", "Transport Action Found");
 			int tpick = random.nextInt(4);
 			if(tpick >= 0){
 				Transport transport = (Transport) person.gameAction;

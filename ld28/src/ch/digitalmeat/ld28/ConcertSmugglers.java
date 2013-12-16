@@ -50,7 +50,7 @@ public class ConcertSmugglers extends Game {
 		this.menuScreen = new MenuScreen();
 		PersonAi.buildAi();
 		intro();
-		
+		//game();
 	}
 
 	public void intro() {

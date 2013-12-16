@@ -1,5 +1,6 @@
 package ch.digitalmeat.ld28;
 
+
 public abstract class Trap {
 
 	public boolean isDown;
@@ -20,8 +21,8 @@ public abstract class Trap {
 		isPressed = isPressed();
 		isDown = isPressed && !wasPressed;
 		isUp = !isPressed && wasPressed;
-//		if(isDown)System.out.println("Trap down");
-//		if(isUp)System.out.println("Trap up");
+//		if(isDown)Gdx.app.log("", "Trap down");
+//		if(isUp)Gdx.app.log("", "Trap up");
 	}
 
 }
