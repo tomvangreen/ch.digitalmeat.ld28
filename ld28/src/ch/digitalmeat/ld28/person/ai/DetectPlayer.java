@@ -71,7 +71,7 @@ public class DetectPlayer extends Node {
 			return false;
 		}
 		float hd = Math.abs(source.getX() - target.getX());
-		return hd < 20;
+		return hd < 24;
 	}
 
 	private boolean isInSight(Person source, Person target) {

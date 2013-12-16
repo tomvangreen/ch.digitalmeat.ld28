@@ -90,7 +90,7 @@
    </properties>
    <ellipse/>
   </object>
-  <object type="guard" x="636" y="46" width="11" height="12">
+  <object type="guard" x="647" y="41" width="11" height="12">
    <properties>
     <property name="" value=""/>
     <property name="roam" value="ul;ur"/>
@@ -103,6 +103,14 @@
     <property name="" value=""/>
     <property name="roam" value="toilet_ul;toilet_ur"/>
     <property name="roamDelay" value="1"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="guard" x="530" y="41" width="11" height="12">
+   <properties>
+    <property name="" value=""/>
+    <property name="roam" value="ul;ur"/>
+    <property name="roamDelay" value="0.2"/>
    </properties>
    <ellipse/>
   </object>

@@ -66,6 +66,7 @@ public class RulesScreen implements Screen{
 				createIntroFadeText(assets.skin, 0.5f + index * 1f, text , textX, textY);
 			}
 		}
+		createPressAnyKeyText(assets.skin, howto.length + 4, "Press Any Key to Start", textX, 20);
 		sightBlocker = new Image(assets.blank);
 		sightBlocker.setColor(Color.BLACK);
 		sightBlocker.setSize(cfg.xTarget, cfg.yTarget);
@@ -83,6 +84,34 @@ public class RulesScreen implements Screen{
 		stage.addActor(sightBlocker);
 	}
 	
+	private void createPressAnyKeyText(Skin skin, float delay, String text,
+			float textX, float textY) {
+		Label introFadeText = new Label(text, skin);
+		textX -= introFadeText.getWidth() / 2;
+		textY -= introFadeText.getHeight() / 2;
+		introFadeText.addAction(Actions.alpha(0));
+		introFadeText.act(10);
+		introFadeText.addAction(
+			Actions.sequence(
+				Actions.delay(delay)
+				, Actions.parallel(
+					Actions.forever(
+						Actions.sequence(
+							Actions.moveBy(0, 20, 1)
+							, Actions.moveBy(0, -20, 1)
+						)
+					)
+					, Actions.sequence(
+						Actions.fadeIn(0.5f)
+						, Actions.delay(1f)
+					)
+				)
+			)
+		);
+		introFadeText.setPosition(textX, textY);
+		stage.addActor(introFadeText);
+	}
+
 	private void createIntroFadeText(Skin skin, float delay, String text,
 			float textX, float textY) {
 		Label introFadeText = new Label(text, skin);
