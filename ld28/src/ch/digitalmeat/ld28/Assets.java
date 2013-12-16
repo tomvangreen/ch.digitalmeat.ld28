@@ -26,6 +26,7 @@ public class Assets {
 	public Texture sky;
 	public ParticleEffect playerEffect;
 	public BitmapFont font_visitor_10;
+	public BitmapFont font_visitor_25;
 	public Skin skin;
 	public Texture androidButtons;
 	private Music music;
@@ -50,6 +51,7 @@ public class Assets {
 		manager.load("data/trance.png", Texture.class);
 		manager.load("data/sky.png", Texture.class);
 		manager.load("data/visitor_10.fnt", BitmapFont.class);
+		manager.load("data/visitor_25.fnt", BitmapFont.class);
 		manager.load("data/uiskin.json", Skin.class);
 		manager.load("data/android_controls.png", Texture.class);
 		manager.load("data/mentex_track_01.wav", Music.class);
@@ -59,6 +61,7 @@ public class Assets {
 		trance = manager.get("data/trance.png");
 		sky = manager.get("data/sky.png");
 		font_visitor_10 = manager.get("data/visitor_10.fnt");
+		font_visitor_25 = manager.get("data/visitor_25.fnt");
 		sheets = new PersonSheet[PERSON_SPRITES];
 		music = manager.get("data/mentex_track_01.wav");
 		music.setLooping(true);

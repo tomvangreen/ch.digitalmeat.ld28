@@ -143,9 +143,58 @@ public class IntroScreen implements Screen {
 				)
 			)
 		);
+		
+		Label title = new Label("Concert Crashers", skin, "title");
+		title.setPosition(cfg.xTarget / 2 - title.getWidth() / 2, cfg.yTarget - title.getHeight() - 20);
+		title.addAction(Actions.alpha(0));
+		title.act(10);
+		title.addAction(
+			Actions.sequence(
+				Actions.delay(8f)
+				, Actions.parallel(
+					Actions.fadeIn(3f)
+					, Actions.forever(
+						Actions.sequence(
+							Actions.moveBy(0f, 10f, 2f)
+							, Actions.moveBy(0f, -10f, 2f)
+						)
+					)
+				)
+			)
+		);
 		stage.addActor(image);
 		stage.addActor(label);
 		stage.addActor(label2);
+		stage.addActor(title);
+		float textX = cfg.xTarget / 2;
+		float textY = cfg.yTarget / 4;
+		createIntroFadeText(skin, 0.5f, "You only get one...", textX, textY);
+		createIntroFadeText(skin, 3.5f, "A ludum dare 28 game", textX, textY);
+		createIntroFadeText(skin, 6.5f, "Made by atombrot & dhy", textX, textY);
+	}
+
+	private void createIntroFadeText(Skin skin, float delay, String text,
+			float textX, float textY) {
+		Label introFadeText = new Label(text, skin);
+		textX -= introFadeText.getWidth() / 2;
+		textY -= introFadeText.getHeight() / 2;
+		introFadeText.addAction(Actions.alpha(0));
+		introFadeText.act(10);
+		introFadeText.addAction(
+			Actions.sequence(
+				Actions.delay(delay)
+				, Actions.parallel(
+					Actions.moveBy(0, 200, 10)
+					, Actions.sequence(
+						Actions.fadeIn(1f)
+						, Actions.delay(1f)
+						, Actions.fadeOut(1f)
+					)
+				)
+			)
+		);
+		introFadeText.setPosition(textX, textY);
+		stage.addActor(introFadeText);
 	}
 
 	@Override
