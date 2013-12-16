@@ -37,6 +37,7 @@ public class Assets {
 	public String[] levels;
 	
 	public static Color gold = new Color(1f, 0.8f, 0f, 1f);
+	private ParticleEffect introEffect;
 	
 	public Assets()
 	{
@@ -138,9 +139,11 @@ public class Assets {
 		return playerEffect;
 	}
 	public ParticleEffect introEffect() {
-		ParticleEffect playerEffect = new ParticleEffect();
-		playerEffect.load(Gdx.files.internal("data/intro.p"), Gdx.files.internal("data"));
-		return playerEffect;
+		if(introEffect == null){
+			introEffect = new ParticleEffect();
+			introEffect.load(Gdx.files.internal("data/intro.p"), Gdx.files.internal("data"));
+		}
+		return introEffect;
 	}
 	public ParticleEffect guardEffect(){
 		ParticleEffect effect = new ParticleEffect();
