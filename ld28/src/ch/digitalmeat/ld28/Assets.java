@@ -32,6 +32,7 @@ public class Assets {
 	private Music music;
 	public String[] names;
 	public Texture trance;
+	public Texture blank;
 
 	
 	public Assets()
@@ -48,6 +49,7 @@ public class Assets {
 		manager.load("data/Persons.png", Texture.class);
 		manager.load("data/PeopleParts.png", Texture.class);
 		manager.load("data/ground.png", Texture.class);
+		manager.load("data/blank.png", Texture.class);
 		manager.load("data/trance.png", Texture.class);
 		manager.load("data/sky.png", Texture.class);
 		manager.load("data/visitor_10.fnt", BitmapFont.class);
@@ -59,6 +61,7 @@ public class Assets {
 		this.skin = manager.get("data/uiskin.json");
 		ground = manager.get("data/ground.png");
 		trance = manager.get("data/trance.png");
+		blank = manager.get("data/blank.png");
 		sky = manager.get("data/sky.png");
 		font_visitor_10 = manager.get("data/visitor_10.fnt");
 		font_visitor_25 = manager.get("data/visitor_25.fnt");

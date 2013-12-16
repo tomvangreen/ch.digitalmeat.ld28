@@ -8,11 +8,13 @@ import ch.digitalmeat.ld28.person.Person.PersonState;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -75,10 +77,10 @@ public class InGameScreen implements Screen{
 	}
 
 	private void renderUI() {
-		uiStage.act();
-		uiStage.draw();
 		androidControls.act();
 		androidControls.draw();
+		uiStage.act();
+		uiStage.draw();
 	}
 
 	private void renderMap() {
@@ -179,8 +181,17 @@ public class InGameScreen implements Screen{
 		updatePlayersTable();
 		
 		ui.add(playersTable);
+		
+		
+		
 		uiStage.addActor(ui);
+		Image sightBlocker = new Image(assets.blank);
+		sightBlocker.setColor(Color.BLACK);
+		sightBlocker.setSize(config.xTarget, config.yTarget);
+		sightBlocker.addAction(Actions.fadeOut(3f));
+		uiStage.addActor(sightBlocker);
 	}
+
 
 	public void updatePlayersTable() {
 		Assets assets = ConcertSmugglers.instance.assets;
