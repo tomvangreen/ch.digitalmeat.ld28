@@ -22,6 +22,8 @@ public class ConcertSmugglers extends Game {
 	private IntroScreen introScreen;
 
 	public TextManager textManager;
+
+	private MenuScreen menuScreen;
 	
 	public ConcertSmugglers(Config config){
 		instance = this;
@@ -43,9 +45,18 @@ public class ConcertSmugglers extends Game {
 		float h = Gdx.graphics.getHeight();
 		this.inGameScreen = new InGameScreen();
 		this.introScreen = new IntroScreen();
+		this.menuScreen = new MenuScreen();
 		PersonAi.buildAi();
-		setScreen(introScreen);
+		intro();
 		
+	}
+
+	public void intro() {
+		setScreen(introScreen);
+	}
+
+	public void menu() {
+		setScreen(menuScreen);
 	}
 
 	@Override
