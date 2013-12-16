@@ -38,6 +38,8 @@ public class InGameScreen implements Screen{
 	private Image sightBlocker;
 	private Label wonLabel;
 	private Label lostLabel;
+	private Label lostKeyLabel;
+	private Label wonKeyLabel;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -185,12 +187,24 @@ public class InGameScreen implements Screen{
 		
 		wonLabel = new Label("Yay :D All got in", assets.skin, "title");
 		lostLabel = new Label("You got caught", assets.skin, "title");
+		lostKeyLabel  = new Label("Press any key to restart", assets.skin);
+		wonKeyLabel  = new Label("Press any key to continue", assets.skin);
 		setProperties(wonLabel);
 		setProperties(lostLabel);
+		setProperties(wonKeyLabel);
+		wonKeyLabel.setY(wonKeyLabel.getY() - 30);
+		setProperties(lostKeyLabel);
+		lostKeyLabel.setY(lostKeyLabel.getY() - 30);
+		wonKeyLabel.addAction(Actions.alpha(0));
+		lostKeyLabel.addAction(Actions.alpha(0));
+		wonKeyLabel.act(10);
+		lostKeyLabel.act(10);
 		wonLabel.addAction(Actions.alpha(0));
 		wonLabel.act(10);
 		lostLabel.addAction(Actions.alpha(0));
 		lostLabel.act(10);
+		uiStage.addActor(wonKeyLabel);
+		uiStage.addActor(lostKeyLabel);
 		uiStage.addActor(wonLabel);
 		uiStage.addActor(lostLabel);
 		
@@ -214,15 +228,18 @@ public class InGameScreen implements Screen{
 	public void won(){
 		stop();
 		fadeIn(wonLabel);
+		fadeIn(wonKeyLabel);
 	}
 	
 	public void lost(){
 		stop();
-		fadeIn(lostLabel);		
+		fadeIn(lostLabel);	
+		fadeIn(lostKeyLabel);
 	}
 	
 	public void stop(){
-		ConcertSmugglers.instance.running = false;		
+		ConcertSmugglers.instance.running = false;
+		
 		List<Person> persons = ConcertSmugglers.instance.mapRenderer.players();
 		for(Person person : persons){
 			person.setState(PersonState.Idle);
