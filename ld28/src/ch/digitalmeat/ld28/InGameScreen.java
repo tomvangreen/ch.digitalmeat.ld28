@@ -43,6 +43,7 @@ public class InGameScreen implements Screen{
 	private float stoppedTimer;
 	private boolean stopped;
 	private boolean won;
+	private int level = 0;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -67,6 +68,14 @@ public class InGameScreen implements Screen{
 				PlayerController controller = ConcertSmugglers.instance.controller;
 				controller.update();
 				if(controller.any){
+					if(won){
+						next();
+					}
+					else{
+						restart();
+					}
+				}
+				else if(controller.restart){
 					restart();
 				}
 				else if(controller.exit){
@@ -82,6 +91,14 @@ public class InGameScreen implements Screen{
 		updateCamera();
 		renderMap();
 		renderUI();
+	}
+
+	private void next() {
+		level++;
+		if(level >= ConcertSmugglers.instance.assets.levels.length){
+			ConcertSmugglers.instance.menu();
+		}
+		restart();
 	}
 
 	private void clearActions(List<Person> list) {
@@ -187,8 +204,9 @@ public class InGameScreen implements Screen{
 		stopped = false;
 		ConcertSmugglers.instance.running = false;
 //		camera.setToOrtho(false, 500, 500);
-		mapRenderer.loadMap("data/test-level.tmx");
 		Assets assets = ConcertSmugglers.instance.assets;
+		String levelFile = assets.levels[level];
+		mapRenderer.loadMap(levelFile);
 		Config config = ConcertSmugglers.instance.config;
 		
 		if(Gdx.app.getType() == ApplicationType.Android){
@@ -252,12 +270,14 @@ public class InGameScreen implements Screen{
 		stop();
 		fadeIn(wonLabel);
 		fadeIn(wonKeyLabel);
+		won = true;
 	}
 	
 	public void lost(){
 		stop();
 		fadeIn(lostLabel);	
 		fadeIn(lostKeyLabel);
+		won = false;
 	}
 	
 	public void stop(){

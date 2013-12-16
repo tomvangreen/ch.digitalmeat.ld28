@@ -34,6 +34,7 @@ public class Assets {
 	public String[] names;
 	public Texture trance;
 	public Texture blank;
+	public String[] levels;
 	
 	public static Color gold = new Color(1f, 0.8f, 0f, 1f);
 	
@@ -74,7 +75,8 @@ public class Assets {
 		music.play();
 		String namesString = Gdx.files.internal("data/names.txt").readString();
 		this.names = namesString.split("\n");
-		
+		String levelsString = Gdx.files.internal("data/levels.txt").readString();
+		this.levels = levelsString.split(";");
 		playerEffect = playerEffect();		
 		Texture personsTexture = manager.get("data/PeopleParts.png");
 		this.androidButtons = manager.get("data/android_controls.png");
