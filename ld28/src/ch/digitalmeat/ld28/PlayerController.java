@@ -67,7 +67,7 @@ public class PlayerController {
 		switchPlayer = switchPlayerTrap.isDown || switchButton.isDown;
 		use = useTrap.isDown || useButton.isDown;
 		any = touch.isDown || anyKey.isDown;
-		restart = restartTrap.isDown || backButtonTrap.isDown;
-		exit = escapeTrap.isDown || menuButtonTrap.isDown;
+		restart = restartTrap.isDown || menuButtonTrap.isDown;
+		exit = escapeTrap.isDown || backButtonTrap.isDown;
 	}
 }

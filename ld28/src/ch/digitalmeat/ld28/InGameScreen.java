@@ -40,6 +40,8 @@ public class InGameScreen implements Screen{
 	private Label lostLabel;
 	private Label lostKeyLabel;
 	private Label wonKeyLabel;
+	private float stoppedTimer;
+	private boolean stopped;
 	
 	public InGameScreen(){
 		this.cs = ConcertSmugglers.instance;
@@ -58,11 +60,24 @@ public class InGameScreen implements Screen{
 	
 	@Override
 	public void render(float delta) {
+		if(stopped){
+			stoppedTimer += delta;
+			if(stoppedTimer > 1f){
+				PlayerController controller = ConcertSmugglers.instance.controller;
+				controller.update();
+				if(controller.any){
+					restart();
+				}
+				else if(controller.exit){
+					Gdx.app.exit();
+				}
+			}
+		}
 		clearActions(mapRenderer.players());
 		clearActions(mapRenderer.guards());
 		clearActions(mapRenderer.guests());
 		mapRenderer.update();		
-		updatePlayer();
+		if(!stopped){updatePlayer();}
 		updateCamera();
 		renderMap();
 		renderUI();
@@ -111,7 +126,11 @@ public class InGameScreen implements Screen{
 			if(c.restart){
 				restart();
 			}
-			if(focus.gameAction != null && c.use){
+			else if(c.exit){
+				Gdx.app.exit();
+				return;
+			}
+			else if(focus.gameAction != null && c.use){
 				focus.gameAction.execute(focus);
 			}
 			else if(c.left && !c.right){
@@ -129,6 +148,7 @@ public class InGameScreen implements Screen{
 			else{
 				focus.setState(PersonState.Idle);
 			}
+			
 		}
 		
 		c.clear();
@@ -162,6 +182,7 @@ public class InGameScreen implements Screen{
 
 	@Override
 	public void show() {
+		stopped = false;
 		ConcertSmugglers.instance.running = false;
 //		camera.setToOrtho(false, 500, 500);
 		mapRenderer.loadMap("data/test-level-2.tmx");
@@ -185,7 +206,7 @@ public class InGameScreen implements Screen{
 		
 		uiStage.addActor(ui);
 		
-		wonLabel = new Label("Yay :D All got in", assets.skin, "title");
+		wonLabel = new Label("Yay!!! All got in", assets.skin, "title");
 		lostLabel = new Label("You got caught", assets.skin, "title");
 		lostKeyLabel  = new Label("Press any key to restart", assets.skin);
 		wonKeyLabel  = new Label("Press any key to continue", assets.skin);
@@ -239,7 +260,8 @@ public class InGameScreen implements Screen{
 	
 	public void stop(){
 		ConcertSmugglers.instance.running = false;
-		
+		this.stopped = true;
+		this.stoppedTimer = 0;
 		List<Person> persons = ConcertSmugglers.instance.mapRenderer.players();
 		for(Person person : persons){
 			person.setState(PersonState.Idle);
