@@ -66,6 +66,7 @@ public class IntroScreen implements Screen {
 		image.act(10);
 		
 		image.addAction(
+				Actions.sequence(Actions.delay(2.5f),
 				Actions.parallel(
 					Actions.sequence(
 						Actions.parallel(
@@ -86,7 +87,7 @@ public class IntroScreen implements Screen {
 							, Actions.rotateTo(4, 5f)
 						)
 					)
-				)
+				))
 		);
 		Label label = new Label("You only\nget one...", skin);
 		label.setPosition(20, cfg.yTarget / 2 - 5 - label.getHeight() / 2);
@@ -150,7 +151,7 @@ public class IntroScreen implements Screen {
 		title.act(10);
 		title.addAction(
 			Actions.sequence(
-				Actions.delay(8f)
+				Actions.delay(11f)
 				, Actions.parallel(
 					Actions.fadeIn(3f)
 					, Actions.forever(
@@ -167,10 +168,17 @@ public class IntroScreen implements Screen {
 		stage.addActor(label2);
 		stage.addActor(title);
 		float textX = cfg.xTarget / 2;
-		float textY = cfg.yTarget / 3;
+		float textY = cfg.yTarget / 2 + 20;
 		createIntroFadeText(skin, 0.5f, "You only get one...", textX, textY);
 		createIntroFadeText(skin, 2.5f, "A ludum dare 28 game", textX, textY);
-		createIntroFadeText(skin, 4.5f, "Made by atombrot & dhy", textX, textY);
+		createIntroFadeText(skin, 4.5f, "Design & GFX: dhy", textX, textY);
+		createIntroFadeText(skin, 5.2f, "www.facebook.com/DhyanaFairytales", textX, textY);
+		createIntroFadeText(skin, 6.5f, "Design & Code: atombrot", textX, textY);
+		createIntroFadeText(skin, 7.2f, "www.atombrot.com", textX, textY);
+		createIntroFadeText(skin, 8.5f, "Music: mentex", textX, textY);
+		createIntroFadeText(skin, 9.2f, "www.mentex.ch", textX, textY);
+
+
 		createPressAnyKeyText(skin, 12, "Press Any Key to Start", textX, 20);
 	}
 
@@ -185,9 +193,9 @@ public class IntroScreen implements Screen {
 			Actions.sequence(
 				Actions.delay(delay)
 				, Actions.parallel(
-					Actions.moveBy(0, 200, 10)
+					Actions.moveBy(0, 200, 15)
 					, Actions.sequence(
-						Actions.fadeIn(0.5f)
+						Actions.fadeIn(1.5f)
 						, Actions.delay(1f)
 						, Actions.fadeOut(2.5f)
 					)
