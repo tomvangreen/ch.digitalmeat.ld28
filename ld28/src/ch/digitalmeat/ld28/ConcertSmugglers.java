@@ -34,6 +34,8 @@ public class ConcertSmugglers extends Game {
 	
 	@Override
 	public void create() {
+		Gdx.input.setCatchBackKey(true);
+		Gdx.input.setCatchMenuKey(true);
 		config.set(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		assets.create();
 		this.textManager = new TextManager();
