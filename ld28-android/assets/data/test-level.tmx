@@ -54,7 +54,7 @@
    H4sIAAAAAAAAC2NgoD5wYqSBoaOAbKBHZny8BOIXQPwMiJ8C8SvqOQkMzEbTyYADAEkiHt8ABAAA
   </data>
  </layer>
- <objectgroup name="Guards" width="32" height="8" visible="0">
+ <objectgroup name="Guards" width="32" height="8">
   <properties>
    <property name="type" value="entity"/>
   </properties>
@@ -66,7 +66,7 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup name="Guests" width="32" height="8" visible="0">
+ <objectgroup name="Guests" width="32" height="8">
   <properties>
    <property name="type" value="entity"/>
   </properties>
@@ -154,9 +154,6 @@
   <object type="guest" x="942" y="143" width="9" height="12">
    <ellipse/>
   </object>
-  <object type="guest" x="1008" y="175" width="9" height="12">
-   <ellipse/>
-  </object>
   <object type="guest" x="456" y="143" width="9" height="12">
    <ellipse/>
   </object>
@@ -215,7 +212,7 @@
    <ellipse/>
   </object>
  </objectgroup>
- <objectgroup name="Waypoints" width="32" height="8" visible="0">
+ <objectgroup name="Waypoints" width="32" height="8">
   <properties>
    <property name="type" value="wp"/>
   </properties>
