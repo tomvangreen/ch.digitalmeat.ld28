@@ -2,11 +2,13 @@ package ch.digitalmeat.ld28;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.actions.Actions;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 
@@ -14,6 +16,7 @@ public class RulesScreen implements Screen{
 	private Stage stage;
 	private ParticleEffect effect;
 	private SpriteBatch batch;
+	private Image sightBlocker;
 	
 	public RulesScreen(){
 		this.batch = new SpriteBatch();
@@ -63,6 +66,21 @@ public class RulesScreen implements Screen{
 				createIntroFadeText(assets.skin, 0.5f + index * 1f, text , textX, textY);
 			}
 		}
+		sightBlocker = new Image(assets.blank);
+		sightBlocker.setColor(Color.BLACK);
+		sightBlocker.setSize(cfg.xTarget, cfg.yTarget);
+		sightBlocker.addAction(
+			Actions.sequence(
+				Actions.fadeOut(1f)
+				, Actions.run(new Runnable() {
+					@Override
+					public void run() {
+						ConcertSmugglers.instance.running = true;						
+					}
+				})
+			)
+		);
+		stage.addActor(sightBlocker);
 	}
 	
 	private void createIntroFadeText(Skin skin, float delay, String text,

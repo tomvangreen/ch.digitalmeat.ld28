@@ -2,6 +2,7 @@ package ch.digitalmeat.ld28;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -17,6 +18,8 @@ public class IntroScreen implements Screen {
 	private SpriteBatch batch;
 	private boolean started = false;
 	private float timer = 0f;
+	public Image sightBlocker;
+
 	public IntroScreen(){
 		this.batch = new SpriteBatch();
 	}
@@ -184,8 +187,22 @@ public class IntroScreen implements Screen {
 
 
 		createPressAnyKeyText(skin, 12, "Press Any Key to Start", textX, 20);
+		this.sightBlocker = new Image(assets.blank);
+		sightBlocker.setColor(Color.BLACK);
+		sightBlocker.setSize(cfg.xTarget, cfg.yTarget);
+		sightBlocker.addAction(
+			Actions.sequence(
+				Actions.fadeOut(1f)
+				, Actions.run(new Runnable() {
+					@Override
+					public void run() {
+						ConcertSmugglers.instance.running = true;						
+					}
+				})
+			)
+		);
+		stage.addActor(sightBlocker);
 	}
-
 	private void createIntroFadeText(Skin skin, float delay, String text,
 			float textX, float textY) {
 		Label introFadeText = new Label(text, skin);
