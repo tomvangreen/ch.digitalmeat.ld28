@@ -7,9 +7,11 @@ public class PersonAi {
 	public static void buildAi(){
 		//guestAi = new AiTimerNode();
 		guestAi = new ActionChecker();
+		
 		guestAi.add(new Roam());
 		
 		guardAi = new ActionChecker();
+		guardAi.add(new RoamWaypoints());
 		guardAi.add(new Roam());
 	}
 }
