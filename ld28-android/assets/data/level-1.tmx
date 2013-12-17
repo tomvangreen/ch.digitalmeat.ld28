@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="32" height="8" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="test-tiles" tilewidth="32" tileheight="32">
-  <image source="ld28/git/ld28-android/assets/data/test-tiles.png" width="414" height="414"/>
+  <image source="test-tiles.png" width="414" height="414"/>
  </tileset>
  <tileset firstgid="145" name="collision_tiles" tilewidth="32" tileheight="32">
-  <image source="ld28/git/ld28-android/assets/data/collision_tiles.png" width="128" height="128"/>
+  <image source="collision_tiles.png" width="128" height="128"/>
   <tile id="8">
    <properties>
     <property name="collision" value="left"/>
@@ -17,10 +17,10 @@
   </tile>
  </tileset>
  <tileset firstgid="161" name="foreground" tilewidth="32" tileheight="32">
-  <image source="ld28/git/ld28-android/assets/data/foreground.png" width="256" height="256"/>
+  <image source="foreground.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="225" name="Backgrounds" tilewidth="32" tileheight="32">
-  <image source="ld28/git/ld28-android/assets/data/Backgrounds.png" width="512" height="512"/>
+  <image source="Backgrounds.png" width="512" height="512"/>
  </tileset>
  <layer name="Background 1" width="32" height="8">
   <properties>
@@ -65,15 +65,29 @@
    </properties>
    <ellipse/>
   </object>
-  <object type="guard" x="868" y="85" width="13" height="11">
+  <object type="guard" x="799" y="143" width="13" height="11">
    <properties>
     <property name="roam" value="near_entry;entry"/>
     <property name="roamDelay" value="3"/>
    </properties>
    <ellipse/>
   </object>
+  <object type="guard" x="594" y="107" width="8" height="12">
+   <properties>
+    <property name="roam" value="bla1;bla2"/>
+    <property name="roamDelay" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="guard" x="397" y="78" width="8" height="12">
+   <properties>
+    <property name="roam" value="bla3;bla4"/>
+    <property name="roamDelay" value="3"/>
+   </properties>
+   <ellipse/>
+  </object>
  </objectgroup>
- <objectgroup name="Guests" width="32" height="8" visible="0">
+ <objectgroup name="Guests" width="32" height="8">
   <properties>
    <property name="type" value="entity"/>
   </properties>
@@ -221,14 +235,14 @@
  </objectgroup>
  <objectgroup name="Waypoints" width="32" height="8">
   <properties>
-   <property name="type" value="wp"/>
+   <property name="type" value="entity"/>
   </properties>
-  <object type="wp" x="528" y="135" width="17" height="17">
+  <object type="wp" x="550" y="142" width="15" height="12">
    <properties>
     <property name="key" value="before_stairs"/>
    </properties>
   </object>
-  <object type="wp" x="625" y="134" width="19" height="19">
+  <object type="wp" x="625" y="142" width="11" height="12">
    <properties>
     <property name="key" value="behind_stairs"/>
    </properties>
@@ -243,12 +257,32 @@
     <property name="key" value="near_entry"/>
    </properties>
   </object>
+  <object type="wp" x="457" y="109" width="15" height="12">
+   <properties>
+    <property name="key" value="bla1"/>
+   </properties>
+  </object>
+  <object type="wp" x="817" y="111" width="11" height="12">
+   <properties>
+    <property name="key" value="bla2"/>
+   </properties>
+  </object>
+  <object type="wp" x="330" y="77" width="15" height="12">
+   <properties>
+    <property name="key" value="bla3"/>
+   </properties>
+  </object>
+  <object type="wp" x="466" y="79" width="11" height="12">
+   <properties>
+    <property name="key" value="bla4"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Entities" width="32" height="8">
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="player_ticket" x="202" y="137" width="11" height="12">
+  <object type="player_ticket" x="232" y="138" width="11" height="12">
    <properties>
     <property name="" value=""/>
    </properties>
@@ -260,64 +294,64 @@
   <object type="guest" x="331" y="137" width="7" height="11">
    <ellipse/>
   </object>
-  <object type="player_without_ticket" x="274" y="136" width="5" height="9">
+  <object type="player_without_ticket" x="215" y="142" width="5" height="9">
    <ellipse/>
   </object>
   <object type="transport" x="586" y="146" width="11" height="9">
    <properties>
     <property name="key" value="elev_bottom"/>
     <property name="target" value="elev_top"/>
-    <property name="text" value="use stairs"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
   <object type="transport" x="618" y="112" width="11" height="11">
    <properties>
     <property name="key" value="elev_top"/>
     <property name="target" value="elev_bottom"/>
-    <property name="text" value="use stairs"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
   <object type="transport" x="435" y="83" width="8" height="9">
    <properties>
     <property name="key" value="leader_bottom"/>
     <property name="target" value="leader_top"/>
-    <property name="text" value="use leader"/>
+    <property name="text" value="Use ladder"/>
    </properties>
   </object>
   <object type="transport" x="435" y="11" width="18" height="15">
    <properties>
     <property name="key" value="leader_top"/>
     <property name="target" value="leader_bottom"/>
-    <property name="text" value="use leader"/>
+    <property name="text" value="Use ladder"/>
    </properties>
   </object>
   <object type="transport" x="440" y="15" width="1"/>
-  <object type="transport" x="458" y="85" width="9" height="10">
+  <object type="transport" x="459" y="81" width="9" height="10">
    <properties>
     <property name="key" value="elev1_top"/>
     <property name="target" value="elev1_bottom"/>
-    <property name="text" value="use stairs"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
   <object type="transport" x="487" y="113" width="11" height="11">
    <properties>
     <property name="key" value="elev1_bottom"/>
     <property name="target" value="elev1_top"/>
-    <property name="text" value="use stairs"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
   <object type="transport" x="833" y="17" width="20" height="12">
    <properties>
     <property name="key" value="leader1_top"/>
     <property name="target" value="leader1_bottom"/>
-    <property name="text" value="use leader"/>
+    <property name="text" value="Use ladder"/>
    </properties>
   </object>
-  <object type="transport" x="838" y="115" width="5" height="19">
+  <object type="transport" x="839" y="137" width="5" height="19">
    <properties>
     <property name="key" value="leader1_bottom"/>
-    <property name="target" value="leader1_top"/>
-    <property name="text" value="use leader"/>
+    <property name="target" value=""/>
+    <property name="text" value=""/>
    </properties>
   </object>
   <object type="goal" x="895" y="116" width="87" height="39"/>
@@ -335,7 +369,7 @@
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgIB1MJEPPHDL0DCSYOdAOIABIcR85YU9r/w+19DBcAQAx99diAAQAAA==
+   H4sIAAAAAAAAC2NgIB3MJEPPHDL0DCQg5MeB9g8pcUCOW8mJY1LAQIffKIAAAHZAzYIABAAA
   </data>
  </layer>
 </map>

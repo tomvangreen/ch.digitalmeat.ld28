@@ -21,14 +21,3 @@ the guards.
 
 And finally enjoy your
 evening in the club.
-
-
-Use the left and right
-keys to walk around.
-
-Use TAB to switch the
-active person.
-
-Use SPACE to interact
-with an object.
-

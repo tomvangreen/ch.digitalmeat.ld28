@@ -148,7 +148,7 @@ public class Person extends Actor {
 		batch.setColor(config.hairColor);
 		batch.draw(getRelevantTextureRegion(parts, PersonSheet.SHEET_HAIR), x, getY(), w, getHeight());
 		
-		if(gameAction != null && gameAction.text != null && !"".equals(gameAction.text)/*&& this == ConcertSmugglers.instance.mapRenderer.focusedPerson*/){
+		if(gameAction != null && gameAction.text != null && !"".equals(gameAction.text) && this == ConcertSmugglers.instance.mapRenderer.focusedPerson){
 			BitmapFont font = ConcertSmugglers.instance.assets.font_visitor_10;
 			TextBounds bounds = font.getBounds(gameAction.text);
 			batch.setColor(Color.BLACK);

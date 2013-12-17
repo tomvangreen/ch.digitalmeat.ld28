@@ -186,7 +186,7 @@ public class IntroScreen implements Screen {
 		createIntroFadeText(skin, 9.2f, "www.mentex.ch", textX, textY);
 
 
-		createPressAnyKeyText(skin, 12, "Press Any Key to Start", textX, 20);
+		createPressAnyKeyText(skin, 12, "Press Any Key", textX, 20);
 		this.sightBlocker = new Image(assets.blank);
 		sightBlocker.setColor(Color.BLACK);
 		sightBlocker.setSize(cfg.xTarget, cfg.yTarget);

@@ -27,7 +27,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAX4wAbGwW9/HlBNLhDPw4EbsJixDCi2nAiz0e3HZv4CIO5nhJi5FIqvEcA3gPg4GfavA/LXA/EqIF6JhFcD8VGouSA8DQteBMQLkfARIuw/B1RzDwk/gOI7WPANAn6+jIaJsZ+a4BDQvitI+DAQAwCFDO4BAAQAAA==
+   H4sIAAAAAAAAC2NgQAXrGBkY1qJhWoK9QPPvIeEHaPg+EE8D4nQauwMX2AC1N2MQ258HlMsF4nk4cAMWvcuAYsuJ8BPI/logXoDHfJBcPyPEzKVQfI0AvgHEx4m0HxmA0ud6IF4FxCuR8GogPgo19wY0zaDjRUC8EAkfIcL+czjS5x0s+AYBP19Gw8TYT01wCGjfFSR8GIgB25Tx4AAEAAA=
   </data>
  </layer>
  <layer name="Background 1" width="32" height="8">
@@ -35,7 +35,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAUjEQQyUt/MFixmpkDFiqF0CZROpMD+YiL12gLVqQGxEhCrYtGzggz7CoHsIiD+DmQ/BOLHQPyEAcJvZkQNgyRGVD3oYAOR9tMK7ABiAL12OOYABAAA
+   H4sIAAAAAAAAC2NgGFzgIRA/BuJHQPxkgN0ynEEgI/XNbMFiZgpUrBhKl0DpRArsLyZSry1QnRoQKwGxKhY9K8iwrxDILgLi7wyItApKpyB+MyNqGCQxoupBBxuItJ9WYAcQAwCEm1dLAAQAAA==
   </data>
  </layer>
  <layer name="Background 2" width="32" height="8">
@@ -43,7 +43,7 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjgHiwfIDtXz/A9m9H4z8dEFdQDwAAiO1dSAAEAAA=
+   H4sIAAAAAAAAC2NgGHzgKRA/G2hHjAKsYPkA279+gO3fjsZ/OiCuoB4AAAhzehwABAAA
   </data>
  </layer>
  <layer name="background 3" width="32" height="8">
@@ -51,23 +51,26 @@
    <property name="type" value="bg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAWjYBQQAl6MmGJvgfg1EL+ht2OoCABmWuwDAAQAAA==
+   H4sIAAAAAAAAC2NgGFzgLRC/BuI3UDwKRsFgAF6MmGLIaXWoAgDxUJrWAAQAAA==
   </data>
  </layer>
  <objectgroup name="Player" width="32" height="8" opacity="0.9">
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="player_ticket" x="321" y="200" width="11" height="12">
+  <object type="player_ticket" x="67" y="40" width="11" height="12">
    <properties>
     <property name="" value=""/>
    </properties>
    <ellipse/>
   </object>
-  <object type="player_without_ticket" x="293" y="203" width="14" height="14">
+  <object type="player_without_ticket" x="39" y="43" width="14" height="14">
    <ellipse/>
   </object>
-  <object type="player_without_ticket" x="270" y="198" width="14" height="14">
+  <object type="player_without_ticket" x="16" y="38" width="14" height="14">
+   <ellipse/>
+  </object>
+  <object type="player_without_ticket" x="52" y="43" width="14" height="14">
    <ellipse/>
   </object>
  </objectgroup>
@@ -77,7 +80,35 @@
   </properties>
   <object type="guard" x="483" y="140" width="14" height="14">
    <properties>
-    <property name="roam" value="entry;besides_stairs"/>
+    <property name="roam" value="w1;w2"/>
+    <property name="roamDelay" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="guard" x="771" y="171" width="14" height="14">
+   <properties>
+    <property name="roam" value="w3;w4"/>
+    <property name="roamDelay" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="guard" x="800" y="139" width="14" height="14">
+   <properties>
+    <property name="roam" value="w5;w6"/>
+    <property name="roamDelay" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="guard" x="740" y="202" width="14" height="14">
+   <properties>
+    <property name="roam" value="w10;w11"/>
+    <property name="roamDelay" value="2"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="guard" x="727" y="110" width="14" height="14">
+   <properties>
+    <property name="roam" value="w13;w14"/>
     <property name="roamDelay" value="2"/>
    </properties>
    <ellipse/>
@@ -88,12 +119,74 @@
    <property name="type" value="entity"/>
   </properties>
  </objectgroup>
- <objectgroup name="Waypoints" width="32" height="8" visible="0">
+ <objectgroup name="Waypoints" width="32" height="8">
   <properties>
    <property name="type" value="entity"/>
   </properties>
+  <object type="wp" x="307" y="146" width="6" height="5">
+   <properties>
+    <property name="key" value="w1"/>
+   </properties>
+  </object>
+  <object type="wp" x="582" y="147" width="6" height="5">
+   <properties>
+    <property name="key" value="w2"/>
+   </properties>
+  </object>
+  <object type="wp" x="673" y="178" width="6" height="5">
+   <properties>
+    <property name="key" value="w3"/>
+   </properties>
+  </object>
+  <object type="wp" x="844" y="178" width="6" height="5">
+   <properties>
+    <property name="key" value="w4"/>
+   </properties>
+  </object>
+  <object type="wp" x="716" y="149" width="6" height="5">
+   <properties>
+    <property name="key" value="w5"/>
+   </properties>
+  </object>
+  <object type="wp" x="1008" y="146" width="6" height="5">
+   <properties>
+    <property name="key" value="w6"/>
+   </properties>
+  </object>
+  <object type="wp" x="649" y="212" width="6" height="5">
+   <properties>
+    <property name="key" value="w10"/>
+   </properties>
+  </object>
+  <object type="wp" x="843" y="210" width="6" height="5">
+   <properties>
+    <property name="key" value="w11"/>
+   </properties>
+  </object>
+  <object type="wp" x="300" y="213" width="6" height="5">
+   <properties>
+    <property name="key" value="w12"/>
+   </properties>
+  </object>
+  <object type="guard" x="712" y="201" width="14" height="14">
+   <properties>
+    <property name="roam" value="w12;w11"/>
+    <property name="roamDelay" value="0"/>
+   </properties>
+   <ellipse/>
+  </object>
+  <object type="wp" x="619" y="118" width="6" height="5">
+   <properties>
+    <property name="key" value="w13"/>
+   </properties>
+  </object>
+  <object type="wp" x="821" y="117" width="6" height="5">
+   <properties>
+    <property name="key" value="w14"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup name="Triggers" width="32" height="8">
+ <objectgroup name="Triggers" width="32" height="8" visible="0">
   <properties>
    <property name="type" value="entity"/>
   </properties>
@@ -103,108 +196,148 @@
   <properties>
    <property name="type" value="entity"/>
   </properties>
-  <object type="transport" x="394" y="149" width="8" height="7">
+  <object type="transport" x="265" y="53" width="5" height="6">
    <properties>
-    <property name="key" value="stairs1_bottom"/>
-    <property name="target" value="stairs1_top"/>
+    <property name="key" value="a"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="b"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="264" y="211" width="5" height="6">
+   <properties>
+    <property name="key" value="b"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="a"/>
+    <property name="text" value="Use elevator"/>
+   </properties>
+  </object>
+  <object type="transport" x="333" y="54" width="5" height="6">
+   <properties>
+    <property name="auto" value="true"/>
+    <property name="key" value="asdasdsad"/>
+    <property name="speed" value="140"/>
+    <property name="target" value="c"/>
+    <property name="text" value=""/>
+   </properties>
+  </object>
+  <object type="transport" x="337" y="147" width="5" height="6">
+   <properties>
+    <property name="" value=""/>
+    <property name="key" value="c"/>
+   </properties>
+  </object>
+  <object type="transport" x="384" y="150" width="5" height="6">
+   <properties>
+    <property name="key" value="d"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="e"/>
+    <property name="text" value="Use ladder"/>
+   </properties>
+  </object>
+  <object type="transport" x="384" y="210" width="5" height="6">
+   <properties>
+    <property name="key" value="e"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="d"/>
+    <property name="text" value="Use ladder"/>
+   </properties>
+  </object>
+  <object type="transport" x="618" y="212" width="5" height="6">
+   <properties>
+    <property name="key" value="j"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="k"/>
     <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="424" y="114" width="10" height="12">
+  <object type="transport" x="652" y="182" width="5" height="6">
    <properties>
-    <property name="key" value="stairs1_top"/>
-    <property name="target" value="stairs1_bottom"/>
+    <property name="key" value="k"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="j"/>
     <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="773" y="111" width="16" height="12">
+  <object type="transport" x="585" y="148" width="5" height="6">
    <properties>
-    <property name="key" value="toilet2_top"/>
-    <property name="target" value="toilet2_bottom"/>
-    <property name="text" value="Use elevator"/>
+    <property name="key" value="f"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="g"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="585" y="144" width="16" height="12">
+  <object type="transport" x="622" y="118" width="5" height="6">
    <properties>
-    <property name="key" value="mntn1_bottom"/>
-    <property name="target" value="mntn1_top"/>
-    <property name="text" value="Use elevator"/>
+    <property name="key" value="g"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="f"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="776" y="141" width="16" height="12">
+  <object type="transport" x="687" y="180" width="5" height="6">
    <properties>
-    <property name="key" value="toilet2_bottom"/>
-    <property name="target" value="toilet2_top"/>
-    <property name="text" value="Use elevator"/>
+    <property name="key" value="m"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="l"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="618" y="16" width="11" height="11">
+  <object type="transport" x="715" y="151" width="5" height="6">
    <properties>
-    <property name="auto" value="true"/>
-    <property name="key" value="topfall1_top"/>
-    <property name="speed" value="180"/>
-    <property name="target" value="topfall1_bottom"/>
-    <property name="text" value=""/>
+    <property name="key" value="l"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="m"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="582" y="17" width="16" height="12">
+  <object type="transport" x="755" y="149" width="5" height="6">
    <properties>
-    <property name="key" value="mntn1_top"/>
-    <property name="target" value="mntn1_bottom"/>
-    <property name="text" value="Use elevator"/>
+    <property name="key" value="i"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="h"/>
+    <property name="text" value="Use ladder"/>
    </properties>
   </object>
-  <object type="transport" x="839" y="143" width="16" height="12">
+  <object type="transport" x="754" y="118" width="5" height="6">
    <properties>
-    <property name="key" value="bottomfall1_bottom"/>
-    <property name="target" value=""/>
-    <property name="text" value=""/>
+    <property name="key" value="h"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="i"/>
+    <property name="text" value="Use ladder"/>
    </properties>
   </object>
-  <object type="transport" x="842" y="47" width="11" height="12">
+  <object type="transport" x="844" y="216" width="5" height="6">
    <properties>
-    <property name="auto" value="true"/>
-    <property name="key" value="bottomfall1_top"/>
-    <property name="speed" value="180"/>
-    <property name="target" value="bottomfall1_bottom"/>
-    <property name="text" value=""/>
+    <property name="key" value="o"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="p"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="362" y="143" width="16" height="12">
+  <object type="transport" x="873" y="246" width="5" height="6">
    <properties>
-    <property name="key" value="barfall1_bottom"/>
-    <property name="target" value=""/>
-    <property name="text" value=""/>
+    <property name="key" value="p"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="o"/>
+    <property name="text" value="Use stairs"/>
    </properties>
   </object>
-  <object type="transport" x="361" y="115" width="16" height="11">
+  <object type="transport" x="1009" y="151" width="5" height="6">
    <properties>
-    <property name="auto" value="true"/>
-    <property name="key" value="barfall1_top"/>
-    <property name="speed" value="180"/>
-    <property name="target" value="barfall1_bottom"/>
-    <property name="text" value=""/>
+    <property name="key" value="z"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="q"/>
+    <property name="text" value="Use ladder"/>
    </properties>
   </object>
-  <object type="transport" x="613" y="47" width="16" height="12">
+  <object type="transport" x="1010" y="245" width="5" height="6">
    <properties>
-    <property name="key" value="topfall1_bottom"/>
-    <property name="target" value=""/>
-    <property name="text" value=""/>
-   </properties>
-  </object>
-  <object type="transport" x="650" y="112" width="16" height="12">
-   <properties>
-    <property name="key" value="toilet1_top"/>
-    <property name="target" value="toilet1_bottom"/>
-    <property name="text" value="Use elevator"/>
-   </properties>
-  </object>
-  <object type="transport" x="648" y="141" width="16" height="12">
-   <properties>
-    <property name="key" value="toilet1_bottom"/>
-    <property name="target" value="toilet1_top"/>
-    <property name="text" value="Use elevator"/>
+    <property name="" value=""/>
+    <property name="key" value="q"/>
+    <property name="speed" value="64"/>
+    <property name="target" value="z"/>
+    <property name="text" value="Use ladder"/>
    </properties>
   </object>
  </objectgroup>
@@ -221,7 +354,7 @@
    <property name="type" value="fg"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAX4wOIhYv9CIF6EJraCjvavBOJVaG7ZQUf7ke1Fdgs97cdn7xIgXkq5c8gGa4B4LRZxAAqX3tIABAAA
+   H4sIAAAAAAAAC2NgGFjAysjAwIaEGYGYGYhZGAfYYVCweIjYvxCIF6GJraCj/SuBeBWaW3bQ0X5ke5HdQk/78dm7BIiXUu4cssEaIF6LRRwAQfo+PgAEAAA=
   </data>
  </layer>
  <layer name="Collision" width="32" height="8">
@@ -229,7 +362,7 @@
    <property name="type" value="collision"/>
   </properties>
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAC2NgGAXDBczEIT5nAOzApQ6fHmoAaocBMf4gBtDCr6QCdL+A3AQAS4a+OgAEAAA=
+   H4sIAAAAAAAAC2NgGFgwc4DtH04AV1jOoZG5+OwgRw81ALXDgFrpkxZ+JRWg+wXkJgAKXcA1AAQAAA==
   </data>
  </layer>
 </map>

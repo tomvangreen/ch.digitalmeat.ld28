@@ -8,7 +8,7 @@ public class Main {
 		Config gameConfig = new Config(640, 480);
 		
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
-		cfg.title = "ld28";
+		cfg.title = "LD28: Concert Crashers";
 		cfg.useGL20 = true;
 		cfg.width = gameConfig.xResolution;
 		cfg.height = gameConfig.yResolution;

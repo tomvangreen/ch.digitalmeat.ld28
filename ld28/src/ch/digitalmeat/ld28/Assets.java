@@ -5,6 +5,7 @@ import java.util.Random;
 import ch.digitalmeat.ld28.person.PersonSheet;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
@@ -78,7 +79,12 @@ public class Assets {
 		String namesString = Gdx.files.internal("data/names.txt").readString();
 		this.names = namesString.split("\n");
 		String levelsString = Gdx.files.internal("data/levels.txt").readString();
-		this.howto = Gdx.files.internal("data/howto.txt").readString();
+		if(Gdx.app.getType() == ApplicationType.Android){
+			this.howto = Gdx.files.internal("data/howto.droid.txt").readString();
+		}
+		else{
+			this.howto = Gdx.files.internal("data/howto.txt").readString();			
+		}
 		this.levels = levelsString.split(";");
 		playerEffect = playerEffect();		
 		Texture personsTexture = manager.get("data/PeopleParts.png");
