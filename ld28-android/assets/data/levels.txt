@@ -1,1 +1,1 @@
-data/test-level-3.tmx;data/level-1.tmx;data/test-level-2.tmx
+data/level-1.tmx;data/test-level-2.tmx;data/test-level-3.tmx
