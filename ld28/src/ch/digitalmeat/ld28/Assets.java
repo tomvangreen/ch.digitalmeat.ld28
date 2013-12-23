@@ -4,8 +4,8 @@ import java.util.Random;
 
 import ch.digitalmeat.ld28.person.PersonSheet;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Application.ApplicationType;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.audio.Music;
@@ -50,8 +50,11 @@ public class Assets {
 		return names[random.nextInt(names.length)];
 	}
 	
+	private TmxMapLoader loader;
+	
 	public void create(){
-		manager.setLoader(TiledMap.class, new TmxMapLoader(new InternalFileHandleResolver()));		
+		loader = new TmxMapLoader(new InternalFileHandleResolver());
+		manager.setLoader(TiledMap.class, loader);		
 		manager.load("data/Persons.png", Texture.class);
 		manager.load("data/PeopleParts.png", Texture.class);
 		manager.load("data/ground.png", Texture.class);
@@ -62,7 +65,7 @@ public class Assets {
 		manager.load("data/visitor_25.fnt", BitmapFont.class);
 		manager.load("data/uiskin.json", Skin.class);
 		manager.load("data/android_controls.png", Texture.class);
-		manager.load("data/mentex_track_01.wav", Music.class);
+		manager.load("data/mentex_track_01.mp3", Music.class);
 		manager.finishLoading();
 		this.skin = manager.get("data/uiskin.json");
 		ground = manager.get("data/ground.png");
@@ -72,7 +75,7 @@ public class Assets {
 		font_visitor_10 = manager.get("data/visitor_10.fnt");
 		font_visitor_25 = manager.get("data/visitor_25.fnt");
 		sheets = new PersonSheet[PERSON_SPRITES];
-		music = manager.get("data/mentex_track_01.wav");
+		music = manager.get("data/mentex_track_01.mp3");
 		music.setLooping(true);
 		music.setVolume(0.5f);
 		music.play();
@@ -82,8 +85,11 @@ public class Assets {
 		if(Gdx.app.getType() == ApplicationType.Android){
 			this.howto = Gdx.files.internal("data/howto.droid.txt").readString();
 		}
+		else if(Gdx.app.getType() == ApplicationType.WebGL){
+			this.howto = Gdx.files.internal("data/howto.gwt.txt").readString();			
+		}
 		else{
-			this.howto = Gdx.files.internal("data/howto.txt").readString();			
+			this.howto = Gdx.files.internal("data/howto.txt").readString();						
 		}
 		this.levels = levelsString.split(";");
 		playerEffect = playerEffect();		
@@ -170,9 +176,7 @@ public class Assets {
 	}
 	
 	public TiledMap loadTilemap(String file){
-		manager.load(file, TiledMap.class);
-		manager.finishLoading();
-		return manager.get(file);
+		return loader.load(file);
 	}
 	
 	public void dispose(){

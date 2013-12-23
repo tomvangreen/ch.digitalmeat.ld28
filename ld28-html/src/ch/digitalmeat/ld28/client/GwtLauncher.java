@@ -16,7 +16,7 @@ public class GwtLauncher extends GwtApplication {
 
 	@Override
 	public ApplicationListener getApplicationListener () {
-		Config gameConfig = new Config(640, 480);
+		Config gameConfig = new Config(960, 800);
 		return new ConcertSmugglers(gameConfig);
 	}
 }

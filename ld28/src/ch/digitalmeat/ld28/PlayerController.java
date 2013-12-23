@@ -16,7 +16,7 @@ public class PlayerController {
 	public boolean restart;
 	public boolean exit;
 	
-	public KeyTrap switchPlayerTrap = new KeyTrap(Input.Keys.TAB);
+	public KeyTrap switchPlayerTrap = new KeyTrap(Input.Keys.N);
 	public KeyTrap useTrap = new KeyTrap(Input.Keys.SPACE);
 	public KeyTrap restartTrap = new KeyTrap(Input.Keys.R);
 	public KeyTrap escapeTrap = new KeyTrap(Input.Keys.ESCAPE);
